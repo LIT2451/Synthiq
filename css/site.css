@@ -583,6 +583,93 @@ button.chip[aria-pressed="true"] {
   font-size: 0.95rem;
 }
 
+/* ---------- Inner page header ---------- */
+.page-header {
+  padding-block: clamp(3rem, 8vw, 5.5rem) clamp(2rem, 5vw, 3.5rem);
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(50% 120% at 85% 0%, rgb(11 58 102 / 0.6), transparent 70%),
+    url("../images/iso-grid.svg") right top / 112px 64px;
+}
+.page-header h1 {
+  max-width: 22ch;
+}
+.page-header .lead {
+  margin-top: 1.25rem;
+}
+
+/* ---------- About: story + timeline ---------- */
+.story {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+.story-body {
+  color: var(--muted);
+}
+@media (min-width: 992px) {
+  .story {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  margin: 0;
+  padding: 0 0 0 2.5rem;
+  list-style: none;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 1rem;
+  width: 2px;
+  background: linear-gradient(var(--accent), var(--line));
+}
+.timeline-step {
+  position: relative;
+}
+.timeline-step p {
+  margin-top: 0.5rem;
+  color: var(--muted);
+}
+.timeline-num {
+  position: absolute;
+  top: -0.15rem;
+  left: -2.5rem;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+@media (min-width: 992px) {
+  .timeline {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 3rem 0 0;
+  }
+  .timeline::before {
+    top: 1rem;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--line));
+  }
+  .timeline-num {
+    top: -3rem;
+    left: 0;
+  }
+}
+
 /* ---------- CTA band ---------- */
 .cta-panel {
   display: grid;

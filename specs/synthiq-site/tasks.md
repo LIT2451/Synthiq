@@ -122,7 +122,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 6.1 Trang Home `src/pages/index.html` + `src/partials/cta.html` + `images/iso-grid.svg` và icon dịch vụ line SVG teal trong `images/icons/`; CSS hero chia đôi (trái chữ, phải `logo-mark-hero` + lưới isometric + 3 chip số liệu), dải chỉ số, bento, "Why Synthiq", chip tech
     - Kiểm chứng: `npm run build && npm run check` không lỗi cho `index.html`
     - _Requirements: 1.2, 2.3, 2.6, 3.1_
-  - [ ] 6.2 Trang About `src/pages/about.html`; CSS story 2 cột, giá trị, timeline 4 bước
+  - [x] 6.2 Trang About `src/pages/about.html`; CSS story 2 cột, giá trị, timeline 4 bước
     - Kiểm chứng: `npm run build && npm run check` không lỗi cho `about.html`
     - _Requirements: 1.3, 3.1_
   - [ ] 6.3 Trang Services `src/pages/services.html` (6 dịch vụ × 3 ý, Synthiq Relay, Synthiq Pilot, 3 mô hình hợp tác) kèm minh hoạ SVG cho 2 giải pháp

@@ -227,3 +227,12 @@
 - Requirements: 1.2, 2.3, 2.6, 3.1
 - Commit: `spec(synthiq-site): 6.1 Trang Home src/pages/index.html +…`
 - Ghi chú: Home: hero chia đôi, 4 chỉ số, bento 3 dịch vụ, Why Synthiq 3 điểm, 8 chip tech, CTA; iso-grid.svg và 4 icon; check --source ../Landing-DVTechnic cũng passed
+
+## 6.2 Trang About `src/pages/about.html`; CSS story 2 cột, giá trị, timeline 4 bước — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:25
+- File đã đổi: `about.html`, `css/site.css`, `src/pages/about.html`
+- Kiểm chứng: `npm run build && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 1.3, 3.1
+- Commit: `spec(synthiq-site): 6.2 Trang About src/pages/about.html; CSS story 2…`
+- Ghi chú: About: story 2 cột, 4 chỉ số, mission + 4 giá trị, timeline 4 bước dọc trên mobile ngang từ 992px, CTA; page-header dùng chung
