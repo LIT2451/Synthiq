@@ -181,3 +181,12 @@
 - Requirements: 1.6, 5.3, 5.6
 - Commit: `spec(synthiq-site): 5.1 Viết js/main.js: initMenu (toggle…`
 - Ghi chú: js/main.js gồm initMenu, filterCases, initFilter, initReveal; nạp type=module trong layout; tests/main.dom.test.mjs 8 test jsdom
+
+## 5.2 Property P5: Lọc case study — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:21
+- File đã đổi: `tests/filter.property.test.mjs`
+- Kiểm chứng: `npm test -- filter` → exit 0 (Duration  91ms (tests 34%, import 33%, transform 27%, worker 6%)) [spec-done tự chạy lại]
+- Requirements: 1.6
+- Property: P5 pass (300 lần)
+- Commit: `spec(synthiq-site): 5.2 Property P5: Lọc case study`

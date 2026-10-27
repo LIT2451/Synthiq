@@ -99,7 +99,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 5.1 Viết `js/main.js`: `initMenu` (toggle, `aria-expanded`, Esc, bấm link, trả focus), `filterCases` (thuần, export), `initFilter` (`aria-pressed`, `hidden`, vùng `aria-live`), `initReveal` (bỏ qua khi reduced motion hoặc không có IntersectionObserver); nạp ở `layout.html` với `type="module"`
     - Kiểm chứng: `npm test` pass
     - _Requirements: 1.6, 5.3, 5.6_
-  - [ ] 5.2 Property P5: Lọc case study
+  - [x] 5.2 Property P5: Lọc case study
     - *Với mọi* danh sách item có category trong 4 lĩnh vực và mọi lựa chọn: lọc theo `all` trả nguyên danh sách; lọc theo c trả đúng các item có category c, giữ thứ tự; hợp các kết quả của 4 lĩnh vực bằng danh sách gốc.
     - fast-check trong `tests/filter.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- filter` pass
