@@ -55,7 +55,7 @@ Nguyên nhân timeline: `ol[class] { padding: 0 }` có độ ưu tiên cao hơn 
 - [x] 1 Sửa timeline: selector `ol.timeline`, đường kẻ qua tâm vòng số ở desktop và mobile, thêm test CSS
   - Kiểm chứng: `npm run build && npm test && npm run check` đạt
   - _Requirements: 1.3, 1.4, 1.5_
-- [ ] 2 Tách khoảng trống giữa biểu tượng và chữ trong `logo-full`/`og.png`, cập nhật test và kích thước logo footer
+- [x] 2 Tách khoảng trống giữa biểu tượng và chữ trong `logo-full`/`og.png`, cập nhật test và kích thước logo footer
   - Kiểm chứng: `npm run assets && npm run build && npm test && npm run check` đạt
   - _Requirements: 1.2, 1.5_
 - [ ] 3 Thêm 4 ảnh Unsplash mới, mỗi case Portfolio một ảnh riêng, thêm test chống trùng ảnh

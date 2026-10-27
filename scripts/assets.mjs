@@ -62,6 +62,25 @@ const trim = (img) => {
   return crop(img, box);
 };
 
+// Share of the stacked logo height left empty between mark and wordmark.
+export const LOGO_GAP = 0.08;
+
+// Places `top` above `bottom` with `gap` transparent rows between them, each centred horizontally.
+export function stackCentered(top, bottom, gap) {
+  const width = Math.max(top.width, bottom.width);
+  const height = top.height + gap + bottom.height;
+  const pixels = new Uint8Array(width * height * 4);
+  const paste = (img, y0) => {
+    const x0 = Math.floor((width - img.width) / 2);
+    for (let y = 0; y < img.height; y += 1) {
+      pixels.set(img.pixels.subarray(y * img.width * 4, (y + 1) * img.width * 4), ((y0 + y) * width + x0) * 4);
+    }
+  };
+  paste(top, 0);
+  paste(bottom, top.height + gap);
+  return { pixels, width, height };
+}
+
 // Isometric grid (30° lines) used behind the share image; mirrors images/iso-grid.svg styling.
 function isoGridSvg(width, height, step = 48) {
   const lines = [];
@@ -145,11 +164,10 @@ export async function buildAssets({ root = ROOT, log = console.log } = {}) {
       throw new AssetError(`wordmark contrast is ${after.toFixed(2)}:1 after recolouring (need ${MIN_LOGO_CONTRAST}:1)`);
     }
   }
-  // Full logo: original mark pixels + (possibly recoloured) wordmark pixels.
-  const full = { pixels: Uint8Array.from(word), width, height };
-  for (let i = 0; i < mask.length; i += 1) {
-    if (mask[i]) full.pixels.set(logo.pixels.subarray(i * 4, i * 4 + 4), i * 4);
-  }
+  // Full logo: mark on top, a transparent gap, then the (possibly recoloured) wordmark, both centred.
+  // In the source the mark's tip touches the letters, so they are stacked again with breathing room.
+  const wordmark = trim({ pixels: word, width, height });
+  const full = stackCentered(mark, wordmark, Math.round((mark.height + wordmark.height) * LOGO_GAP));
 
   const out = join(root, 'images');
   mkdirSync(out, { recursive: true });
