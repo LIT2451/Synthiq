@@ -20,7 +20,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - fast-check trong `tests/render.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- render` pass
     - _Kiểm chứng: Requirements 3.2, 3.3_
-  - [ ] 2.3 Unit test `render.mjs`: front matter thiếu title/description/path báo lỗi; partial thiếu và vòng lặp ném `RenderError`; escape đủ 5 ký tự
+  - [x] 2.3 Unit test `render.mjs`: front matter thiếu title/description/path báo lỗi; partial thiếu và vòng lặp ném `RenderError`; escape đủ 5 ký tự
     - File `tests/render.test.mjs`; xoá `tests/smoke.test.mjs`
     - Kiểm chứng: `npm test -- render` pass
     - _Requirements: 3.2, 6.1_

@@ -25,3 +25,11 @@
 - Requirements: 3.2, 3.3
 - Property: P1 pass (200 lần)
 - Commit: `spec(synthiq-site): 2.2 Property P1: Render template đúng điều kiện và…`
+
+## 2.3 Unit test `render.mjs`: front matter thiếu title/description/path báo lỗi; partial thiếu và vòng lặp ném `RenderError`; escape đủ 5 ký tự — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:01
+- File đã đổi: `Logo/Favicon.png`, `Logo/Logo.png`, `scripts/lib/render.mjs`, `tests/render.test.mjs`, `tests/smoke.test.mjs`
+- Kiểm chứng: `npm test -- render` → exit 0 (Duration  92ms (tests 44%, import 35%, transform 13%, worker 7%)) [spec-done tự chạy lại]
+- Requirements: 3.2, 6.1
+- Commit: `spec(synthiq-site): 2.3 Unit test render.mjs: front matter thiếu…`
