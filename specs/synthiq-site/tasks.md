@@ -118,7 +118,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `npm test -- mailto` pass
     - _Kiểm chứng: Requirements 5.4_
 
-- [-] 6. Nội dung và minh hoạ các trang (copy tiếng Anh viết mới)
+- [x] 6. Nội dung và minh hoạ các trang (copy tiếng Anh viết mới)
   - [x] 6.1 Trang Home `src/pages/index.html` + `src/partials/cta.html` + `images/iso-grid.svg` và icon dịch vụ line SVG teal trong `images/icons/`; CSS hero chia đôi (trái chữ, phải `logo-mark-hero` + lưới isometric + 3 chip số liệu), dải chỉ số, bento, "Why Synthiq", chip tech
     - Kiểm chứng: `npm run build && npm run check` không lỗi cho `index.html`
     - _Requirements: 1.2, 2.3, 2.6, 3.1_
@@ -134,7 +134,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 6.5 Trang Contact `src/pages/contact.html` (thẻ liên hệ hoặc dòng thay thế khi `!hasContact`, "What happens next" 3 bước, form có `data-email="{{email}}"`, label, `<p id="*-error">`, vùng `role="status"`) và `src/pages/404.html`
     - Kiểm chứng: `npm run build && npm run check` exit 0
     - _Requirements: 1.7, 1.8, 3.3, 5.4, 5.7_
-  - [ ] 6.6 DOM test `tests/pages.dom.test.mjs` (jsdom, nạp HTML đã build + `js/main.js`, `js/contact.js`)
+  - [x] 6.6 DOM test `tests/pages.dom.test.mjs` (jsdom, nạp HTML đã build + `js/main.js`, `js/contact.js`)
     - Đếm section/item theo 1.2–1.5, 1.7; 404 có link `index.html`; 5 mục nav và đúng 1 `aria-current` mỗi trang; logo/favicon được tham chiếu; footer chứa `© 2026 Synthiq` (build với năm cố định)
     - Menu: click mở, `aria-expanded`, Esc đóng; bộ lọc: chọn Telecom chỉ còn 2 case, All hiện 8
     - Form: submit rỗng hiện 3 lỗi và focus `name`; `data-email=""` hợp lệ hiện thông báo "being set up", giá trị field giữ nguyên, không đổi `location.href`; `data-email` có giá trị thì `location.href` bắt đầu `mailto:`

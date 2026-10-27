@@ -263,3 +263,12 @@
 - Requirements: 1.7, 1.8, 3.3, 5.4, 5.7
 - Commit: `spec(synthiq-site): 6.5 Trang Contact src/pages/contact.html (thẻ liên…`
 - Ghi chú: Contact: thẻ liên hệ hoặc dòng thay thế khi chưa có contact, 3 bước, form data-email, label, field-error, role=status; 404 có link Home và Contact
+
+## 6.6 DOM test `tests/pages.dom.test.mjs` (jsdom, nạp HTML đã build + `js/main.js`, `js/contact.js`) — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:29
+- File đã đổi: `tests/pages.dom.test.mjs`
+- Kiểm chứng: `npm test -- pages` → exit 0 (Duration  450ms (tests 56%, import 42%, transform 1%)) [spec-done tự chạy lại]
+- Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 2.5, 3.5, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7
+- Commit: `spec(synthiq-site): 6.6 DOM test tests/pages.dom.test.mjs (jsdom, nạp…`
+- Ghi chú: 23 test jsdom trên HTML render năm 2026: cấu trúc 5 trang và 404, header/footer, menu, bộ lọc, form 3 nhánh, không JS và reduced motion
