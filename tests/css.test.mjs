@@ -72,9 +72,37 @@ test('timeline rules beat the ol[class] reset and the line stops at the last cir
 });
 
 test('reveal hides content only under .js and reduced motion is honoured', () => {
-  for (const m of cssNoComments.matchAll(/([^{}]+)\{[^}]*opacity:\s*0;/g)) {
+  // Keyframe stops (from/to) are not selectors; drop @keyframes blocks before scanning.
+  const rules = cssNoComments.replace(/@keyframes[^{]*\{(?:[^{}]*\{[^}]*\})*\s*\}/g, '');
+  expect(rules).not.toMatch(/@keyframes/);
+  for (const m of rules.matchAll(/([^{}]+)\{[^}]*opacity:\s*0;/g)) {
     expect(m[1].trim()).toMatch(/^\.js\b/);
   }
   expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\)/);
   expect(css).toMatch(/:focus-visible/);
+});
+
+test('motion: hero entrance, floating chips, staggered reveal and hover lift', () => {
+  expect(cssNoComments).toMatch(/@keyframes rise\s*\{/);
+  expect(cssNoComments).toMatch(/@keyframes float\s*\{/);
+  // Animations that start hidden only run under .js, so content shows with JavaScript off.
+  for (const m of cssNoComments.matchAll(/([^{}]+)\{[^}]*animation:\s*(rise|float)\b[^}]*\}/g)) {
+    for (const sel of m[1].split(',')) expect(sel.trim()).toMatch(/^\.js\b/);
+  }
+  expect(bodies(/\.hero-copy > \*/)).toMatch(/animation:\s*rise/);
+  expect(bodies(/^\.js \.hero-chip$/)).toMatch(/animation:\s*float[^;]*infinite/);
+  expect(bodies(/^\.js \.reveal\.is-visible$/)).toMatch(/var\(--reveal-delay/);
+  expect(bodies(/^\.card:hover$/)).toMatch(/translateY\(-\d+px\)/);
+  expect(bodies(/^\.card:hover \.photo$/)).toMatch(/scale\(/);
+  expect(bodies(/^\.btn:hover$/)).toMatch(/translateY\(/);
+});
+
+test('reduced motion switches off the hero, chip, reveal, panel and hover motion', () => {
+  const start = cssNoComments.indexOf('@media (prefers-reduced-motion: reduce)');
+  const block = cssNoComments.slice(start);
+  for (const sel of ['.js .hero-copy > *', '.js .hero-visual', '.js .hero-chip', '.js .reveal', '.js .mobile-panel', '.card:hover .photo']) {
+    expect(block, sel).toContain(sel);
+  }
+  expect(block).toMatch(/animation:\s*none/);
+  expect(block).toMatch(/animation-delay:\s*0ms !important/);
 });

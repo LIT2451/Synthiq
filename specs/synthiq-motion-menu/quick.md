@@ -59,6 +59,6 @@ Người dùng muốn thêm hiệu ứng chuyển động để site sinh độn
 - [x] 1 Sửa menu mobile: chuyển `backdrop-filter` sang `::before`, panel fixed toàn màn hình có transition, khoá cuộn bằng `menu-open`, toggle thành X; thêm test
   - Kiểm chứng: `npm run build && npm test && npm run check` đạt
   - _Requirements: 1.1, 1.2, 1.3, 1.6_
-- [ ] 2 Thêm hiệu ứng hero, chip nổi, reveal so le, hover cho card/ảnh/nút, tắt theo reduced motion; thêm test
+- [x] 2 Thêm hiệu ứng hero, chip nổi, reveal so le, hover cho card/ảnh/nút, tắt theo reduced motion; thêm test
   - Kiểm chứng: `npm run build && npm test && npm run check` đạt
   - _Requirements: 1.4, 1.5, 1.6_

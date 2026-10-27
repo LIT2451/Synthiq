@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import { JSDOM } from 'jsdom';
-import { filterCases, initMenu, initFilter, initReveal } from '../js/main.js';
+import { filterCases, initMenu, initFilter, initReveal, revealDelay } from '../js/main.js';
 
 // js/main.js against small DOM fixtures (1.6, 5.3, 5.6, NFR 5).
 const dom = (body) => new JSDOM(`<!doctype html><body>${body}</body>`).window;
@@ -100,6 +100,15 @@ describe('filterCases / initFilter', () => {
   });
 });
 
+describe('revealDelay', () => {
+  test('staggers .reveal siblings by 80ms, ignores other children and caps at 320ms', () => {
+    const d = dom(`<div id="row"><h2>t</h2>${'<article class="reveal"></article>'.repeat(7)}</div><p class="reveal"></p>`).document;
+    const cards = [...d.querySelectorAll('#row .reveal')];
+    expect(cards.map(revealDelay)).toEqual([0, 80, 160, 240, 320, 320, 320]);
+    expect(revealDelay(d.querySelector('body > .reveal'))).toBe(0);
+  });
+});
+
 describe('initReveal', () => {
   const REVEAL = '<section class="reveal"></section><section class="reveal"></section>';
 
@@ -135,6 +144,7 @@ describe('initReveal', () => {
     };
     initReveal(d, win);
     expect(observed).toHaveLength(2);
+    expect(observed.map((el) => el.style.getPropertyValue('--reveal-delay'))).toEqual(['0ms', '80ms']);
     expect(observed[0].classList.contains('is-visible')).toBe(false);
     callback([{ isIntersecting: true, target: observed[0] }, { isIntersecting: false, target: observed[1] }]);
     expect(observed[0].classList.contains('is-visible')).toBe(true);

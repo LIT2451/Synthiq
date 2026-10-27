@@ -65,6 +65,16 @@ export function initFilter(root = document) {
   return { apply };
 }
 
+const STAGGER_MS = 80;
+const STAGGER_MAX = 4;
+
+// Delay for a .reveal element: its position among .reveal siblings times STAGGER_MS, capped so
+// long grids do not keep the last cards waiting.
+export function revealDelay(el) {
+  const siblings = el.parentElement ? [...el.parentElement.children].filter((c) => c.classList.contains('reveal')) : [el];
+  return Math.min(siblings.indexOf(el), STAGGER_MAX) * STAGGER_MS;
+}
+
 // Adds .is-visible as elements scroll in. Without IntersectionObserver or with reduced motion,
 // everything is shown at once and no observer is created.
 export function initReveal(root = document, win = globalThis) {
@@ -82,7 +92,10 @@ export function initReveal(root = document, win = globalThis) {
       }
     }
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
-  for (const el of els) observer.observe(el);
+  for (const el of els) {
+    el.style.setProperty('--reveal-delay', `${revealDelay(el)}ms`);
+    observer.observe(el);
+  }
   return observer;
 }
 

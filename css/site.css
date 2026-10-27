@@ -298,7 +298,7 @@ p {
     box-shadow 200ms var(--ease), transform 200ms var(--ease), color 200ms var(--ease);
 }
 .btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 .btn-primary {
   background: var(--accent);
@@ -1325,15 +1325,66 @@ ol.timeline::before {
   }
 }
 
+/* ---------- Motion ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Hero entrance. fill-mode backwards keeps each piece hidden only until its turn, then hands
+   control back to the normal styles so hover transforms still work. */
+.js .hero-copy > *,
+.js .hero-visual {
+  animation: rise 640ms var(--ease) backwards;
+}
+.js .hero-copy > :nth-child(2) { animation-delay: 90ms; }
+.js .hero-copy > :nth-child(3) { animation-delay: 180ms; }
+.js .hero-copy > :nth-child(4) { animation-delay: 270ms; }
+.js .hero-visual { animation-delay: 200ms; }
+.js .hero-chip {
+  animation: float 6s ease-in-out infinite;
+}
+.js .hero-chip-2 { animation-delay: -2s; }
+.js .hero-chip-3 { animation-delay: -4s; }
+
+/* Hover: cards lift, their photos zoom inside a clipped frame. */
+.card:hover {
+  transform: translateY(-4px);
+}
+.card picture {
+  overflow: hidden;
+  border-radius: calc(var(--radius) * 1.5);
+}
+.card .photo {
+  transition: transform 500ms var(--ease);
+}
+.card:hover .photo {
+  transform: scale(1.04);
+}
+
 /* ---------- Reveal (hidden state only when JS runs, see 5.6) ---------- */
+/* --reveal-delay is set by initReveal so siblings in a row appear one after another. */
 .js .reveal {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 400ms var(--ease), transform 400ms var(--ease);
 }
 .js .reveal.is-visible {
   opacity: 1;
-  transform: none;
+  animation: rise 520ms var(--ease) var(--reveal-delay, 0ms) backwards;
 }
 
 /* ---------- Reduced motion ---------- */
@@ -1346,14 +1397,24 @@ ol.timeline::before {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
   }
-  .js .reveal {
+  .js .reveal,
+  .js .hero-copy > *,
+  .js .hero-visual,
+  .js .hero-chip {
     opacity: 1;
+    animation: none;
+  }
+  .js .mobile-panel,
+  .js .mobile-nav li {
     transform: none;
   }
-  .btn:hover {
+  .btn:hover,
+  .card:hover,
+  .card:hover .photo {
     transform: none;
   }
 }
