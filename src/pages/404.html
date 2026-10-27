@@ -4,5 +4,15 @@ description: The page you are looking for does not exist or has moved. Head back
 path: /404
 sitemap: false
 ---
-<h1>Page not found</h1>
-<p><a href="index.html">Back to home</a></p>
+<section class="section not-found" aria-labelledby="page-title">
+  <div class="container">
+    <p class="not-found-code" aria-hidden="true">404</p>
+    <span class="eyebrow">Page not found</span>
+    <h1 id="page-title">This route does not lead anywhere.</h1>
+    <p class="lead">The page may have moved, or the link may have a typo. These will get you back on track.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="index.html">Back to home</a>
+      <a class="btn btn-secondary" href="contact.html">Contact us</a>
+    </div>
+  </div>
+</section>

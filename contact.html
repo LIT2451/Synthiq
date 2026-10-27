@@ -75,7 +75,69 @@
 </header>
 
   <main id="main">
-<h1>Contact</h1>
+<section class="page-header" aria-labelledby="page-title">
+  <div class="container">
+    <span class="eyebrow">Contact</span>
+    <h1 id="page-title">Tell us what you are building.</h1>
+    <p class="lead">A few lines are enough to start. We will come back with questions, a rough plan and the people who would work on it.</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="form-title">
+  <div class="container contact-layout">
+    <div class="contact-side">
+      
+      <p class="contact-fallback">Use the form below and your message will be ready to send.</p>
+      
+      <div class="next-steps">
+        <h2 class="h3">What happens next</h2>
+        <ol class="steps">
+          <li><strong>We read it properly.</strong> A lead engineer reviews your note and replies within one business day.</li>
+          <li><strong>A short call.</strong> Thirty minutes to talk through goals, constraints and what success looks like.</li>
+          <li><strong>A clear proposal.</strong> Scope, team, timeline and price in writing, usually within a week.</li>
+        </ol>
+      </div>
+    </div>
+
+    <form class="card contact-form" data-contact-form data-email="" action="#" method="post" novalidate aria-labelledby="form-title">
+      <h2 id="form-title" class="h3">Project details</h2>
+      <p class="form-note">Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+      <div class="field">
+        <label for="name">Full name <span aria-hidden="true">*</span></label>
+        <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+        <p class="field-error" id="name-error"></p>
+      </div>
+      <div class="field">
+        <label for="email">Work email <span aria-hidden="true">*</span></label>
+        <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="email-error">
+        <p class="field-error" id="email-error"></p>
+      </div>
+      <div class="field">
+        <label for="company">Company</label>
+        <input id="company" name="company" type="text" autocomplete="organization">
+      </div>
+      <div class="field">
+        <label for="service">What do you need?</label>
+        <select id="service" name="service">
+          <option value="">Not sure yet</option>
+          <option>Product engineering</option>
+          <option>Dedicated squad</option>
+          <option>Telecom &amp; messaging</option>
+          <option>Mobile app</option>
+          <option>Cloud, DevOps &amp; security</option>
+          <option>AI &amp; automation</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">About the project <span aria-hidden="true">*</span></label>
+        <textarea id="message" name="message" rows="6" required aria-describedby="message-error"></textarea>
+        <p class="field-error" id="message-error"></p>
+      </div>
+      <button class="btn btn-primary" type="submit">Send message</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
 
   </main>
   <footer class="site-footer">

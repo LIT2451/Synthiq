@@ -131,7 +131,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 6.4 Trang Portfolio `src/pages/portfolio.html` (dải số liệu, 1 nổi bật, 5 nút lọc, 8 case `data-category` mỗi lĩnh vực 2) + thumbnail pattern SVG theo lĩnh vực trong `images/cases/`
     - Kiểm chứng: `npm run build && npm run check` không lỗi cho `portfolio.html`
     - _Requirements: 1.5, 1.6, 2.6, 3.1_
-  - [ ] 6.5 Trang Contact `src/pages/contact.html` (thẻ liên hệ hoặc dòng thay thế khi `!hasContact`, "What happens next" 3 bước, form có `data-email="{{email}}"`, label, `<p id="*-error">`, vùng `role="status"`) và `src/pages/404.html`
+  - [x] 6.5 Trang Contact `src/pages/contact.html` (thẻ liên hệ hoặc dòng thay thế khi `!hasContact`, "What happens next" 3 bước, form có `data-email="{{email}}"`, label, `<p id="*-error">`, vùng `role="status"`) và `src/pages/404.html`
     - Kiểm chứng: `npm run build && npm run check` exit 0
     - _Requirements: 1.7, 1.8, 3.3, 5.4, 5.7_
   - [ ] 6.6 DOM test `tests/pages.dom.test.mjs` (jsdom, nạp HTML đã build + `js/main.js`, `js/contact.js`)

@@ -254,3 +254,12 @@
 - Requirements: 1.5, 1.6, 2.6, 3.1
 - Commit: `spec(synthiq-site): 6.4 Trang Portfolio src/pages/portfolio.html (dải…`
 - Ghi chú: Portfolio: 4 chỉ số, dự án nổi bật, 5 nút lọc data-filter, 8 case data-category 2 mỗi lĩnh vực, 4 thumbnail SVG images/cases
+
+## 6.5 Trang Contact `src/pages/contact.html` (thẻ liên hệ hoặc dòng thay thế khi `!hasContact`, "What happens next" 3 bước, form có `data-email="{{email}}"`, label, `<p id="*-error">`, vùng `role="status"`) và `src/pages/404.html` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:28
+- File đã đổi: `404.html`, `contact.html`, `css/site.css`, `src/pages/404.html`, `src/pages/contact.html`
+- Kiểm chứng: `npm run build && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 1.7, 1.8, 3.3, 5.4, 5.7
+- Commit: `spec(synthiq-site): 6.5 Trang Contact src/pages/contact.html (thẻ liên…`
+- Ghi chú: Contact: thẻ liên hệ hoặc dòng thay thế khi chưa có contact, 3 bước, form data-email, label, field-error, role=status; 404 có link Home và Contact
