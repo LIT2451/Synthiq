@@ -31,6 +31,17 @@ test('every @font-face source exists and only Sora/Manrope are declared', () => 
   expect(existsSync(join(ROOT, 'fonts/OFL.txt'))).toBe(true);
 });
 
+test('timeline rules beat the ol[class] reset and the line stops at the last circle', () => {
+  // .timeline alone (0,1,0) loses to ol[class] (0,1,1), which zeroed the padding the numbers sit in.
+  expect(cssNoComments).not.toMatch(/(^|[\s,}])\.timeline(::before)?\s*\{/);
+  const rule = (sel) => cssNoComments.match(new RegExp(`${sel.replace(/[.()]/g, '\\$&')}\\s*\\{([^}]*)\\}`, 'g')) ?? [];
+  expect(rule('ol.timeline').join('')).toMatch(/padding:\s*0 0 0 2\.75rem/);
+  expect(rule('ol.timeline').join('')).toMatch(/padding:\s*3\.5rem 0 0/);
+  const lines = rule('ol.timeline::before').join('');
+  expect(lines).toMatch(/left:\s*calc\(1rem - 1px\)/);
+  expect(lines).toMatch(/right:\s*calc\(\(100% - 6rem\) \/ 4 - 1rem\)/);
+});
+
 test('reveal hides content only under .js and reduced motion is honoured', () => {
   for (const m of cssNoComments.matchAll(/([^{}]+)\{[^}]*opacity:\s*0;/g)) {
     expect(m[1].trim()).toMatch(/^\.js\b/);

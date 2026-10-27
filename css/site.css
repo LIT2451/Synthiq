@@ -652,20 +652,22 @@ picture {
     grid-template-columns: 0.9fr 1.1fr;
   }
 }
-.timeline {
+/* ol.timeline (not .timeline) so the padding beats the ol[class] reset. */
+ol.timeline {
   position: relative;
   display: grid;
   gap: 2rem;
   margin: 0;
-  padding: 0 0 0 2.5rem;
+  padding: 0 0 0 2.75rem;
   list-style: none;
 }
-.timeline::before {
+/* Line through the centre of the 2rem number circles. */
+ol.timeline::before {
   content: "";
   position: absolute;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  left: 1rem;
+  top: 1rem;
+  bottom: 1rem;
+  left: calc(1rem - 1px);
   width: 2px;
   background: linear-gradient(var(--accent), var(--line));
 }
@@ -678,8 +680,9 @@ picture {
 }
 .timeline-num {
   position: absolute;
+  z-index: 1;
   top: -0.15rem;
-  left: -2.5rem;
+  left: -2.75rem;
   display: grid;
   place-items: center;
   width: 2rem;
@@ -692,21 +695,22 @@ picture {
   font-weight: 700;
 }
 @media (min-width: 992px) {
-  .timeline {
+  ol.timeline {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    padding: 3rem 0 0;
+    padding: 3.5rem 0 0;
   }
-  .timeline::before {
-    top: 1rem;
+  /* From the centre of circle 1 to the centre of circle 4: columns are (100% - 3 gaps) / 4. */
+  ol.timeline::before {
+    top: calc(1rem - 1px);
     bottom: auto;
-    left: 0;
-    right: 0;
+    left: 1rem;
+    right: calc((100% - 6rem) / 4 - 1rem);
     width: auto;
     height: 2px;
     background: linear-gradient(90deg, var(--accent), var(--line));
   }
   .timeline-num {
-    top: -3rem;
+    top: -3.5rem;
     left: 0;
   }
 }
