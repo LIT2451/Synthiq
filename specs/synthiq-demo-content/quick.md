@@ -58,6 +58,6 @@ Site hiện chỉ có SVG minh hoạ và ẩn toàn bộ thông tin liên hệ v
 - [x] 4 Thêm test ảnh (mỗi trang có ảnh, alt, kích thước, file tồn tại, giới hạn dung lượng)
   - Kiểm chứng: `npm test` đạt
   - _Requirements: 1.4, 1.5_
-- [-] 5 Cập nhật README (nguồn ảnh, giấy phép Unsplash, thông tin demo, lệnh `npm run photos`), chạy kiểm tra toàn bộ
+- [x] 5 Cập nhật README (nguồn ảnh, giấy phép Unsplash, thông tin demo, lệnh `npm run photos`), chạy kiểm tra toàn bộ
   - Kiểm chứng: `npm run build`, `npm test`, `npm run check`, `npm run check -- --source ../Landing-DVTechnic` đều đạt
   - _Requirements: 1.6, 1.7_

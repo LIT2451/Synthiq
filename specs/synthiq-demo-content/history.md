@@ -32,3 +32,12 @@
 - Kiểm chứng: `npm test` → exit 0 (Duration  1.05s (import 62%, tests 35%, transform 2%, worker 1%)) [spec-done tự chạy lại]
 - Requirements: 1.4, 1.5
 - Commit: `spec(synthiq-demo-content): 4 Thêm test ảnh (mỗi trang có ảnh, alt…`
+
+## 5 Cập nhật README (nguồn ảnh, giấy phép Unsplash, thông tin demo, lệnh `npm run photos`), chạy kiểm tra toàn bộ — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 13:06
+- File đã đổi: `README.md`
+- Kiểm chứng: `npm run build && npm test && npm run check && npm run check -- --source ../Landing-DVTechnic` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 1.6, 1.7
+- Commit: `spec(synthiq-demo-content): 5 Cập nhật README (nguồn ảnh, giấy phép…`
+- Ghi chú: Chua ghi duoc ten tac gia anh vi Unsplash chan truy cap tu dong; README ghi link tung anh
