@@ -1,0 +1,22 @@
+{
+  "requirements": {
+    "sha256": "47bd660ad8e8876e072484df5adc485fa71c19fc53178d772deaf1a15855a8b7",
+    "approved_at": "2026-10-27T11:48:16+07:00",
+    "based_on": {}
+  },
+  "design": {
+    "sha256": "09532d3c6c3057dc1fab12b8da2e95b63b8fe6918216d9ada9f3615a00a4e9ea",
+    "approved_at": "2026-10-27T11:52:06+07:00",
+    "based_on": {
+      "requirements": "47bd660ad8e8876e072484df5adc485fa71c19fc53178d772deaf1a15855a8b7"
+    }
+  },
+  "tasks": {
+    "sha256": "475afab3d4c963f7d7ccd1e308870530dae882263803a0b8cec8f0f37a862c22",
+    "approved_at": "2026-10-27T11:54:10+07:00",
+    "based_on": {
+      "requirements": "47bd660ad8e8876e072484df5adc485fa71c19fc53178d772deaf1a15855a8b7",
+      "design": "09532d3c6c3057dc1fab12b8da2e95b63b8fe6918216d9ada9f3615a00a4e9ea"
+    }
+  }
+}
