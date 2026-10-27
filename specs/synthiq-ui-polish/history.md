@@ -15,3 +15,11 @@
 - Kiểm chứng: `npm run assets && npm run build && npm test && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
 - Requirements: 1.2, 1.5
 - Commit: `spec(synthiq-ui-polish): 2 Tách khoảng trống giữa biểu tượng và chữ…`
+
+## 3 Thêm 4 ảnh Unsplash mới, mỗi case Portfolio một ảnh riêng, thêm test chống trùng ảnh — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 13:05
+- File đã đổi: `images/photos/case-ai.jpg`, `images/photos/case-ai.webp`, `images/photos/case-enterprise.jpg`, `images/photos/case-enterprise.webp`, `images/photos/case-erp-cloud.jpg`, `images/photos/case-erp-cloud.webp`, `images/photos/case-field-service.jpg`, `images/photos/case-field-service.webp`, `images/photos/case-fintech.jpg`, `images/photos/case-fintech.webp`, `images/photos/case-invoice-capture.jpg`, `images/photos/case-invoice-capture.webp`, `images/photos/case-lending-ledger.jpg`, `images/photos/case-lending-ledger.webp`, `images/photos/case-merchant-onboarding.jpg`, `images/photos/case-merchant-onboarding.webp`, `images/photos/case-mvno-usage.jpg`, `images/photos/case-mvno-usage.webp`, `images/photos/case-otp-bank.jpg`, `images/photos/case-otp-bank.webp`, `images/photos/case-support-triage.jpg`, `images/photos/case-support-triage.webp`, `images/photos/case-telecom.jpg`, `images/photos/case-telecom.webp`, `portfolio.html`, `scripts/photos.json`, `src/pages/portfolio.html`, `tests/photos.test.mjs`
+- Kiểm chứng: `npm run photos && npm run build && npm test && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 1.1, 1.5
+- Commit: `spec(synthiq-ui-polish): 3 Thêm 4 ảnh Unsplash mới, mỗi case Portfolio…`

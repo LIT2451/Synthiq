@@ -16,7 +16,8 @@ const EXPECTED = {
   'index.html': ['hero-team'],
   'about.html': ['about-meeting'],
   'services.html': ['solution-relay', 'solution-pilot'],
-  'portfolio.html': ['featured-datacenter', 'case-ai', 'case-telecom', 'case-enterprise', 'case-fintech'],
+  'portfolio.html': ['featured-datacenter', 'case-support-triage', 'case-invoice-capture', 'case-otp-bank',
+    'case-mvno-usage', 'case-field-service', 'case-erp-cloud', 'case-merchant-onboarding', 'case-lending-ledger'],
   'contact.html': ['contact-office'],
 };
 
@@ -84,6 +85,21 @@ describe('photos on pages', () => {
         }
       }
     }
+  });
+
+  test('no photo appears more than once across the site, and no two entries share a source', () => {
+    const used = Object.values(files).flatMap((html) => [...html.matchAll(/<img[^>]+src="(images\/photos\/[^"]+)"/g)].map((m) => m[1]));
+    const dupes = used.filter((src, i) => used.indexOf(src) !== i);
+    expect(dupes).toEqual([]);
+    expect(new Set(LIST.map((p) => p.id)).size).toBe(LIST.length);
+  });
+
+  test('each Portfolio case has its own photo and alt text', () => {
+    const d = new JSDOM(files['portfolio.html']).window.document;
+    const imgs = [...d.querySelectorAll('[data-category] picture img')];
+    expect(imgs).toHaveLength(8);
+    expect(new Set(imgs.map((i) => i.getAttribute('src'))).size).toBe(8);
+    expect(new Set(imgs.map((i) => i.getAttribute('alt'))).size).toBe(8);
   });
 
   test('every photo in the list is used somewhere', () => {

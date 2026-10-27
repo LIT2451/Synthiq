@@ -4,9 +4,13 @@
   { "file": "solution-relay", "id": "1544197150-b99a580bb7a8", "width": 1000, "height": 700, "alt": "Network switch with neatly patched cables" },
   { "file": "solution-pilot", "id": "1551288049-bebda4e38f71", "width": 1000, "height": 700, "alt": "Analytics dashboard with charts on a laptop screen" },
   { "file": "featured-datacenter", "id": "1558494949-ef010cbdcc31", "width": 1200, "height": 800, "alt": "Rows of server racks with status lights in a data centre" },
-  { "file": "case-ai", "id": "1517694712202-14dd9538aa97", "width": 800, "height": 500, "alt": "Source code open in an editor on a laptop" },
-  { "file": "case-telecom", "id": "1573164713988-8665fc963095", "width": 800, "height": 500, "alt": "Engineer working with hardware in a technical room" },
-  { "file": "case-enterprise", "id": "1586528116311-ad8dd3c8310d", "width": 800, "height": 500, "alt": "Warehouse aisles stacked with stock ready for dispatch" },
-  { "file": "case-fintech", "id": "1556742049-0cfed4f6a45d", "width": 800, "height": 500, "alt": "Card payment being made at a point-of-sale terminal" },
+  { "file": "case-support-triage", "id": "1517694712202-14dd9538aa97", "width": 800, "height": 500, "alt": "Source code open in an editor on a laptop" },
+  { "file": "case-invoice-capture", "id": "1554224155-6726b3ff858f", "width": 800, "height": 500, "alt": "Printed financial documents and a calculator on a desk" },
+  { "file": "case-otp-bank", "id": "1573164713988-8665fc963095", "width": 800, "height": 500, "alt": "Engineer working with hardware in a technical room" },
+  { "file": "case-mvno-usage", "id": "1451187580459-43490279c0fa", "width": 800, "height": 500, "alt": "Earth seen from orbit with glowing network connections" },
+  { "file": "case-field-service", "id": "1581091226825-a6a2a5aee158", "width": 800, "height": 500, "alt": "Engineer testing equipment on a workbench" },
+  { "file": "case-erp-cloud", "id": "1586528116311-ad8dd3c8310d", "width": 800, "height": 500, "alt": "Warehouse aisles stacked with stock ready for dispatch" },
+  { "file": "case-merchant-onboarding", "id": "1556742049-0cfed4f6a45d", "width": 800, "height": 500, "alt": "Card payment being made at a point-of-sale terminal" },
+  { "file": "case-lending-ledger", "id": "1611974789855-9c2a0a7236a3", "width": 800, "height": 500, "alt": "Financial charts and figures on a trading screen" },
   { "file": "contact-office", "id": "1497366216548-37526070297c", "width": 1000, "height": 750, "alt": "Modern open-plan office with desks and natural light" }
 ]
