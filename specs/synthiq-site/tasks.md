@@ -80,8 +80,8 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `npm test -- check-cli` pass; `npm run build && npm run check` chạy được (có thể còn lỗi meta/nội dung, sẽ hết sau task 6)
     - _Requirements: 2.1, 2.2, 4.1, 4.2, 5.1, 6.3, 6.4_
 
-- [ ] 4. Hệ thống giao diện
-  - [ ] 4.1 Tải font Sora (600/700) và Manrope (400/600/700) dạng woff2 subset latin vào `fonts/` kèm `fonts/OFL.txt`; viết `css/site.css` phần nền: `@font-face`, token màu theo design, reset, typography, container, nút pill, focus-visible, card, chip, section, reveal dưới `.js`, `prefers-reduced-motion`
+- [-] 4. Hệ thống giao diện
+  - [x] 4.1 Tải font Sora (600/700) và Manrope (400/600/700) dạng woff2 subset latin vào `fonts/` kèm `fonts/OFL.txt`; viết `css/site.css` phần nền: `@font-face`, token màu theo design, reset, typography, container, nút pill, focus-visible, card, chip, section, reveal dưới `.js`, `prefers-reduced-motion`
     - Kiểm chứng: `npm run check` không báo màu/font cấm, tương phản token đạt
     - _Requirements: 2.1, 2.2, 2.4, 5.6_
   - [ ] 4.2 Viết `scripts/lib/logo.mjs`: `findGap(rowAlphaCounts)` và `recolorDark(pixels, light)` (thuần, theo design "Xử lý logo và ảnh nhận diện") kèm unit test `tests/logo.test.mjs` trên ảnh raw nhỏ dựng tay (có/không có khoảng trống, pixel teal giữ nguyên, alpha giữ nguyên)

@@ -137,3 +137,12 @@
 - Requirements: 2.1, 2.2, 4.1, 4.2, 5.1, 6.3, 6.4
 - Commit: `spec(synthiq-site): 3.9 Viết CLI scripts/check.mjs`
 - Ghi chú: npm run build va npm run check chay duoc; con 7 loi du kien: thieu og:image o 6 trang (task 4.4) va thieu css/site.css (task 4.1). Tach chuoi nous trong checks/tests de repo khong tu bao loi.
+
+## 4.1 Tải font Sora (600/700) và Manrope (400/600/700) dạng woff2 subset latin vào `fonts/` kèm `fonts/OFL.txt`; viết `css/site.css` phần nền: `@font-face`, token màu theo design, reset, typography, container, nút pill, focus-visible, card, chip, section, reveal dưới `.js`, `prefers-reduced-motion` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:14
+- File đã đổi: `css/site.css`, `fonts/OFL.txt`, `fonts/manrope-latin-400.woff2`, `fonts/manrope-latin-600.woff2`, `fonts/manrope-latin-700.woff2`, `fonts/sora-latin-600.woff2`, `fonts/sora-latin-700.woff2`, `tests/css.test.mjs`
+- Kiểm chứng: `npm test -- css.test` → exit 0 (Duration  77ms (tests 50%, import 25%, transform 18%, worker 6%)) [spec-done tự chạy lại]
+- Requirements: 2.1, 2.2, 2.4, 5.6
+- Commit: `spec(synthiq-site): 4.1 Tải font Sora (600/700) và Manrope…`
+- Ghi chú: Font tu @fontsource/sora@5.3.0 va @fontsource/manrope@5.3.0 (latin woff2). npm run check khong bao mau/font cam, tuong phan dat; con loi du kien: og:image va css/site.css chua duoc link (task 4.4).
