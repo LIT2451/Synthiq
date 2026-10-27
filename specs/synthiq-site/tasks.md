@@ -104,7 +104,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - fast-check trong `tests/filter.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- filter` pass
     - _Kiểm chứng: Requirements 1.6_
-  - [ ] 5.3 Viết `js/contact.js`: `validateContact`, `buildMailto` (export, thuần), `initContactForm` (novalidate, lỗi dưới field, `aria-invalid`, focus field lỗi đầu, thông báo `role="status"`, nhánh email rỗng giữ dữ liệu); layout nạp khi front matter `scripts: contact`
+  - [x] 5.3 Viết `js/contact.js`: `validateContact`, `buildMailto` (export, thuần), `initContactForm` (novalidate, lỗi dưới field, `aria-invalid`, focus field lỗi đầu, thông báo `role="status"`, nhánh email rỗng giữ dữ liệu); layout nạp khi front matter `scripts: contact`
     - Kiểm chứng: `npm test` pass
     - _Requirements: 5.4, 5.5, 5.7_
   - [ ] 5.4 Property P4: Validate form khớp mô hình

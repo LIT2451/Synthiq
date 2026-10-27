@@ -190,3 +190,12 @@
 - Requirements: 1.6
 - Property: P5 pass (300 lần)
 - Commit: `spec(synthiq-site): 5.2 Property P5: Lọc case study`
+
+## 5.3 Viết `js/contact.js`: `validateContact`, `buildMailto` (export, thuần), `initContactForm` (novalidate, lỗi dưới field, `aria-invalid`, focus field lỗi đầu, thông báo `role="status"`, nhánh email rỗng giữ dữ liệu); layout nạp khi front matter `scripts: contact` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:22
+- File đã đổi: `404.html`, `about.html`, `contact.html`, `index.html`, `js/contact.js`, `portfolio.html`, `services.html`, `src/partials/layout.html`, `tests/contact.dom.test.mjs`
+- Kiểm chứng: `npm run build && npm test && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 5.4, 5.5, 5.7
+- Commit: `spec(synthiq-site): 5.3 Viết js/contact.js: validateContact…`
+- Ghi chú: js/contact.js gồm validateContact, buildMailto, initContactForm; layout chỉ nạp ở trang có scripts: contact; tests/contact.dom.test.mjs 5 test
