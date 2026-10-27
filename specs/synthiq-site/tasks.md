@@ -95,8 +95,8 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `npm run build && npm test && npm run check` không báo link logo/favicon/og hỏng
     - _Requirements: 2.4, 2.5, 3.5, 5.2, 5.3, 6.2_
 
-- [ ] 5. Hành vi phía trình duyệt
-  - [ ] 5.1 Viết `js/main.js`: `initMenu` (toggle, `aria-expanded`, Esc, bấm link, trả focus), `filterCases` (thuần, export), `initFilter` (`aria-pressed`, `hidden`, vùng `aria-live`), `initReveal` (bỏ qua khi reduced motion hoặc không có IntersectionObserver); nạp ở `layout.html` với `type="module"`
+- [-] 5. Hành vi phía trình duyệt
+  - [x] 5.1 Viết `js/main.js`: `initMenu` (toggle, `aria-expanded`, Esc, bấm link, trả focus), `filterCases` (thuần, export), `initFilter` (`aria-pressed`, `hidden`, vùng `aria-live`), `initReveal` (bỏ qua khi reduced motion hoặc không có IntersectionObserver); nạp ở `layout.html` với `type="module"`
     - Kiểm chứng: `npm test` pass
     - _Requirements: 1.6, 5.3, 5.6_
   - [ ] 5.2 Property P5: Lọc case study

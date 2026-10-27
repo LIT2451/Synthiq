@@ -172,3 +172,12 @@
 - Requirements: 2.4, 2.5, 3.5, 5.2, 5.3, 6.2
 - Commit: `spec(synthiq-site): 4.4 Hoàn thiện header.html (<picture> logo-mark +…`
 - Ghi chú: Header/footer/head hoàn chỉnh; CSS header, footer, menu mobile dưới 992px chỉ ẩn khi có .js; check passed không còn lỗi og:image hay site.css
+
+## 5.1 Viết `js/main.js`: `initMenu` (toggle, `aria-expanded`, Esc, bấm link, trả focus), `filterCases` (thuần, export), `initFilter` (`aria-pressed`, `hidden`, vùng `aria-live`), `initReveal` (bỏ qua khi reduced motion hoặc không có IntersectionObserver); nạp ở `layout.html` với `type="module"` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:21
+- File đã đổi: `404.html`, `about.html`, `contact.html`, `index.html`, `js/main.js`, `portfolio.html`, `services.html`, `src/partials/layout.html`, `tests/main.dom.test.mjs`
+- Kiểm chứng: `npm run build && npm test && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 1.6, 5.3, 5.6
+- Commit: `spec(synthiq-site): 5.1 Viết js/main.js: initMenu (toggle…`
+- Ghi chú: js/main.js gồm initMenu, filterCases, initFilter, initReveal; nạp type=module trong layout; tests/main.dom.test.mjs 8 test jsdom
