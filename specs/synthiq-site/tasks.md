@@ -43,7 +43,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 3.1 Viết `TRACE_PATTERNS`, `findTraces`, `findBadFileNames` trong `scripts/lib/checks.mjs`
     - Kiểm chứng: `npm test -- checks` pass
     - _Requirements: 4.1, 4.3, 4.4_
-  - [ ] 3.2 Property P2: Phát hiện mọi dấu vết
+  - [x] 3.2 Property P2: Phát hiện mọi dấu vết
     - *Với mọi* văn bản nhiều dòng sinh từ bảng chữ không chứa dấu vết, `findTraces` trả rỗng; *với mọi* văn bản như vậy chèn một mẫu dấu vết bất kỳ với kiểu hoa/thường ngẫu nhiên tại dòng k, kết quả chứa mục có `line = k`. Tương tự `findBadFileNames` với đường dẫn ngẫu nhiên.
     - fast-check trong `tests/traces.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- traces` pass

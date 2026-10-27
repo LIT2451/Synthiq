@@ -67,3 +67,12 @@
 - Kiểm chứng: `npm test -- checks` → exit 0 (Duration  68ms (import 44%, tests 22%, transform 21%, worker 12%)) [spec-done tự chạy lại]
 - Requirements: 4.1, 4.3, 4.4
 - Commit: `spec(synthiq-site): 3.1 Viết TRACE_PATTERNS, findTraces…`
+
+## 3.2 Property P2: Phát hiện mọi dấu vết — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:04
+- File đã đổi: `tests/traces.property.test.mjs`
+- Kiểm chứng: `npm test -- traces` → exit 0 (Duration  89ms (tests 64%, import 24%, transform 8%, worker 3%)) [spec-done tự chạy lại]
+- Requirements: 4.1, 4.2, 4.3, 4.4
+- Property: P2 pass (300 lần)
+- Commit: `spec(synthiq-site): 3.2 Property P2: Phát hiện mọi dấu vết`
