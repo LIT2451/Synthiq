@@ -140,11 +140,12 @@ describe('shared header and footer', () => {
   });
 });
 
-describe('demo company details', () => {
-  test('use Hanoi details and contain no trace of the old company', () => {
-    expect(config.email).toBe('hello@synthiqdigital.com');
-    expect(config.phone).toMatch(/^\+84 24 \d{4} \d{4}$/);
-    expect(config.address).toMatch(/Hanoi/);
+describe('company details', () => {
+  test('use the Synthiq contact details and contain no trace of the old company', () => {
+    expect(config.email).toBe('digi01-synth@synthiqdigital.com');
+    expect(config.phone).toBe('+84 88 696 6092');
+    expect(config.taxId).toBe('5600362025');
+    expect(config.address).toMatch(/22 Thanh Cong, Ba Dinh, Hanoi/);
     for (const v of [config.email, config.phone, config.address, config.taxId, config.hours, ...Object.values(config.social)]) {
       expect(findTraces(v), v).toEqual([]);
       expect(v.trim(), 'non-empty').not.toBe('');

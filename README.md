@@ -36,20 +36,20 @@ Các file `*.html`, `sitemap.xml`, `robots.txt`, `CNAME` ở gốc là file buil
 
 Logo gốc nằm ở `Logo/Logo.png` và không bao giờ bị sửa. Khi đổi logo, thay file này (PNG nền trong suốt) rồi chạy `npm run assets`, sau đó `npm test` để kiểm tra kích thước và độ tương phản của ảnh mới.
 
-## Thông tin liên hệ (DEMO)
+## Thông tin liên hệ
 
-Mọi giá trị dưới đây là dữ liệu demo, không phải thông tin thật. Phải thay bằng thông tin thật của công ty trong `site.config.json` rồi chạy `npm run build` trước khi công bố:
+Sửa trong `site.config.json` rồi chạy `npm run build`. Các mục ghi DEMO là dữ liệu mẫu, cần thay bằng thông tin thật trước khi công bố:
 
-| Mục | Khoá trong `site.config.json` | Giá trị demo | Hiện ở |
+| Mục | Khoá trong `site.config.json` | Giá trị | Hiện ở |
 |---|---|---|---|
-| Email | `email` | hello@synthiqdigital.com | header mobile, footer, trang Contact; form Contact gửi `mailto:` tới địa chỉ này |
-| Hotline | `phone` | +84 24 3999 2468 | header mobile, footer, trang Contact |
-| Địa chỉ | `address` | 9th floor, Lotus Building, 2 Pham Hung, Nam Tu Liem, Hanoi | header mobile, footer, trang Contact |
-| Mã số thuế | `taxId` | 0109876543 | header mobile, footer, trang Contact |
-| Giờ làm việc | `hours` | Mon–Fri, 8:30–17:30 (GMT+7) | header mobile, footer, trang Contact |
-| LinkedIn | `social.linkedin` | linkedin.com/company/synthiq-digital | footer |
-| GitHub | `social.github` | github.com/synthiq-digital | footer |
-| Facebook | `social.facebook` | facebook.com/synthiqdigital | footer |
+| Email | `email` | digi01-synth@synthiqdigital.com | header mobile, footer, trang Contact; form Contact gửi `mailto:` tới địa chỉ này |
+| Hotline | `phone` | +84 88 696 6092 | header mobile, footer, trang Contact |
+| Địa chỉ | `address` | 6th floor, Building C, 22 Thanh Cong, Ba Dinh, Hanoi | header mobile, footer, trang Contact |
+| Mã số thuế | `taxId` | 5600362025 | header mobile, footer, trang Contact |
+| Giờ làm việc | `hours` | Mon–Fri, 8:30–17:30 (GMT+7) (DEMO) | header mobile, footer, trang Contact |
+| LinkedIn | `social.linkedin` | linkedin.com/company/synthiq-digital (DEMO) | footer |
+| GitHub | `social.github` | github.com/synthiq-digital (DEMO) | footer |
+| Facebook | `social.facebook` | facebook.com/synthiqdigital (DEMO) | footer |
 
 Để trống một mục thì mục đó bị ẩn ở mọi nơi. Khi `email` trống, form Contact chỉ báo "kênh liên hệ đang được cập nhật" và giữ nguyên dữ liệu đã nhập.
 
