@@ -406,6 +406,204 @@ button.chip[aria-pressed="true"] {
   color: var(--on-accent);
 }
 
+.card-link {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+.card-link::after {
+  content: " \2192";
+}
+.card-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Home: split hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+.hero-grid {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  align-items: center;
+}
+.hero-copy .lead {
+  margin-block: 1.25rem 2rem;
+}
+.hero-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) * 1.5);
+  background:
+    radial-gradient(60% 60% at 50% 45%, rgb(25 211 181 / 0.18), transparent 70%),
+    url("../images/iso-grid.svg") center / 112px 64px,
+    linear-gradient(160deg, var(--surface-2), var(--bg));
+}
+.hero-mark {
+  width: min(60%, 300px);
+}
+.hero-mark img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 1px rgb(255 255 255 / 0.35)) drop-shadow(0 0 24px rgb(25 211 181 / 0.25));
+}
+.hero-chip {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgb(12 28 44 / 0.9);
+  color: var(--muted);
+  font-size: 0.8rem;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.35);
+}
+.hero-chip-value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.hero-chip-1 {
+  top: 8%;
+  left: 6%;
+}
+.hero-chip-2 {
+  top: 42%;
+  right: 5%;
+}
+.hero-chip-3 {
+  bottom: 8%;
+  left: 12%;
+}
+@media (min-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+  .hero-visual {
+    min-height: 480px;
+  }
+}
+
+/* ---------- Metrics strip ---------- */
+.metrics {
+  border-block: 1px solid var(--line);
+  background: var(--surface);
+}
+.metrics-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+.metric {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-left: 1px solid var(--line);
+}
+.metric:nth-child(odd) {
+  border-left: 0;
+}
+.metric dt {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.metric dd {
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .metrics-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .metric:nth-child(odd) {
+    border-left: 1px solid var(--line);
+  }
+  .metric:first-child {
+    border-left: 0;
+  }
+}
+
+/* ---------- Bento ---------- */
+.bento {
+  display: grid;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+@media (min-width: 768px) {
+  .bento {
+    grid-template-columns: 1.4fr 1fr;
+  }
+  .bento-main {
+    grid-row: span 2;
+  }
+}
+
+/* ---------- Numbered points ---------- */
+.why-list {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.why-item {
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--line);
+}
+.why-item p {
+  margin-top: 0.75rem;
+  color: var(--muted);
+}
+.why-num {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--accent);
+}
+@media (min-width: 992px) {
+  .why-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.stack-chips .chip {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- CTA band ---------- */
+.cta-panel {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  padding: clamp(1.75rem, 5vw, 3rem);
+  border: 1px solid rgb(25 211 181 / 0.35);
+  border-radius: calc(var(--radius) * 1.5);
+  background:
+    radial-gradient(80% 120% at 100% 0%, rgb(25 211 181 / 0.14), transparent 60%),
+    linear-gradient(135deg, var(--navy), var(--surface));
+}
+.cta-panel .lead {
+  margin-top: 0.75rem;
+}
+@media (min-width: 992px) {
+  .cta-panel {
+    grid-template-columns: 1fr auto;
+  }
+}
+
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;

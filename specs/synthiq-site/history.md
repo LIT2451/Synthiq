@@ -218,3 +218,12 @@
 - Property: P6 pass (400 lần)
 - Commit: `spec(synthiq-site): 5.5 Property P6: Mailto round-trip`
 - Ghi chú: Field một dòng không chứa xuống dòng (input), message nhiều dòng gồm CRLF
+
+## 6.1 Trang Home `src/pages/index.html` + `src/partials/cta.html` + `images/iso-grid.svg` và icon dịch vụ line SVG teal trong `images/icons/`; CSS hero chia đôi (trái chữ, phải `logo-mark-hero` + lưới isometric + 3 chip số liệu), dải chỉ số, bento, "Why Synthiq", chip tech — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:24
+- File đã đổi: `css/site.css`, `images/icons/cloud.svg`, `images/icons/code.svg`, `images/icons/signal.svg`, `images/icons/spark.svg`, `images/iso-grid.svg`, `index.html`, `src/pages/index.html`, `src/partials/cta.html`
+- Kiểm chứng: `npm run build && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 1.2, 2.3, 2.6, 3.1
+- Commit: `spec(synthiq-site): 6.1 Trang Home src/pages/index.html +…`
+- Ghi chú: Home: hero chia đôi, 4 chỉ số, bento 3 dịch vụ, Why Synthiq 3 điểm, 8 chip tech, CTA; iso-grid.svg và 4 icon; check --source ../Landing-DVTechnic cũng passed
