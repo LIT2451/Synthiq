@@ -1,3 +1,7 @@
 <ul class="contact-items">
   {{#if email}}<li class="contact-item contact-email"><span class="contact-label">Email</span> <a href="mailto:{{email}}">{{email}}</a></li>{{/if}}
+  {{#if phone}}<li class="contact-item contact-phone"><span class="contact-label">Phone</span> <a href="tel:{{phoneHref}}">{{phone}}</a></li>{{/if}}
+  {{#if address}}<li class="contact-item contact-address"><span class="contact-label">Office</span> <span>{{address}}</span></li>{{/if}}
+  {{#if hours}}<li class="contact-item contact-hours"><span class="contact-label">Hours</span> <span>{{hours}}</span></li>{{/if}}
+  {{#if taxId}}<li class="contact-item contact-tax"><span class="contact-label">Tax ID</span> <span>{{taxId}}</span></li>{{/if}}
 </ul>

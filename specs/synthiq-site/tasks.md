@@ -11,7 +11,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `npm test` pass
     - _Requirements: 3.6_
 
-- [-] 2. Template engine và build
+- [x] 2. Template engine và build
   - [x] 2.1 Viết `scripts/lib/render.mjs`: `escapeHtml`, `parsePage` (front matter), `render` (`{{key}}`, đường dẫn chấm, `{{> partial}}` lồng tối đa 5 cấp, phát hiện vòng lặp, `{{#if}}…{{else}}…{{/if}}` lồng), ném `RenderError` khi thiếu key/partial
     - Kiểm chứng: `npm test -- render` pass
     - _Requirements: 3.2, 3.3_
@@ -32,7 +32,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Tạo `src/partials/layout.html` (head SEO đầy đủ theo design, script inline thêm class `js`), `header.html`, `footer.html`, `contact-items.html`, `cta.html` ở dạng khung tối thiểu, và `src/pages/*.html` 6 trang chỉ có front matter + tiêu đề tạm
     - Kiểm chứng: `npm run build` tạo 6 HTML + 3 file SEO, `CNAME` = `synthiqdigital.com`
     - _Requirements: 1.1, 1.8, 3.6, 6.1, 6.3_
-  - [ ] 2.6 Property P8: Thông tin liên hệ chỉ hiện khi có
+  - [x] 2.6 Property P8: Thông tin liên hệ chỉ hiện khi có
     - *Với mọi* config sinh ngẫu nhiên (mỗi trường liên hệ rỗng hoặc có giá trị): HTML build ra từ partial `contact-items`/`footer` chứa nhãn và link `mailto:`/`tel:` của trường khi và chỉ khi trường có giá trị, và `checkContactLinks` trả rỗng.
     - Hoàn thiện `contact-items.html` và khối liên hệ/mạng xã hội trong `footer.html` với `{{#if}}`; phần `checkContactLinks` của property bật ở task 3.3 (task này kiểm chiều "hiện khi và chỉ khi có")
     - fast-check trong `tests/contact-items.property.test.mjs`, `numRuns >= 100`

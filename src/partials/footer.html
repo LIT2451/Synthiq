@@ -1,5 +1,23 @@
 <footer class="site-footer">
-  <div class="container">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="index.html">{{name}}</a>
+    </div>
+    {{#if hasContact}}
+    <div class="footer-contact">
+      <h2 class="footer-title">Contact</h2>
+      {{> contact-items}}
+    </div>
+    {{/if}}
+    {{#if hasSocial}}
+    <ul class="footer-social">
+      {{#if social.linkedin}}<li><a class="social-linkedin" href="{{social.linkedin}}" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>{{/if}}
+      {{#if social.github}}<li><a class="social-github" href="{{social.github}}" rel="noopener noreferrer" target="_blank">GitHub</a></li>{{/if}}
+      {{#if social.facebook}}<li><a class="social-facebook" href="{{social.facebook}}" rel="noopener noreferrer" target="_blank">Facebook</a></li>{{/if}}
+    </ul>
+    {{/if}}
+  </div>
+  <div class="container footer-bottom">
     <p class="footer-copy">&copy; {{year}} {{name}}. All rights reserved.</p>
   </div>
 </footer>

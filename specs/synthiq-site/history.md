@@ -49,3 +49,13 @@
 - Kiểm chứng: `npm run build && test "$(cat CNAME)" = synthiqdigital.com && test -f index.html && test -f about.html && test -f services.html && test -f portfolio.html && test -f contact.html && test -f 404.html && test -f sitemap.xml && test -f robots.txt` → exit 0 (Built 9 files: 404.html, about.html, contact.html, index.html, portfolio.html, services.html, sitemap.xml, robots.txt, CNAME) [spec-done tự chạy lại]
 - Requirements: 1.1, 1.8, 3.6, 6.1, 6.3
 - Commit: `spec(synthiq-site): 2.5 Viết scripts/build.mjs: đọc config, render mọi…`
+
+## 2.6 Property P8: Thông tin liên hệ chỉ hiện khi có — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:03
+- File đã đổi: `404.html`, `about.html`, `contact.html`, `index.html`, `portfolio.html`, `services.html`, `src/partials/contact-items.html`, `src/partials/footer.html`, `tests/contact-items.property.test.mjs`
+- Kiểm chứng: `npm run build && npm test -- contact-items` → exit 0 (Duration  390ms (import 84%, tests 14%, transform 1%)) [spec-done tự chạy lại]
+- Requirements: 3.2, 3.3, 5.1
+- Property: P8 pass (200 lần)
+- Commit: `spec(synthiq-site): 2.6 Property P8: Thông tin liên hệ chỉ hiện khi có`
+- Ghi chú: Phần checkContactLinks của P8 bổ sung ở task 3.3
