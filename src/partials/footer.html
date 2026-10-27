@@ -1,14 +1,40 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a class="brand" href="index.html">{{name}}</a>
+      <a class="footer-logo" href="index.html" aria-label="{{name}} home">
+        <picture>
+          <source srcset="images/logo-full.webp" type="image/webp">
+          <img src="images/logo-full.png" width="91" height="80" alt="{{name}}">
+        </picture>
+      </a>
+      <p class="footer-tagline">Software, networks and cloud, engineered by small senior teams that stay with you after launch.</p>
     </div>
+    <nav class="footer-col" aria-label="Company">
+      <h2 class="footer-title">Company</h2>
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Services">
+      <h2 class="footer-title">Services</h2>
+      <ul class="footer-links">
+        <li><a href="services.html#product-engineering">Product engineering</a></li>
+        <li><a href="services.html#telecom">Telecom &amp; messaging</a></li>
+        <li><a href="services.html#cloud">Cloud &amp; DevOps</a></li>
+        <li><a href="services.html#ai">AI &amp; automation</a></li>
+      </ul>
+    </nav>
     {{#if hasContact}}
-    <div class="footer-contact">
+    <div class="footer-col footer-contact">
       <h2 class="footer-title">Contact</h2>
       {{> contact-items}}
     </div>
     {{/if}}
+  </div>
+  <div class="container footer-bottom">
+    <p class="footer-copy">&copy; {{year}} {{name}}. All rights reserved.</p>
     {{#if hasSocial}}
     <ul class="footer-social">
       {{#if social.linkedin}}<li><a class="social-linkedin" href="{{social.linkedin}}" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>{{/if}}
@@ -16,8 +42,5 @@
       {{#if social.facebook}}<li><a class="social-facebook" href="{{social.facebook}}" rel="noopener noreferrer" target="_blank">Facebook</a></li>{{/if}}
     </ul>
     {{/if}}
-  </div>
-  <div class="container footer-bottom">
-    <p class="footer-copy">&copy; {{year}} {{name}}. All rights reserved.</p>
   </div>
 </footer>

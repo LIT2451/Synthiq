@@ -10,13 +10,16 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const css = readFileSync(join(ROOT, 'css/site.css'), 'utf8');
 const cssNoComments = css.replace(/\/\*[\s\S]*?\*\//g, '');
 
-// css/site.css is linked from the layout in task 4.4; until then "not referenced" is expected.
 test('check reports nothing for css/ and fonts/', () => {
   const { problems } = runCheck({ root: ROOT });
-  const own = problems
-    .filter((p) => /^(css|fonts)\//.test(p))
-    .filter((p) => p !== 'css/site.css:1: not referenced by any page');
-  expect(own).toEqual([]);
+  expect(problems.filter((p) => /^(css|fonts)\//.test(p))).toEqual([]);
+});
+
+test('mobile panel and main nav are hidden only under .js', () => {
+  for (const m of cssNoComments.matchAll(/([^{}]+)\{[^}]*display:\s*none;/g)) {
+    const sel = m[1].trim();
+    if (/main-nav/.test(sel)) expect(sel).toMatch(/^\.js\b/);
+  }
 });
 
 test('every @font-face source exists and only Sora/Manrope are declared', () => {

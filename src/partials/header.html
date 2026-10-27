@@ -1,8 +1,14 @@
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html">{{name}}</a>
+    <a class="brand" href="index.html" aria-label="{{name}} home">
+      <picture>
+        <source srcset="images/logo-mark.webp" type="image/webp">
+        <img class="brand-mark" src="images/logo-mark.png" width="40" height="40" alt="">
+      </picture>
+      <span class="brand-name">{{name}}</span>
+    </a>
     <nav class="main-nav" aria-label="Main">
-      <ul>
+      <ul class="nav-list">
         <li><a href="index.html"{{#if nav.home}} aria-current="page" class="is-active"{{/if}}>Home</a></li>
         <li><a href="about.html"{{#if nav.about}} aria-current="page" class="is-active"{{/if}}>About</a></li>
         <li><a href="services.html"{{#if nav.services}} aria-current="page" class="is-active"{{/if}}>Services</a></li>
@@ -10,6 +16,33 @@
         <li><a href="contact.html"{{#if nav.contact}} aria-current="page" class="is-active"{{/if}}>Contact</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary" href="contact.html">Start a project</a>
+    <a class="btn btn-primary btn-sm header-cta" href="contact.html">Start a project</a>
+    <button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false">
+      <span class="menu-toggle-bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Open menu</span>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobile-menu">
+    <div class="mobile-panel-head">
+      <span class="eyebrow">Menu</span>
+      <button class="menu-close" type="button" aria-label="Close menu">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <nav aria-label="Mobile">
+      <ul class="mobile-nav">
+        <li><a href="index.html"{{#if nav.home}} aria-current="page" class="is-active"{{/if}}>Home</a></li>
+        <li><a href="about.html"{{#if nav.about}} aria-current="page" class="is-active"{{/if}}>About</a></li>
+        <li><a href="services.html"{{#if nav.services}} aria-current="page" class="is-active"{{/if}}>Services</a></li>
+        <li><a href="portfolio.html"{{#if nav.portfolio}} aria-current="page" class="is-active"{{/if}}>Portfolio</a></li>
+        <li><a href="contact.html"{{#if nav.contact}} aria-current="page" class="is-active"{{/if}}>Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary mobile-cta" href="contact.html">Start a project</a>
+    {{#if hasContact}}
+    <div class="mobile-contact">
+      {{> contact-items}}
+    </div>
+    {{/if}}
   </div>
 </header>

@@ -13,15 +13,31 @@
   <meta property="og:title" content="About Synthiq | Engineering Team and Values">
   <meta property="og:description" content="Meet Synthiq, an engineering company that pairs senior developers with clear process to ship reliable software, telecom and cloud work.">
   <meta property="og:url" content="https://synthiqdigital.com/about.html">
+  <meta property="og:image" content="https://synthiqdigital.com/images/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Synthiq: software, networks and cloud">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#06111C">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" href="fonts/sora-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/manrope-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html">Synthiq</a>
+    <a class="brand" href="index.html" aria-label="Synthiq home">
+      <picture>
+        <source srcset="images/logo-mark.webp" type="image/webp">
+        <img class="brand-mark" src="images/logo-mark.png" width="40" height="40" alt="">
+      </picture>
+      <span class="brand-name">Synthiq</span>
+    </a>
     <nav class="main-nav" aria-label="Main">
-      <ul>
+      <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" aria-current="page" class="is-active">About</a></li>
         <li><a href="services.html">Services</a></li>
@@ -29,7 +45,30 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary" href="contact.html">Start a project</a>
+    <a class="btn btn-primary btn-sm header-cta" href="contact.html">Start a project</a>
+    <button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false">
+      <span class="menu-toggle-bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Open menu</span>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobile-menu">
+    <div class="mobile-panel-head">
+      <span class="eyebrow">Menu</span>
+      <button class="menu-close" type="button" aria-label="Close menu">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <nav aria-label="Mobile">
+      <ul class="mobile-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" aria-current="page" class="is-active">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary mobile-cta" href="contact.html">Start a project</a>
+    
   </div>
 </header>
 
@@ -40,13 +79,36 @@
   <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a class="brand" href="index.html">Synthiq</a>
+      <a class="footer-logo" href="index.html" aria-label="Synthiq home">
+        <picture>
+          <source srcset="images/logo-full.webp" type="image/webp">
+          <img src="images/logo-full.png" width="91" height="80" alt="Synthiq">
+        </picture>
+      </a>
+      <p class="footer-tagline">Software, networks and cloud, engineered by small senior teams that stay with you after launch.</p>
     </div>
-    
+    <nav class="footer-col" aria-label="Company">
+      <h2 class="footer-title">Company</h2>
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Services">
+      <h2 class="footer-title">Services</h2>
+      <ul class="footer-links">
+        <li><a href="services.html#product-engineering">Product engineering</a></li>
+        <li><a href="services.html#telecom">Telecom &amp; messaging</a></li>
+        <li><a href="services.html#cloud">Cloud &amp; DevOps</a></li>
+        <li><a href="services.html#ai">AI &amp; automation</a></li>
+      </ul>
+    </nav>
     
   </div>
   <div class="container footer-bottom">
     <p class="footer-copy">&copy; 2026 Synthiq. All rights reserved.</p>
+    
   </div>
 </footer>
 

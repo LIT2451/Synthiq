@@ -80,7 +80,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `npm test -- check-cli` pass; `npm run build && npm run check` chạy được (có thể còn lỗi meta/nội dung, sẽ hết sau task 6)
     - _Requirements: 2.1, 2.2, 4.1, 4.2, 5.1, 6.3, 6.4_
 
-- [-] 4. Hệ thống giao diện
+- [x] 4. Hệ thống giao diện
   - [x] 4.1 Tải font Sora (600/700) và Manrope (400/600/700) dạng woff2 subset latin vào `fonts/` kèm `fonts/OFL.txt`; viết `css/site.css` phần nền: `@font-face`, token màu theo design, reset, typography, container, nút pill, focus-visible, card, chip, section, reveal dưới `.js`, `prefers-reduced-motion`
     - Kiểm chứng: `npm run check` không báo màu/font cấm, tương phản token đạt
     - _Requirements: 2.1, 2.2, 2.4, 5.6_
@@ -91,7 +91,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Test `tests/assets.test.mjs` đọc ảnh đã sinh bằng sharp: đúng kích thước theo bảng đầu ra, mỗi file ≤ 400 KB, màu trung bình wordmark trong `logo-full.png` có `contrastRatio` ≥ 3 với `#06111C`
     - Kiểm chứng: `npm run assets && npm test -- assets` pass
     - _Requirements: 2.5, 2.7, 6.2_
-  - [ ] 4.4 Hoàn thiện `header.html` (`<picture>` logo-mark + chữ "Synthiq", nav 5 mục với `aria-current`, CTA "Start a project", nút menu mobile, panel mobile) và `footer.html` (`logo-full`, tagline, Company, Services, liên hệ, mạng xã hội, `© {{year}} Synthiq`); head layout thêm favicon, `apple-touch-icon`, `theme-color`, `og:image` = `https://synthiqdigital.com/images/og.png`; CSS header/footer/menu mobile (< 992px), drop-shadow + quầng sáng cho biểu tượng
+  - [x] 4.4 Hoàn thiện `header.html` (`<picture>` logo-mark + chữ "Synthiq", nav 5 mục với `aria-current`, CTA "Start a project", nút menu mobile, panel mobile) và `footer.html` (`logo-full`, tagline, Company, Services, liên hệ, mạng xã hội, `© {{year}} Synthiq`); head layout thêm favicon, `apple-touch-icon`, `theme-color`, `og:image` = `https://synthiqdigital.com/images/og.png`; CSS header/footer/menu mobile (< 992px), drop-shadow + quầng sáng cho biểu tượng
     - Kiểm chứng: `npm run build && npm test && npm run check` không báo link logo/favicon/og hỏng
     - _Requirements: 2.4, 2.5, 3.5, 5.2, 5.3, 6.2_
 

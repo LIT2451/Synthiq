@@ -163,3 +163,12 @@
 - Requirements: 2.5, 2.7, 6.2
 - Commit: `spec(synthiq-site): 4.3 Thêm devDependency sharp chốt cứng phiên bản…`
 - Ghi chú: Logo goc khong co dai trong suot giua bieu tuong va chu (dinh bieu tuong cham hang chu), nen tach bang thanh phan lien thong lon nhat khi findGap tra null. Tuong phan chu 1.05 -> 16.82.
+
+## 4.4 Hoàn thiện `header.html` (`<picture>` logo-mark + chữ "Synthiq", nav 5 mục với `aria-current`, CTA "Start a project", nút menu mobile, panel mobile) và `footer.html` (`logo-full`, tagline, Company, Services, liên hệ, mạng xã hội, `© {{year}} Synthiq`); head layout thêm favicon, `apple-touch-icon`, `theme-color`, `og:image` = `https://synthiqdigital.com/images/og.png`; CSS header/footer/menu mobile (< 992px), drop-shadow + quầng sáng cho biểu tượng — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:20
+- File đã đổi: `404.html`, `about.html`, `contact.html`, `css/site.css`, `index.html`, `portfolio.html`, `services.html`, `src/partials/footer.html`, `src/partials/header.html`, `src/partials/layout.html`, `tests/css.test.mjs`
+- Kiểm chứng: `npm run build && npm test && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 2.4, 2.5, 3.5, 5.2, 5.3, 6.2
+- Commit: `spec(synthiq-site): 4.4 Hoàn thiện header.html (<picture> logo-mark +…`
+- Ghi chú: Header/footer/head hoàn chỉnh; CSS header, footer, menu mobile dưới 992px chỉ ẩn khi có .js; check passed không còn lỗi og:image hay site.css
