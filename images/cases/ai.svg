@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200" fill="none">
+  <!-- AI & Automation thumbnail: connected nodes. -->
+  <rect width="400" height="200" fill="#11283C"/>
+  <g stroke="#19D3B5" stroke-opacity="0.35" stroke-width="1.5">
+    <path d="M60 140 L130 70 L210 110 L280 50 L350 120"/>
+    <path d="M130 70 L170 160 L210 110 M280 50 L300 160 L350 120"/>
+  </g>
+  <g fill="#0C1C2C" stroke="#19D3B5" stroke-width="2">
+    <circle cx="60" cy="140" r="8"/>
+    <circle cx="130" cy="70" r="10"/>
+    <circle cx="170" cy="160" r="7"/>
+    <circle cx="300" cy="160" r="7"/>
+    <circle cx="350" cy="120" r="8"/>
+  </g>
+  <circle cx="210" cy="110" r="14" fill="#19D3B5"/>
+  <circle cx="280" cy="50" r="10" fill="#19D3B5" fill-opacity="0.6"/>
+</svg>

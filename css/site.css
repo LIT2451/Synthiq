@@ -727,6 +727,67 @@ button.chip[aria-pressed="true"] {
   }
 }
 
+/* ---------- Portfolio ---------- */
+.featured {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+}
+.featured-art,
+.case-art {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+.featured-copy > * + * {
+  margin-top: 1rem;
+}
+.result-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 1.5rem 0 0;
+}
+.result-list dt {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.result-list dd {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+@media (min-width: 992px) {
+  .featured {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.filter-status {
+  margin: 1rem 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.case-card[hidden] {
+  display: none;
+}
+.case-field {
+  align-self: flex-start;
+}
+.card .case-result {
+  color: var(--ink);
+}
+.case-result strong {
+  color: var(--accent);
+  font-family: var(--font-display);
+}
+
 /* ---------- CTA band ---------- */
 .cta-panel {
   display: grid;

@@ -128,7 +128,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 6.3 Trang Services `src/pages/services.html` (6 dịch vụ × 3 ý, Synthiq Relay, Synthiq Pilot, 3 mô hình hợp tác) kèm minh hoạ SVG cho 2 giải pháp
     - Kiểm chứng: `npm run build && npm run check` không lỗi cho `services.html`
     - _Requirements: 1.4, 2.6, 3.1_
-  - [ ] 6.4 Trang Portfolio `src/pages/portfolio.html` (dải số liệu, 1 nổi bật, 5 nút lọc, 8 case `data-category` mỗi lĩnh vực 2) + thumbnail pattern SVG theo lĩnh vực trong `images/cases/`
+  - [x] 6.4 Trang Portfolio `src/pages/portfolio.html` (dải số liệu, 1 nổi bật, 5 nút lọc, 8 case `data-category` mỗi lĩnh vực 2) + thumbnail pattern SVG theo lĩnh vực trong `images/cases/`
     - Kiểm chứng: `npm run build && npm run check` không lỗi cho `portfolio.html`
     - _Requirements: 1.5, 1.6, 2.6, 3.1_
   - [ ] 6.5 Trang Contact `src/pages/contact.html` (thẻ liên hệ hoặc dòng thay thế khi `!hasContact`, "What happens next" 3 bước, form có `data-email="{{email}}"`, label, `<p id="*-error">`, vùng `role="status"`) và `src/pages/404.html`

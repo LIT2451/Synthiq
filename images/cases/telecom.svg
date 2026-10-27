@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200" fill="none">
+  <!-- Telecom thumbnail: signal rings around a tower point. -->
+  <rect width="400" height="200" fill="#11283C"/>
+  <g stroke="#19D3B5" stroke-width="2">
+    <circle cx="200" cy="120" r="30" stroke-opacity="0.8"/>
+    <circle cx="200" cy="120" r="60" stroke-opacity="0.45"/>
+    <circle cx="200" cy="120" r="95" stroke-opacity="0.25"/>
+    <circle cx="200" cy="120" r="135" stroke-opacity="0.12"/>
+  </g>
+  <path d="M200 120 L188 190 M200 120 L212 190 M192 160 H208" stroke="#E8F3F6" stroke-opacity="0.6" stroke-width="2"/>
+  <circle cx="200" cy="120" r="8" fill="#19D3B5"/>
+</svg>

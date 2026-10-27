@@ -245,3 +245,12 @@
 - Requirements: 1.4, 2.6, 3.1
 - Commit: `spec(synthiq-site): 6.3 Trang Services src/pages/services.html (6 dịch…`
 - Ghi chú: Services: 6 dịch vụ x 3 ý có id cho anchor footer, Synthiq Relay và Synthiq Pilot với SVG images/solutions, 3 mô hình hợp tác, CTA
+
+## 6.4 Trang Portfolio `src/pages/portfolio.html` (dải số liệu, 1 nổi bật, 5 nút lọc, 8 case `data-category` mỗi lĩnh vực 2) + thumbnail pattern SVG theo lĩnh vực trong `images/cases/` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:27
+- File đã đổi: `css/site.css`, `images/cases/ai.svg`, `images/cases/enterprise.svg`, `images/cases/fintech.svg`, `images/cases/telecom.svg`, `portfolio.html`, `src/pages/portfolio.html`
+- Kiểm chứng: `npm run build && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 1.5, 1.6, 2.6, 3.1
+- Commit: `spec(synthiq-site): 6.4 Trang Portfolio src/pages/portfolio.html (dải…`
+- Ghi chú: Portfolio: 4 chỉ số, dự án nổi bật, 5 nút lọc data-filter, 8 case data-category 2 mỗi lĩnh vực, 4 thumbnail SVG images/cases

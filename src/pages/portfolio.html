@@ -4,4 +4,130 @@ description: Selected Synthiq projects across AI automation, telecom, enterprise
 path: /portfolio
 nav: portfolio
 ---
-<h1>Portfolio</h1>
+<section class="page-header" aria-labelledby="page-title">
+  <div class="container">
+    <span class="eyebrow">Portfolio</span>
+    <h1 id="page-title">Work that is still running, and still improving.</h1>
+    <p class="lead">A selection of recent engagements. Client names are withheld under NDA; the numbers come from their own dashboards.</p>
+  </div>
+</section>
+
+<section class="metrics" aria-label="Portfolio in numbers">
+  <div class="container">
+    <dl class="metrics-list">
+      <div class="metric"><dt>Projects delivered</dt><dd class="figure">60+</dd></div>
+      <div class="metric"><dt>Industries served</dt><dd class="figure">9</dd></div>
+      <div class="metric"><dt>Median time to first release</dt><dd class="figure">6 wk</dd></div>
+      <div class="metric"><dt>Systems we still operate</dt><dd class="figure">38</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="featured-title">
+  <div class="container">
+    <article class="featured card card-raised reveal">
+      <img class="featured-art" src="images/cases/telecom.svg" width="400" height="200" alt="">
+      <div class="featured-copy">
+        <span class="eyebrow">Featured project</span>
+        <h2 id="featured-title">Rebuilding a regional SMS hub without a minute of downtime</h2>
+        <p>A messaging aggregator was outgrowing a ten-year-old routing engine. We ran Synthiq Relay alongside it, mirrored live traffic for six weeks, then moved carriers over one at a time.</p>
+        <dl class="result-list">
+          <div><dt>Peak throughput</dt><dd>4,000 msg/s</dd></div>
+          <div><dt>Delivery rate</dt><dd>+6.5 pts</dd></div>
+          <div><dt>Routing cost</dt><dd>&minus;18%</dd></div>
+        </dl>
+        <ul class="chips" aria-label="Technologies">
+          <li class="chip">Go</li>
+          <li class="chip">Kafka</li>
+          <li class="chip">PostgreSQL</li>
+          <li class="chip">Kubernetes</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="cases-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Case studies</span>
+      <h2 id="cases-title">Browse by field.</h2>
+    </div>
+    <div class="filter-bar" role="group" aria-label="Filter case studies by field">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-filter="ai" aria-pressed="false">AI &amp; Automation</button>
+      <button class="chip" type="button" data-filter="telecom" aria-pressed="false">Telecom</button>
+      <button class="chip" type="button" data-filter="enterprise" aria-pressed="false">Enterprise</button>
+      <button class="chip" type="button" data-filter="fintech" aria-pressed="false">Fintech</button>
+    </div>
+    <p class="filter-status" data-filter-status aria-live="polite">Showing 8 projects</p>
+    <div class="grid grid-2 case-grid">
+      <article class="card case-card reveal" data-category="ai">
+        <img class="case-art" src="images/cases/ai.svg" width="400" height="200" alt="">
+        <span class="chip chip-accent case-field">AI &amp; Automation</span>
+        <h3>Support inbox triage for an e-commerce group</h3>
+        <p>A language-model classifier tags and routes incoming tickets, drafts a reply for common cases and leaves the final send to an agent.</p>
+        <p class="case-result"><strong>41%</strong> faster first response</p>
+        <ul class="chips" aria-label="Technologies"><li class="chip">Python</li><li class="chip">pgvector</li><li class="chip">React</li></ul>
+      </article>
+      <article class="card case-card reveal" data-category="ai">
+        <img class="case-art" src="images/cases/ai.svg" width="400" height="200" alt="">
+        <span class="chip chip-accent case-field">AI &amp; Automation</span>
+        <h3>Invoice capture for a logistics operator</h3>
+        <p>Scanned freight invoices are read, checked against purchase orders and pushed to the ERP, with exceptions queued for review.</p>
+        <p class="case-result"><strong>3,200</strong> invoices a week processed hands-free</p>
+        <ul class="chips" aria-label="Technologies"><li class="chip">Python</li><li class="chip">OCR</li><li class="chip">Azure</li></ul>
+      </article>
+      <article class="card case-card reveal" data-category="telecom">
+        <img class="case-art" src="images/cases/telecom.svg" width="400" height="200" alt="">
+        <span class="chip chip-accent case-field">Telecom</span>
+        <h3>OTP delivery layer for a digital bank</h3>
+        <p>Multi-carrier failover for one-time passwords, with per-country routing rules and voice fallback when SMS is slow.</p>
+        <p class="case-result"><strong>99.2%</strong> of codes delivered within 10 seconds</p>
+        <ul class="chips" aria-label="Technologies"><li class="chip">Go</li><li class="chip">SMPP</li><li class="chip">Redis</li></ul>
+      </article>
+      <article class="card case-card reveal" data-category="telecom">
+        <img class="case-art" src="images/cases/telecom.svg" width="400" height="200" alt="">
+        <span class="chip chip-accent case-field">Telecom</span>
+        <h3>Usage reconciliation for an MVNO</h3>
+        <p>A nightly pipeline matches call detail records from two host networks against the billing system and flags gaps before invoices go out.</p>
+        <p class="case-result"><strong>2.1%</strong> of lost revenue recovered</p>
+        <ul class="chips" aria-label="Technologies"><li class="chip">Scala</li><li class="chip">Spark</li><li class="chip">AWS</li></ul>
+      </article>
+      <article class="card case-card reveal" data-category="enterprise">
+        <img class="case-art" src="images/cases/enterprise.svg" width="400" height="200" alt="">
+        <span class="chip chip-accent case-field">Enterprise</span>
+        <h3>Field service app for a utilities contractor</h3>
+        <p>Offline-first mobile app for 900 technicians, syncing job sheets, photos and signatures whenever a connection appears.</p>
+        <p class="case-result"><strong>27%</strong> more jobs closed per shift</p>
+        <ul class="chips" aria-label="Technologies"><li class="chip">Kotlin</li><li class="chip">Swift</li><li class="chip">GraphQL</li></ul>
+      </article>
+      <article class="card case-card reveal" data-category="enterprise">
+        <img class="case-art" src="images/cases/enterprise.svg" width="400" height="200" alt="">
+        <span class="chip chip-accent case-field">Enterprise</span>
+        <h3>Cloud move for a manufacturing ERP</h3>
+        <p>Lift, then refactor: the on-premise ERP moved to managed cloud services with infrastructure as code and blue-green releases.</p>
+        <p class="case-result"><strong>34%</strong> lower monthly hosting cost</p>
+        <ul class="chips" aria-label="Technologies"><li class="chip">Terraform</li><li class="chip">.NET</li><li class="chip">GCP</li></ul>
+      </article>
+      <article class="card case-card reveal" data-category="fintech">
+        <img class="case-art" src="images/cases/fintech.svg" width="400" height="200" alt="">
+        <span class="chip chip-accent case-field">Fintech</span>
+        <h3>Merchant onboarding for a payments start-up</h3>
+        <p>Self-serve sign-up with document checks, risk scoring and a review console, replacing a spreadsheet-driven process.</p>
+        <p class="case-result"><strong>5 days to 4 hours</strong> average approval time</p>
+        <ul class="chips" aria-label="Technologies"><li class="chip">TypeScript</li><li class="chip">Node.js</li><li class="chip">PostgreSQL</li></ul>
+      </article>
+      <article class="card case-card reveal" data-category="fintech">
+        <img class="case-art" src="images/cases/fintech.svg" width="400" height="200" alt="">
+        <span class="chip chip-accent case-field">Fintech</span>
+        <h3>Real-time ledger for a lending platform</h3>
+        <p>An event-sourced ledger gives finance and support the same up-to-the-second view of every loan balance and repayment.</p>
+        <p class="case-result"><strong>0</strong> reconciliation breaks in the first year</p>
+        <ul class="chips" aria-label="Technologies"><li class="chip">Java</li><li class="chip">Kafka</li><li class="chip">Kubernetes</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+{{> cta}}
