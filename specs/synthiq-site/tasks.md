@@ -107,7 +107,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 5.3 Viết `js/contact.js`: `validateContact`, `buildMailto` (export, thuần), `initContactForm` (novalidate, lỗi dưới field, `aria-invalid`, focus field lỗi đầu, thông báo `role="status"`, nhánh email rỗng giữ dữ liệu); layout nạp khi front matter `scripts: contact`
     - Kiểm chứng: `npm test` pass
     - _Requirements: 5.4, 5.5, 5.7_
-  - [ ] 5.4 Property P4: Validate form khớp mô hình
+  - [x] 5.4 Property P4: Validate form khớp mô hình
     - *Với mọi* bộ dữ liệu form (chuỗi ngẫu nhiên, khoảng trắng, chuỗi rỗng, email hợp lệ/không hợp lệ, độ dài tới 300): `valid` đúng khi và chỉ khi name và message sau trim khác rỗng và email khớp regex, ≤ 254 ký tự; `errors` theo đúng thứ tự `name, email, message` và chỉ chứa field sai.
     - fast-check trong `tests/validate.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- validate` pass

@@ -199,3 +199,12 @@
 - Requirements: 5.4, 5.5, 5.7
 - Commit: `spec(synthiq-site): 5.3 Viết js/contact.js: validateContact…`
 - Ghi chú: js/contact.js gồm validateContact, buildMailto, initContactForm; layout chỉ nạp ở trang có scripts: contact; tests/contact.dom.test.mjs 5 test
+
+## 5.4 Property P4: Validate form khớp mô hình — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:23
+- File đã đổi: `tests/validate.property.test.mjs`
+- Kiểm chứng: `npm test -- validate` → exit 0 (Duration  94ms (import 40%, tests 32%, transform 23%, worker 4%)) [spec-done tự chạy lại]
+- Requirements: 5.4, 5.5
+- Property: P4 pass (500 lần)
+- Commit: `spec(synthiq-site): 5.4 Property P4: Validate form khớp mô hình`
