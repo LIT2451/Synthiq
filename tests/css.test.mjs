@@ -22,6 +22,35 @@ test('mobile panel and main nav are hidden only under .js', () => {
   }
 });
 
+// All rule bodies whose selector list matches `re`, joined.
+const bodies = (re) => [...cssNoComments.matchAll(/([^{}]+)\{([^}]*)\}/g)]
+  .filter((m) => re.test(m[1].trim())).map((m) => m[2]).join('\n');
+
+test('header blur sits on ::before so the fixed mobile panel covers the viewport', () => {
+  expect(bodies(/^\.site-header$/)).not.toMatch(/backdrop-filter/);
+  expect(bodies(/^\.site-header::before$/)).toMatch(/backdrop-filter/);
+  // No ancestor of the panel may create a containing block for position: fixed.
+  for (const sel of [/^\.site-header$/, /^\.header-inner$/]) {
+    expect(bodies(sel)).not.toMatch(/\b(transform|filter|backdrop-filter|perspective|contain)\s*:/);
+  }
+  const panel = bodies(/^\.js \.mobile-panel$/);
+  expect(panel).toMatch(/position:\s*fixed/);
+  expect(panel).toMatch(/inset:\s*0/);
+  expect(panel).toMatch(/visibility:\s*hidden/);
+  expect(panel).toMatch(/pointer-events:\s*none/);
+  expect(panel).toMatch(/transition:/);
+  expect(bodies(/^\.js \.mobile-panel\.is-open$/)).toMatch(/visibility:\s*visible/);
+  expect(bodies(/^html\.menu-open$/)).toMatch(/overflow:\s*hidden/);
+});
+
+test('menu toggle turns into an X when aria-expanded is true', () => {
+  const sel = '.menu-toggle[aria-expanded="true"] .menu-toggle-bars';
+  const esc = sel.replace(/[.[\]"]/g, '\\$&');
+  expect(bodies(new RegExp(`^${esc}$`))).toMatch(/background-color:\s*transparent/);
+  expect(bodies(new RegExp(`^${esc}::before$`))).toMatch(/rotate\(45deg\)/);
+  expect(bodies(new RegExp(`^${esc}::after$`))).toMatch(/rotate\(-45deg\)/);
+});
+
 test('every @font-face source exists and only Sora/Manrope are declared', () => {
   const families = [...css.matchAll(/font-family:\s*"([^"]+)";\s*\n\s*font-style/g)].map((m) => m[1]);
   expect(new Set(families)).toEqual(new Set(['Sora', 'Manrope']));

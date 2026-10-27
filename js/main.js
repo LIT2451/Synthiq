@@ -20,6 +20,8 @@ export function initMenu(root = document) {
   const isOpen = () => panel.classList.contains('is-open');
   function setOpen(open, { restoreFocus = false } = {}) {
     panel.classList.toggle('is-open', open);
+    // Locks page scroll behind the overlay (css: html.menu-open).
+    if (root.documentElement) root.documentElement.classList.toggle('menu-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     if (label) label.textContent = open ? 'Close menu' : 'Open menu';
     if (open) {

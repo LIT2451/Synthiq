@@ -990,9 +990,19 @@ ol.timeline::before {
   position: sticky;
   top: 0;
   z-index: 50;
+  isolation: isolate;
+  border-bottom: 1px solid var(--line);
+}
+/* The blur lives on a pseudo-element: backdrop-filter on the header itself would make it the
+   containing block for the fixed mobile panel, shrinking the overlay to the header's height. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgb(6 17 28 / 0.86);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
+  pointer-events: none;
 }
 .header-inner {
   display: flex;
@@ -1085,18 +1095,32 @@ ol.timeline::before {
 }
 .menu-toggle-bars {
   position: relative;
+  transition: background-color 150ms var(--ease);
 }
 .menu-toggle-bars::before,
 .menu-toggle-bars::after {
   content: "";
   position: absolute;
   left: 0;
+  transition: top 200ms var(--ease), transform 200ms var(--ease);
 }
 .menu-toggle-bars::before {
   top: -6px;
 }
 .menu-toggle-bars::after {
   top: 6px;
+}
+/* Open: the outer bars meet in the middle and cross into an X. */
+.menu-toggle[aria-expanded="true"] .menu-toggle-bars {
+  background-color: transparent;
+}
+.menu-toggle[aria-expanded="true"] .menu-toggle-bars::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] .menu-toggle-bars::after {
+  top: 0;
+  transform: rotate(-45deg);
 }
 .menu-close {
   font-size: 1.6rem;
@@ -1134,7 +1158,9 @@ ol.timeline::before {
   .js .menu-close {
     display: inline-flex;
   }
-  .js .mobile-panel.is-open {
+  /* Always laid out as a full-viewport overlay; closed it is invisible and inert to clicks and
+     focus (visibility flips only after the fade-out finishes). */
+  .js .mobile-panel {
     position: fixed;
     inset: 0;
     z-index: 60;
@@ -1144,6 +1170,36 @@ ol.timeline::before {
     padding: 20px 24px 32px;
     overflow-y: auto;
     background: var(--bg);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
+    transition: opacity 240ms var(--ease), transform 240ms var(--ease), visibility 0s linear 240ms;
+  }
+  .js .mobile-panel.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+  .js .mobile-nav li {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 240ms var(--ease), transform 240ms var(--ease);
+  }
+  .js .mobile-panel.is-open .mobile-nav li {
+    opacity: 1;
+    transform: none;
+  }
+  .js .mobile-panel.is-open .mobile-nav li:nth-child(1) { transition-delay: 60ms; }
+  .js .mobile-panel.is-open .mobile-nav li:nth-child(2) { transition-delay: 100ms; }
+  .js .mobile-panel.is-open .mobile-nav li:nth-child(3) { transition-delay: 140ms; }
+  .js .mobile-panel.is-open .mobile-nav li:nth-child(4) { transition-delay: 180ms; }
+  .js .mobile-panel.is-open .mobile-nav li:nth-child(5) { transition-delay: 220ms; }
+  /* Page behind the open menu stays put. */
+  html.menu-open {
+    overflow: hidden;
   }
   .mobile-panel-head {
     display: flex;

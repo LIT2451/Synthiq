@@ -42,6 +42,27 @@ describe('initMenu', () => {
     expect(menu.isOpen()).toBe(false);
   });
 
+  test('locks page scroll with html.menu-open while open, whichever way it closes', () => {
+    const w = dom(MENU);
+    const d = w.document;
+    const html = d.documentElement;
+    const menu = initMenu(d);
+    expect(html.classList.contains('menu-open')).toBe(false);
+    d.querySelector('.menu-toggle').click();
+    expect(html.classList.contains('menu-open')).toBe(true);
+    d.querySelector('.menu-toggle').click();
+    expect(html.classList.contains('menu-open')).toBe(false);
+    menu.open();
+    d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    expect(html.classList.contains('menu-open')).toBe(false);
+    menu.open();
+    d.querySelector('.menu-close').click();
+    expect(html.classList.contains('menu-open')).toBe(false);
+    menu.open();
+    d.querySelector('#mobile-menu a').click();
+    expect(html.classList.contains('menu-open')).toBe(false);
+  });
+
   test('returns null when the page has no menu', () => {
     expect(initMenu(dom('<p>x</p>').document)).toBeNull();
   });
