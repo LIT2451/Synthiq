@@ -154,3 +154,12 @@
 - Kiểm chứng: `npm test -- logo` → exit 0 (Duration  67ms (import 39%, transform 24%, tests 22%, worker 15%, environment 1%)) [spec-done tự chạy lại]
 - Requirements: 2.5, 2.7
 - Commit: `spec(synthiq-site): 4.2 Viết scripts/lib/logo.mjs…`
+
+## 4.3 Thêm devDependency `sharp` chốt cứng phiên bản, script `assets` trong `package.json`; viết `scripts/assets.mjs` đọc `Logo/Logo.png` (không sửa file gốc), trim, tách mark/wordmark, đổi màu wordmark khi < 3:1, sinh `images/logo-full.{webp,png}`, `logo-mark.{webp,png}`, `logo-mark-hero.webp`, `favicon-32.png`, `apple-touch-icon.png`, `og.png` 1200×630 (nền `--bg`, lưới isometric, logo đầy đủ, tagline); lỗi theo bảng "Xử lý lỗi" — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:18
+- File đã đổi: `images/apple-touch-icon.png`, `images/favicon-32.png`, `images/logo-full.png`, `images/logo-full.webp`, `images/logo-mark-hero.webp`, `images/logo-mark.png`, `images/logo-mark.webp`, `images/og.png`, `package-lock.json`, `package.json`, `scripts/assets.mjs`, `scripts/lib/logo.mjs`, `tests/assets.test.mjs`
+- Kiểm chứng: `npm run assets && npm test -- assets` → exit 0 (Duration  108ms (tests 45%, import 45%, transform 7%, worker 3%)) [spec-done tự chạy lại]
+- Requirements: 2.5, 2.7, 6.2
+- Commit: `spec(synthiq-site): 4.3 Thêm devDependency sharp chốt cứng phiên bản…`
+- Ghi chú: Logo goc khong co dai trong suot giua bieu tuong va chu (dinh bieu tuong cham hang chu), nen tach bang thanh phan lien thong lon nhat khi findGap tra null. Tuong phan chu 1.05 -> 16.82.

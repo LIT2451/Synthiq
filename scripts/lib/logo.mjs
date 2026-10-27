@@ -66,6 +66,53 @@ export function recolorDark(pixels, light) {
   return out;
 }
 
+// Mask (1 = member) of the largest 8-connected group of pixels with alpha above `threshold`.
+// Used when the mark and wordmark share rows: the mark is one solid shape, letters are separate.
+export function largestComponent(pixels, width, height, threshold = 0) {
+  const label = new Int32Array(width * height).fill(-1);
+  let best = { id: -1, size: 0 };
+  const stack = [];
+  for (let start = 0; start < width * height; start += 1) {
+    if (label[start] !== -1 || pixels[start * 4 + 3] <= threshold) continue;
+    label[start] = start;
+    stack.push(start);
+    let size = 0;
+    while (stack.length) {
+      const p = stack.pop();
+      size += 1;
+      const x = p % width;
+      const y = (p - x) / width;
+      for (let dy = -1; dy <= 1; dy += 1) {
+        for (let dx = -1; dx <= 1; dx += 1) {
+          const nx = x + dx;
+          const ny = y + dy;
+          if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+          const q = ny * width + nx;
+          if (label[q] === -1 && pixels[q * 4 + 3] > threshold) {
+            label[q] = start;
+            stack.push(q);
+          }
+        }
+      }
+    }
+    if (size > best.size) best = { id: start, size };
+  }
+  const mask = new Uint8Array(width * height);
+  if (best.id !== -1) for (let i = 0; i < mask.length; i += 1) if (label[i] === best.id) mask[i] = 1;
+  return mask;
+}
+
+// Copies of `pixels` split by `mask`: { inside, outside }, the other side made fully transparent.
+export function splitByMask(pixels, mask) {
+  const inside = Uint8Array.from(pixels);
+  const outside = Uint8Array.from(pixels);
+  for (let i = 0; i < mask.length; i += 1) {
+    if (mask[i]) outside[i * 4 + 3] = 0;
+    else inside[i * 4 + 3] = 0;
+  }
+  return { inside, outside };
+}
+
 // Alpha-weighted average colour as "#rrggbb", or null for a fully transparent buffer.
 export function averageColor(pixels) {
   let sum = 0;
