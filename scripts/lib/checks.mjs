@@ -90,6 +90,61 @@ const decodeEntities = (s) => s.replace(/&(#\d+|#x[\da-f]+|[a-z]+);/gi, (m, e) =
   return String.fromCodePoint(e[1].toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : Number(e.slice(1)));
 });
 
+// Attributes of every <tag ...> as plain objects with decoded values.
+function tagsOf(html, name) {
+  const out = [];
+  for (const m of html.matchAll(new RegExp(`<${name}\\b([^>]*)>`, 'gi'))) {
+    const attrs = {};
+    for (const a of m[1].matchAll(/([a-z][\w:-]*)\s*=\s*("([^"]*)"|'([^']*)')/gi)) {
+      attrs[a[1].toLowerCase()] = decodeEntities(a[3] ?? a[4]);
+    }
+    out.push(attrs);
+  }
+  return out;
+}
+
+const META_TITLE_MAX = 60;
+const META_DESC_MIN = 70;
+const META_DESC_MAX = 160;
+
+// Head metadata required by 6.1/6.2 for the page built into `file`; `url` is https://<domain>.
+export function checkPageMeta(html, { url, file }) {
+  const errors = [];
+  const canonical = file === 'index.html' ? `${url}/` : `${url}/${file}`;
+
+  const lang = tagsOf(html, 'html')[0]?.lang;
+  if (lang !== 'en') errors.push(`<html lang> must be "en" (found ${lang === undefined ? 'none' : `"${lang}"`})`);
+
+  const titleMatch = /<title>([\s\S]*?)<\/title>/i.exec(html);
+  const title = titleMatch ? decodeEntities(titleMatch[1]).trim() : '';
+  if (!title) errors.push('missing <title>');
+  else if (title.length > META_TITLE_MAX) errors.push(`<title> is ${title.length} characters (max ${META_TITLE_MAX})`);
+
+  const metas = tagsOf(html, 'meta');
+  const meta = (key, value) => metas.find((m) => m[key] === value)?.content?.trim();
+
+  const desc = meta('name', 'description');
+  if (desc === undefined) errors.push('missing meta description');
+  else if (desc.length < META_DESC_MIN || desc.length > META_DESC_MAX) {
+    errors.push(`meta description is ${desc.length} characters (need ${META_DESC_MIN}-${META_DESC_MAX})`);
+  }
+
+  const link = tagsOf(html, 'link').find((l) => (l.rel ?? '').split(/\s+/).includes('canonical'));
+  if (!link?.href) errors.push('missing canonical link');
+  else if (link.href !== canonical) errors.push(`canonical is ${link.href} (expected ${canonical})`);
+
+  for (const prop of ['og:title', 'og:description', 'og:url', 'og:image']) {
+    if (!meta('property', prop)) errors.push(`missing ${prop}`);
+  }
+  const ogUrl = meta('property', 'og:url');
+  if (ogUrl && ogUrl !== canonical) errors.push(`og:url is ${ogUrl} (expected ${canonical})`);
+  const ogImage = meta('property', 'og:image');
+  if (ogImage && !(ogImage.startsWith(`${url}/`) && /\.(png|jpe?g)$/i.test(ogImage))) {
+    errors.push(`og:image must be a PNG/JPEG on ${url} (found ${ogImage})`);
+  }
+  return errors;
+}
+
 // mailto:/tel: links must match the configured email/phone, and must not exist when unset.
 export function checkContactLinks(html, config) {
   const errors = [];

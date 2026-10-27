@@ -56,7 +56,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - fast-check trong `tests/refs.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- refs` pass
     - _Kiểm chứng: Requirements 5.1_
-  - [ ] 3.5 Viết `checkPageMeta` trong `checks.mjs`
+  - [x] 3.5 Viết `checkPageMeta` trong `checks.mjs`
     - Kiểm title (1–60 ký tự), description (70–160), canonical trên domain, `og:title/description/url/image`, `lang="en"`
     - Kiểm chứng: `npm test -- checks` pass
     - _Requirements: 6.1, 6.2, 6.4_

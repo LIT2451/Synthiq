@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { findTraces, findBadFileNames, findMissingRefs, checkContactLinks } from '../scripts/lib/checks.mjs';
+import { findTraces, findBadFileNames, findMissingRefs, checkContactLinks, checkPageMeta } from '../scripts/lib/checks.mjs';
 
 // Test inputs are assembled from fragments so this file holds no literal trace.
 const j = (...p) => p.join('');
@@ -81,5 +81,45 @@ describe('checkContactLinks', () => {
       'line 1: mailto link present but no email is configured',
       'line 2: tel link present but no phone is configured',
     ]);
+  });
+});
+
+describe('checkPageMeta', () => {
+  const url = 'https://synthiqdigital.com';
+  const head = ({ lang = 'en', title = 'About | Synthiq', desc = 'x'.repeat(100), canonical = `${url}/about.html`,
+    ogUrl = canonical, ogImage = `${url}/images/og.png` } = {}) => `<!doctype html>
+<html lang="${lang}"><head>
+<title>${title}</title>
+<meta name="description" content="${desc}">
+<link rel="canonical" href="${canonical}">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:url" content="${ogUrl}">
+${ogImage ? `<meta property="og:image" content="${ogImage}">` : ''}
+</head></html>`;
+
+  test('accepts a complete head', () => {
+    expect(checkPageMeta(head(), { url, file: 'about.html' })).toEqual([]);
+    expect(checkPageMeta(head({ canonical: `${url}/` }), { url, file: 'index.html' })).toEqual([]);
+  });
+
+  test('counts decoded characters in the title', () => {
+    expect(checkPageMeta(head({ title: '&amp;'.repeat(60) }), { url, file: 'about.html' })).toEqual([]);
+  });
+
+  test.each([
+    [{ lang: 'vi' }, /lang/],
+    [{ title: '' }, /missing <title>/],
+    [{ title: 't'.repeat(61) }, /61 characters/],
+    [{ desc: 'd'.repeat(69) }, /description is 69/],
+    [{ desc: 'd'.repeat(161) }, /description is 161/],
+    [{ canonical: 'https://example.com/about.html' }, /canonical is/],
+    [{ ogUrl: `${url}/index.html` }, /og:url is/],
+    [{ ogImage: '' }, /missing og:image/],
+    [{ ogImage: 'images/og.png' }, /og:image must be/],
+  ])('reports %o', (opts, message) => {
+    expect(checkPageMeta(head(opts), { url, file: 'about.html' })).toEqual(
+      expect.arrayContaining([expect.stringMatching(message)]),
+    );
   });
 });

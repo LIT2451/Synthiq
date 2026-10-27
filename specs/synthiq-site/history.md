@@ -94,3 +94,11 @@
 - Requirements: 5.1
 - Property: P3 pass (200 lần)
 - Commit: `spec(synthiq-site): 3.4 Property P3: Kiểm tra link khớp mô hình`
+
+## 3.5 Viết `checkPageMeta` trong `checks.mjs` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:07
+- File đã đổi: `scripts/lib/checks.mjs`, `tests/checks.test.mjs`
+- Kiểm chứng: `npm test -- checks` → exit 0 (Duration  66ms (import 42%, tests 30%, transform 17%, worker 10%)) [spec-done tự chạy lại]
+- Requirements: 6.1, 6.2, 6.4
+- Commit: `spec(synthiq-site): 3.5 Viết checkPageMeta trong checks.mjs`
