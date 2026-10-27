@@ -33,3 +33,11 @@
 - Kiểm chứng: `npm test -- render` → exit 0 (Duration  92ms (tests 44%, import 35%, transform 13%, worker 7%)) [spec-done tự chạy lại]
 - Requirements: 3.2, 6.1
 - Commit: `spec(synthiq-site): 2.3 Unit test render.mjs: front matter thiếu…`
+
+## 2.4 Viết `scripts/lib/site.mjs` (`loadConfig`, `buildContext` với `url`, `year`, `phoneHref`, `hasContact`; `sitemapXml`, `robotsTxt`) và unit test `tests/site.test.mjs` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:02
+- File đã đổi: `scripts/lib/site.mjs`, `tests/site.test.mjs`
+- Kiểm chứng: `npm test -- site` → exit 0 (Duration  69ms (import 40%, tests 29%, transform 19%, worker 12%)) [spec-done tự chạy lại]
+- Requirements: 3.5, 3.6, 6.3
+- Commit: `spec(synthiq-site): 2.4 Viết scripts/lib/site.mjs (loadConfig…`

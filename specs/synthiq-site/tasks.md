@@ -24,7 +24,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - File `tests/render.test.mjs`; xoá `tests/smoke.test.mjs`
     - Kiểm chứng: `npm test -- render` pass
     - _Requirements: 3.2, 6.1_
-  - [ ] 2.4 Viết `scripts/lib/site.mjs` (`loadConfig`, `buildContext` với `url`, `year`, `phoneHref`, `hasContact`; `sitemapXml`, `robotsTxt`) và unit test `tests/site.test.mjs`
+  - [x] 2.4 Viết `scripts/lib/site.mjs` (`loadConfig`, `buildContext` với `url`, `year`, `phoneHref`, `hasContact`; `sitemapXml`, `robotsTxt`) và unit test `tests/site.test.mjs`
     - Test: config thiếu domain/name hoặc sai kiểu báo lỗi; `year` truyền cố định 2026; sitemap đúng 5 URL, bỏ trang có `sitemap: false`; robots có `Allow: /` và `Sitemap: https://synthiqdigital.com/sitemap.xml`
     - Kiểm chứng: `npm test -- site` pass
     - _Requirements: 3.5, 3.6, 6.3_
