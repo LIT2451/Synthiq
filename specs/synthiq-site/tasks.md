@@ -68,7 +68,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 3.7 Viết `sharedNgrams` (chuẩn hoá chữ thường, bỏ dấu câu) và `contrastRatio` trong `checks.mjs`; unit test `contrastRatio` (đen/trắng = 21, cặp token design ≥ 4.5)
     - Kiểm chứng: `npm test -- checks` pass
     - _Requirements: 3.1_
-  - [ ] 3.8 Property P7: Phát hiện câu trùng 8 từ
+  - [x] 3.8 Property P7: Phát hiện câu trùng 8 từ
     - *Với mọi* hai văn bản a, b: `sharedNgrams(a, b)` không rỗng khi và chỉ khi tồn tại dãy 8 từ liên tiếp (sau chuẩn hoá chữ thường, bỏ dấu câu) có trong cả hai; với b là a chèn thêm một đoạn 8 từ của a, luôn không rỗng.
     - fast-check trong `tests/ngrams.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- ngrams` pass

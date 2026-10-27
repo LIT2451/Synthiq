@@ -119,3 +119,12 @@
 - Kiểm chứng: `npm test -- checks` → exit 0 (Duration  71ms (import 40%, tests 35%, transform 16%, worker 9%)) [spec-done tự chạy lại]
 - Requirements: 3.1
 - Commit: `spec(synthiq-site): 3.7 Viết sharedNgrams (chuẩn hoá chữ thường, bỏ…`
+
+## 3.8 Property P7: Phát hiện câu trùng 8 từ — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:09
+- File đã đổi: `tests/ngrams.property.test.mjs`
+- Kiểm chứng: `npm test -- ngrams` → exit 0 (Duration  107ms (tests 71%, import 19%, transform 7%, worker 3%)) [spec-done tự chạy lại]
+- Requirements: 3.1
+- Property: P7 pass (300 lần)
+- Commit: `spec(synthiq-site): 3.8 Property P7: Phát hiện câu trùng 8 từ`
