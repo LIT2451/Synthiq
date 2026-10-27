@@ -52,11 +52,12 @@ Synthiq cần một website giới thiệu công ty phần mềm (outsourcing, t
 
 #### Tiêu chí chấp nhận
 
-1. Site Synthiq PHẢI dùng nền sáng làm nền chủ đạo và màu nhấn tông cam/san hô; không dùng `#0284c7`, `#09001D`, `#38bdf8`, `#0369a1` làm màu nhấn hay màu nền chủ đạo.
+1. Site Synthiq PHẢI dùng nền tối tông navy và màu nhấn teal lấy từ logo `Logo/Logo.png`; không dùng `#0284c7`, `#09001D`, `#38bdf8`, `#0369a1` làm màu nhấn hay màu nền chủ đạo.
 2. Site Synthiq PHẢI dùng cặp font khác Site nguồn: không dùng Nunito và Space Grotesk.
 3. Hero trang Home PHẢI có bố cục khác Site nguồn (Site nguồn: ảnh nền toàn màn hình, chữ căn trái 3 dòng); bố cục cụ thể được chốt ở design.
 4. Header, footer, card dịch vụ, card case study và nút PHẢI có kiểu dáng mới (hình khối, bo góc, đường viền, hiệu ứng hover) khác Site nguồn, áp dụng nhất quán trên cả 5 trang.
-5. Site Synthiq PHẢI có logo Synthiq dạng SVG (bản cho nền sáng và nền tối) và favicon tương ứng.
+5. Site Synthiq PHẢI dùng logo do chủ site cung cấp tại `Logo/Logo.png` (giữ nguyên hình, chỉ cắt viền trong suốt, đổi kích thước, nén, hoặc đổi màu phần chữ để đọc được trên nền tối), gồm bản đầy đủ (biểu tượng + chữ) và bản chỉ biểu tượng; favicon PHẢI tạo từ bản chỉ biểu tượng.
+7. NẾU phần chữ của logo gốc có độ tương phản dưới 3:1 với nền đặt logo, THÌ Site Synthiq PHẢI dùng bản logo đã đổi màu chữ sang sáng để tương phản tối thiểu 3:1.
 6. Site Synthiq PHẢI không dùng lại ảnh minh hoạ đặc trưng của Site nguồn (ảnh hero, ảnh about collage, mascot, mockup sản phẩm); ảnh thay thế lấy từ nguồn có giấy phép dùng thương mại hoặc minh hoạ SVG/CSS tự tạo.
 
 ### Requirement 3: Nội dung viết lại và thông tin thương hiệu Synthiq
@@ -124,6 +125,6 @@ Synthiq cần một website giới thiệu công ty phần mềm (outsourcing, t
 - [Giả định] Thông tin thương hiệu được khai báo tại một chỗ duy nhất để khi bổ sung chỉ cần sửa một nơi; cách làm chốt ở design.
 - [Giả định] Nội dung site bằng tiếng Anh như Site nguồn.
 - [Giả định] Giữ nền tảng HTML/CSS/JS tĩnh; được phép bỏ jQuery/Bootstrap nếu design chọn viết CSS/JS gọn hơn, miễn đáp ứng các requirement.
-- [Giả định] Logo là logo chữ "Synthiq" kèm biểu tượng hình học SVG đơn giản do em tạo.
 - [Giả định] Lĩnh vực bộ lọc Portfolio: AI & Automation, Telecom, Enterprise, Fintech (giữ ngành như Site nguồn, nội dung case study viết mới).
-- [Đã chốt] Hướng màu: nền sáng tối giản, màu nhấn cam/san hô (mã màu cụ thể chốt ở design, phải đạt độ tương phản theo yêu cầu phi chức năng 4).
+- [Đã chốt] Hướng màu: theo logo, nền tối navy, màu nhấn teal (mã màu cụ thể chốt ở design, phải đạt độ tương phản theo yêu cầu phi chức năng 4). Thay cho hướng nền sáng + cam/san hô đã chọn trước đó.
+- [Đã chốt] Logo: dùng `Logo/Logo.png` do chủ site cung cấp (PNG 1536×1024 nền trong suốt, biểu tượng teal/navy phía trên, chữ tối phía dưới), cắt và nén thành PNG/WebP, không vẽ lại.

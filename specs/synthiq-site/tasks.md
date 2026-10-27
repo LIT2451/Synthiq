@@ -11,8 +11,8 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `npm test` pass
     - _Requirements: 3.6_
 
-- [ ] 2. Template engine và build
-  - [ ] 2.1 Viết `scripts/lib/render.mjs`: `escapeHtml`, `parsePage` (front matter), `render` (`{{key}}`, đường dẫn chấm, `{{> partial}}` lồng tối đa 5 cấp, phát hiện vòng lặp, `{{#if}}…{{else}}…{{/if}}` lồng), ném `RenderError` khi thiếu key/partial
+- [-] 2. Template engine và build
+  - [x] 2.1 Viết `scripts/lib/render.mjs`: `escapeHtml`, `parsePage` (front matter), `render` (`{{key}}`, đường dẫn chấm, `{{> partial}}` lồng tối đa 5 cấp, phát hiện vòng lặp, `{{#if}}…{{else}}…{{/if}}` lồng), ném `RenderError` khi thiếu key/partial
     - Kiểm chứng: `npm test -- render` pass
     - _Requirements: 3.2, 3.3_
   - [ ] 2.2 Property P1: Render template đúng điều kiện và đầy đủ
@@ -81,12 +81,19 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - _Requirements: 2.1, 2.2, 4.1, 4.2, 5.1, 6.3, 6.4_
 
 - [ ] 4. Hệ thống giao diện
-  - [ ] 4.1 Tải font Fraunces (600) và Manrope (400/600/700) dạng woff2 subset latin vào `fonts/` kèm `fonts/OFL.txt`; viết `css/site.css` phần nền: `@font-face`, token màu theo design, reset, typography, container, nút pill, focus-visible, card, chip, section, reveal dưới `.js`, `prefers-reduced-motion`
+  - [ ] 4.1 Tải font Sora (600/700) và Manrope (400/600/700) dạng woff2 subset latin vào `fonts/` kèm `fonts/OFL.txt`; viết `css/site.css` phần nền: `@font-face`, token màu theo design, reset, typography, container, nút pill, focus-visible, card, chip, section, reveal dưới `.js`, `prefers-reduced-motion`
     - Kiểm chứng: `npm run check` không báo màu/font cấm, tương phản token đạt
     - _Requirements: 2.1, 2.2, 2.4, 5.6_
-  - [ ] 4.2 Vẽ `images/logo.svg`, `images/logo-light.svg`, `favicon.svg`; hoàn thiện `header.html` (logo, nav 5 mục với `aria-current`, CTA "Start a project", nút menu mobile, panel mobile) và `footer.html` (logo-light, tagline, Company, Services, liên hệ, mạng xã hội, `© {{year}} Synthiq`); CSS header/footer/menu mobile (< 992px)
-    - Kiểm chứng: `npm run build && npm test` pass
-    - _Requirements: 2.4, 2.5, 3.5, 5.2, 5.3_
+  - [ ] 4.2 Viết `scripts/lib/logo.mjs`: `findGap(rowAlphaCounts)` và `recolorDark(pixels, light)` (thuần, theo design "Xử lý logo và ảnh nhận diện") kèm unit test `tests/logo.test.mjs` trên ảnh raw nhỏ dựng tay (có/không có khoảng trống, pixel teal giữ nguyên, alpha giữ nguyên)
+    - Kiểm chứng: `npm test -- logo` pass
+    - _Requirements: 2.5, 2.7_
+  - [ ] 4.3 Thêm devDependency `sharp` chốt cứng phiên bản, script `assets` trong `package.json`; viết `scripts/assets.mjs` đọc `Logo/Logo.png` (không sửa file gốc), trim, tách mark/wordmark, đổi màu wordmark khi < 3:1, sinh `images/logo-full.{webp,png}`, `logo-mark.{webp,png}`, `logo-mark-hero.webp`, `favicon-32.png`, `apple-touch-icon.png`, `og.png` 1200×630 (nền `--bg`, lưới isometric, logo đầy đủ, tagline); lỗi theo bảng "Xử lý lỗi"
+    - Test `tests/assets.test.mjs` đọc ảnh đã sinh bằng sharp: đúng kích thước theo bảng đầu ra, mỗi file ≤ 400 KB, màu trung bình wordmark trong `logo-full.png` có `contrastRatio` ≥ 3 với `#06111C`
+    - Kiểm chứng: `npm run assets && npm test -- assets` pass
+    - _Requirements: 2.5, 2.7, 6.2_
+  - [ ] 4.4 Hoàn thiện `header.html` (`<picture>` logo-mark + chữ "Synthiq", nav 5 mục với `aria-current`, CTA "Start a project", nút menu mobile, panel mobile) và `footer.html` (`logo-full`, tagline, Company, Services, liên hệ, mạng xã hội, `© {{year}} Synthiq`); head layout thêm favicon, `apple-touch-icon`, `theme-color`, `og:image` = `https://synthiqdigital.com/images/og.png`; CSS header/footer/menu mobile (< 992px), drop-shadow + quầng sáng cho biểu tượng
+    - Kiểm chứng: `npm run build && npm test && npm run check` không báo link logo/favicon/og hỏng
+    - _Requirements: 2.4, 2.5, 3.5, 5.2, 5.3, 6.2_
 
 - [ ] 5. Hành vi phía trình duyệt
   - [ ] 5.1 Viết `js/main.js`: `initMenu` (toggle, `aria-expanded`, Esc, bấm link, trả focus), `filterCases` (thuần, export), `initFilter` (`aria-pressed`, `hidden`, vùng `aria-live`), `initReveal` (bỏ qua khi reduced motion hoặc không có IntersectionObserver); nạp ở `layout.html` với `type="module"`
@@ -112,7 +119,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - _Kiểm chứng: Requirements 5.4_
 
 - [ ] 6. Nội dung và minh hoạ các trang (copy tiếng Anh viết mới)
-  - [ ] 6.1 Trang Home `src/pages/index.html` + `src/partials/cta.html` + `images/hero-mesh.svg` và icon dịch vụ line SVG trong `images/icons/`; CSS hero chia đôi, dải chỉ số, bento, "Why Synthiq", chip tech
+  - [ ] 6.1 Trang Home `src/pages/index.html` + `src/partials/cta.html` + `images/iso-grid.svg` và icon dịch vụ line SVG teal trong `images/icons/`; CSS hero chia đôi (trái chữ, phải `logo-mark-hero` + lưới isometric + 3 chip số liệu), dải chỉ số, bento, "Why Synthiq", chip tech
     - Kiểm chứng: `npm run build && npm run check` không lỗi cho `index.html`
     - _Requirements: 1.2, 2.3, 2.6, 3.1_
   - [ ] 6.2 Trang About `src/pages/about.html`; CSS story 2 cột, giá trị, timeline 4 bước
@@ -136,10 +143,10 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 2.5, 3.5, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7_
 
 - [ ] 7. SEO, README và hoàn thiện
-  - [ ] 7.1 Thêm devDependency `sharp` chốt cứng phiên bản; viết `scripts/og.mjs` sinh `images/og.png` 1200×630 từ SVG nhận diện; đặt `og:image` trong layout trỏ `https://synthiqdigital.com/images/og.png`
-    - Kiểm chứng: `npm run og` tạo file 1200×630 ≤ 400 KB; `npm run check` exit 0
+  - [ ] 7.1 Cập nhật `package.json`: bỏ script `og` (đã thay bằng `assets` ở task 4.3) và đảm bảo `npm run` chỉ liệt kê `build`, `check`, `test`, `assets`
+    - Kiểm chứng: `npm test` pass
     - _Requirements: 6.2_
-  - [ ] 7.2 Viết `README.md`: giới thiệu, lệnh (`npm install`, `build`, `check`, `test`, `og`), cấu trúc, "HTML ở gốc là file build, sửa `src/`", mục "Missing brand info" liệt kê email/phone/address/taxId/hours/social và chỗ điền (`site.config.json`), mục "Sample content" liệt kê số liệu và 8 case study cần xác nhận
+  - [ ] 7.2 Viết `README.md`: giới thiệu, lệnh (`npm install`, `build`, `check`, `test`, `assets`), cấu trúc, "HTML ở gốc là file build, sửa `src/`", logo gốc ở `Logo/Logo.png` và chạy `npm run assets` khi đổi logo, mục "Missing brand info" liệt kê email/phone/address/taxId/hours/social và chỗ điền (`site.config.json`), mục "Sample content" liệt kê số liệu và 8 case study cần xác nhận
     - Kiểm chứng: `npm run check` exit 0 (README không chứa dấu vết)
     - _Requirements: 3.3, 3.4_
   - [ ] 7.3 Chạy toàn bộ `npm run build`, `npm test`, `npm run check`, `npm run check -- --source ../Landing-DVTechnic`; sửa mọi lỗi (câu trùng 8 từ, link, meta, dung lượng, file thừa)

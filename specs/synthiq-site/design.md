@@ -6,7 +6,7 @@
 
 Trang được viết dưới dạng template trong `src/`, một script build Node không phụ thuộc thư viện ghép partial (header, footer…) và chèn thông tin thương hiệu từ một file duy nhất `site.config.json`, rồi xuất HTML tĩnh ra gốc repo. HTML xuất ra được commit, GitHub Pages phục vụ trực tiếp từ gốc nhánh. Bộ kiểm tra (`scripts/check.mjs`) rà HTML đã build theo Requirement 4–6 và yêu cầu phi chức năng.
 
-Giao diện: nền sáng ấm, nhấn cam/san hô, tiêu đề serif (Fraunces) + chữ thân sans (Manrope), hero chia đôi có minh hoạ SVG, các section kiểu editorial/bento thay cho layout Bootstrap của Site nguồn.
+Giao diện: nền tối navy, nhấn teal lấy từ logo `Logo/Logo.png`, tiêu đề Sora + chữ thân Manrope, hero chia đôi với biểu tượng logo phát sáng trên lưới isometric, các section kiểu bento/console thay cho layout Bootstrap của Site nguồn. Logo gốc được script `scripts/assets.mjs` (sharp) cắt, tách biểu tượng, đổi màu chữ sang sáng và nén; script này cũng sinh favicon và ảnh OG.
 
 ## Kiến trúc
 
@@ -21,13 +21,14 @@ flowchart LR
   SM --> CK
   H -.nạp.-> CSS[css/site.css]
   H -.nạp.-> JS[js/main.js, js/contact.js]
-  OG[scripts/og.mjs] --> IMG[images/og.png]
+  LG[Logo/Logo.png] --> AS[scripts/assets.mjs]
+  AS --> IMG[images/logo-*.webp/png, favicon-32.png, apple-touch-icon.png, og.png]
 ```
 
 - Lệnh `npm run build`: đọc config + template, render, ghi 6 trang HTML và 3 file SEO ở gốc repo.
 - Lệnh `npm run check`: chạy Bộ kiểm tra trên kết quả build; in lỗi dạng `file:dòng: mô tả`, thoát mã 1 nếu có lỗi.
 - Lệnh `npm test`: vitest (unit + property-based + DOM test với jsdom).
-- Lệnh `npm run og`: sinh `images/og.png` 1200×630 từ SVG (chạy khi đổi nhận diện; ảnh được commit).
+- Lệnh `npm run assets`: từ `Logo/Logo.png` sinh logo, favicon và `images/og.png` 1200×630 (chạy khi đổi logo; ảnh kết quả được commit, `Logo/Logo.png` giữ nguyên làm file gốc).
 - Lúc chạy trên trình duyệt chỉ có 1 file CSS, 1 file JS chung (`js/main.js`) và `js/contact.js` riêng trang Contact; không có thư viện bên thứ ba.
 
 ## Thành phần và giao diện
@@ -73,19 +74,42 @@ export function escapeHtml(s)                   // => string
 - Vị trí: `scripts/build.mjs`, dùng `scripts/lib/render.mjs`, `scripts/lib/site.mjs`.
 - `site.mjs`: `loadConfig(path)` (validate kiểu, domain bắt buộc), `buildContext(config, pageMeta)`, `sitemapXml(url, paths)`, `robotsTxt(url)`.
 - Mỗi trang render qua `src/partials/layout.html` (head SEO, header, `{{> body}}`, footer). Ghi file theo `path` trong front matter: `/` → `index.html`, `/about` → `about.html`… Giữ URL `.html` như Site nguồn.
-- Head mỗi trang: `<html lang="en">`, title, meta description, canonical `{{url}}/{{file}}` (Home: `{{url}}/`), `og:title/description/url/image/type`, `twitter:card`, favicon SVG, preload 2 font.
+- Head mỗi trang: `<html lang="en">`, title, meta description, canonical `{{url}}/{{file}}` (Home: `{{url}}/`), `og:title/description/url/image/type`, `twitter:card`, favicon `images/favicon-32.png` + `apple-touch-icon`, `theme-color` = `--bg`, preload 2 font.
+
+### Xử lý logo và ảnh nhận diện
+
+- Vị trí: `scripts/assets.mjs` (CLI), logic thuần trong `scripts/lib/logo.mjs`; dùng `sharp` (devDependency, chốt cứng phiên bản khi cài).
+- Logo gốc (đã khảo sát): PNG 1536×1024 RGBA, nền trong suốt, vùng có nội dung khoảng x 234–1296, y 56–994; biểu tượng khối isometric teal (`#00E0C0`…`#00B0A0`) + navy (`#001020`…`#004080`) ở trên, chữ "Synthiq" màu tối ở dưới, ngăn cách bằng dải hàng trong suốt.
+- Các bước:
+  1. `trim` viền trong suốt.
+  2. `findGap(rowAlphaCounts)` (thuần): tìm dải hàng trong suốt dài nhất nằm giữa hai vùng có nội dung → tách `mark` (phía trên) và `wordmark` (phía dưới). Không tìm thấy dải → dừng, exit 1.
+  3. Đo màu trung bình (theo alpha) của wordmark, `contrastRatio` với `--bg`. Nếu < 3:1 (2.7): `recolorDark(pixels, light)` (thuần) đổi RGB các pixel có độ sáng tương đối < 0.2 sang `--ink`, giữ alpha; pixel teal giữ nguyên.
+  4. Ghép lại `mark` + `wordmark` đã xử lý thành logo đầy đủ.
+- Đầu ra trong `images/`:
+
+| File | Kích thước | Dùng cho |
+|---|---|---|
+| `logo-full.webp`, `logo-full.png` | cao 160px (hiển thị 80px, 2x) | hero nhỏ, footer, 404 |
+| `logo-mark.webp`, `logo-mark.png` | 96×96 | header (kèm chữ "Synthiq" bằng HTML), loader |
+| `favicon-32.png` | 32×32 | favicon |
+| `apple-touch-icon.png` | 180×180, nền `--bg` | iOS |
+| `logo-mark-hero.webp` | 640px | biểu tượng lớn ở hero |
+| `og.png` | 1200×630 | `og:image`: nền `--bg`, lưới isometric, logo đầy đủ, tagline |
+
+- Dùng `<picture>` với WebP + PNG fallback, `width`/`height` cố định để tránh layout shift.
+- Biểu tượng có mảng navy gần màu nền: CSS thêm `filter: drop-shadow(0 0 1px rgb(255 255 255 / .35)) drop-shadow(0 0 24px rgb(25 211 181 / .25))` và quầng sáng radial phía sau; không sửa pixel biểu tượng (giữ nguyên hình theo 2.5).
 
 ### Trang và partial
 
 - Vị trí: `src/pages/{index,about,services,portfolio,contact,404}.html`, `src/partials/{layout,header,footer,cta,contact-items}.html`.
-- `header.html`: logo, nav 5 mục (mục active qua `nav` trong front matter → `aria-current="page"` + class `is-active`), nút "Start a project" → `contact.html`, nút mở menu mobile (`aria-controls`, `aria-expanded`), panel mobile chứa nav + `{{> contact-items}}`.
+- `header.html`: `logo-mark` + chữ "Synthiq" (HTML, font Sora), nav 5 mục (mục active qua `nav` trong front matter → `aria-current="page"` + class `is-active`), nút "Start a project" → `contact.html`, nút mở menu mobile (`aria-controls`, `aria-expanded`), panel mobile chứa nav + `{{> contact-items}}`.
 - `contact-items.html`: mỗi mục email/phone/address/taxId/hours bọc trong `{{#if}}`; dùng chung cho header mobile, footer, trang Contact.
-- `footer.html`: logo + tagline, Company links, Services links, khối liên hệ (chỉ khi `hasContact`), mạng xã hội (chỉ mục có giá trị), `© {{year}} Synthiq`.
+- `footer.html`: `logo-full` + tagline, Company links, Services links, khối liên hệ (chỉ khi `hasContact`), mạng xã hội (chỉ mục có giá trị), `© {{year}} Synthiq`.
 - Nội dung từng trang (copy tiếng Anh viết mới, đánh dấu mẫu trong README):
 
 | Trang | Section (thứ tự) |
 |---|---|
-| Home | Hero chia đôi (eyebrow, H1 serif, mô tả, 2 CTA, minh hoạ SVG "signal mesh" + 3 chip số liệu); dải 4 chỉ số; 3 dịch vụ chính dạng bento; "Why Synthiq" 3 điểm đánh số lớn; tech stack 8 chip; CTA |
+| Home | Hero chia đôi (trái: eyebrow, H1 Sora, mô tả, 2 CTA; phải: `logo-mark-hero` phát sáng trên lưới isometric SVG + 3 chip số liệu nổi); dải 4 chỉ số; 3 dịch vụ chính dạng bento; "Why Synthiq" 3 điểm đánh số lớn; tech stack 8 chip; CTA |
 | About | Page header; "Our story" 2 cột; 4 chỉ số; Mission + 4 giá trị; quy trình 4 bước dạng timeline ngang (dọc trên mobile); CTA |
 | Services | Page header; 6 dịch vụ (tiêu đề, mô tả, 3 ý); 2 giải pháp tiêu biểu "Synthiq Relay" (nền tảng telecom/messaging) và "Synthiq Pilot" (AI agent cho vận hành); 3 mô hình hợp tác; CTA |
 | Portfolio | Page header; dải số liệu; 1 dự án nổi bật; bộ lọc All / AI & Automation / Telecom / Enterprise / Fintech; 8 case study (2 mỗi lĩnh vực); CTA |
@@ -132,19 +156,22 @@ export function contrastRatio(hexA, hexB)              // => number
 
 | Token | Giá trị | Dùng cho |
 |---|---|---|
-| `--bg` | `#FFFAF5` | nền trang |
-| `--surface` | `#FFFFFF` | card |
-| `--tint` | `#FFE9DF` | nền section nhấn, chip |
-| `--ink` | `#1F1A17` | chữ chính, nền footer |
-| `--muted` | `#5C524C` | chữ phụ (≥ 4.5:1 trên `--bg`) |
-| `--accent` | `#C2410C` | nút, link, chữ nhấn (≥ 4.5:1 với trắng) |
-| `--accent-soft` | `#FF7A59` | hình trang trí, gạch chân, không dùng cho chữ |
-| `--line` | `#EADFD6` | viền 1px |
+| `--bg` | `#06111C` | nền trang (navy rất đậm) |
+| `--surface` | `#0C1C2C` | card |
+| `--surface-2` | `#11283C` | card nổi, input |
+| `--line` | `#1D3A52` | viền 1px |
+| `--ink` | `#E8F3F6` | chữ chính |
+| `--muted` | `#9AB2C1` | chữ phụ (≥ 4.5:1 trên `--bg` và `--surface`) |
+| `--accent` | `#19D3B5` | link, chữ nhấn, nền nút chính (teal của logo) |
+| `--on-accent` | `#04121C` | chữ trên nút teal (≥ 4.5:1 với `--accent`) |
+| `--navy` | `#0B3A66` | gradient, quầng sáng (lấy từ mảng navy của logo) |
 
-- Font tự host trong `fonts/` (woff2, subset latin, giấy phép OFL): Fraunces (tiêu đề, 600) và Manrope (400/600/700), `font-display: swap`.
-- Ngôn ngữ hình khối: card bo 20px, viền 1px `--line`, không đổ bóng đậm; hover nâng 2px + viền chuyển `--accent`; nút dạng pill; số lớn serif; đường gạch san hô dưới từ khoá trong tiêu đề. Breakpoint 640/992/1280px; container tối đa 1200px.
-- Minh hoạ: SVG tự vẽ trong `images/` (hero mesh, icon dịch vụ dạng line, thumbnail case study dạng pattern hình học theo lĩnh vực). Không dùng ảnh chụp.
-- Logo: `images/logo.svg` (chữ ink) và `images/logo-light.svg` (chữ trắng cho footer), biểu tượng là chữ "S" ghép từ hai cung tròn san hô; `favicon.svg` ở gốc.
+- Cặp tương phản bắt buộc (khai báo trong `checks.mjs`): `--ink`/`--bg`, `--ink`/`--surface`, `--muted`/`--bg`, `--muted`/`--surface`, `--accent`/`--bg`, `--on-accent`/`--accent`, tất cả ≥ 4.5:1.
+- Font tự host trong `fonts/` (woff2, subset latin, giấy phép OFL): Sora (tiêu đề, 600/700) và Manrope (400/600/700), `font-display: swap`.
+- Ngôn ngữ hình khối: card bo 16px, viền 1px `--line`, nền `--surface` có gradient mờ navy ở góc; hover viền chuyển teal + quầng sáng teal nhẹ; nút chính pill teal chữ `--on-accent`, nút phụ viền teal; số liệu lớn Sora màu teal; nhãn eyebrow dạng `// SECTION` font monospace hệ thống; lưới isometric mờ làm nền hero và băng CTA (gợi lại khối của logo). Breakpoint 640/992/1280px; container tối đa 1200px.
+- Khác biệt với Site nguồn (cũng nền tối): Site nguồn dùng ảnh nền chụp, nhấn xanh dương `#0284c7`, font Nunito/Space Grotesk, chữ hero căn trái trên ảnh; Synthiq dùng nền phẳng navy + lưới SVG, nhấn teal, font Sora/Manrope, hero chia đôi có biểu tượng logo.
+- Minh hoạ: SVG tự vẽ trong `images/` (lưới isometric, icon dịch vụ dạng line teal, thumbnail case study dạng pattern hình học theo lĩnh vực). Không dùng ảnh chụp.
+- Logo: các file sinh từ `Logo/Logo.png` theo mục "Xử lý logo và ảnh nhận diện".
 - Chuyển động: reveal (fade + dịch 12px, 400ms), hover; `@media (prefers-reduced-motion: reduce)` tắt mọi transition/animation.
 
 ## Mô hình dữ liệu
@@ -196,8 +223,9 @@ sequenceDiagram
 | 1.8 | Ví dụ | `404.html` tồn tại, có link `index.html` |
 | 2.1, 2.2 | Ví dụ | check.mjs: `css/site.css` không chứa các mã màu/font cấm |
 | 2.3, 2.4 | Không tự động hoá được | Thẩm mỹ, duyệt bằng mắt so với Site nguồn |
-| 2.5 | Ví dụ | File logo SVG, favicon tồn tại và được tham chiếu |
+| 2.5 | Ví dụ | Test assets: file logo/favicon đúng kích thước, ≤ 400 KB, tỉ lệ khung mark khớp vùng trên khoảng trống của logo gốc; DOM test: được tham chiếu |
 | 2.6 | Ví dụ | `images/` chỉ chứa file do spec tạo (danh sách cố định) |
+| 2.7 | Ví dụ | Test assets: màu trung bình wordmark trong `logo-full.png` có `contrastRatio` ≥ 3 với `--bg`; unit test `findGap`, `recolorDark` trên ảnh nhỏ dựng tay |
 | 3.1 | Property | → P7; chạy `check --source ../Landing-DVTechnic` |
 | 3.2, 3.3 | Property | → P1, P8 |
 | 3.4 | Ví dụ | README có mục "Sample content" |
@@ -261,6 +289,8 @@ _Kiểm chứng: Requirements 6.1, 6.2, 6.4_
 
 | Tình huống | Cách phát hiện | Phản hồi / mã lỗi | Requirement |
 |---|---|---|---|
+| `Logo/Logo.png` không tồn tại, không có alpha, hoặc không tìm thấy khoảng trống tách biểu tượng/chữ | `assets.mjs`, `findGap` | In lỗi cụ thể, exit 1, không ghi đè ảnh cũ | 2.5 |
+| Wordmark sau khi đổi màu vẫn < 3:1 | `assets.mjs` đo lại | In tỉ lệ đo được, exit 1 | 2.7 |
 | Config thiếu `domain`/`name` hoặc sai kiểu | `loadConfig` | Build dừng, in `site.config.json: <trường> ...`, exit 1 | 3.6 |
 | Template tham chiếu key/partial không tồn tại, partial lặp vòng | `render` ném `RenderError` | Build dừng, in tên trang + key, exit 1 | 3.2 |
 | Front matter thiếu title/description/path | `parsePage` | Build dừng, exit 1 | 6.1 |
@@ -296,7 +326,10 @@ _Kiểm chứng: Requirements 6.1, 6.2, 6.4_
 - **Ẩn thông tin chưa có ở bước build, không bằng JS**: đúng cả khi tắt JS và với crawler.
 - **Form dùng `mailto:`**: không cần backend (ngoài phạm vi). Đánh đổi: phụ thuộc mail client của người dùng; khi có backend sau này chỉ cần thay `initContactForm`.
 - **Minh hoạ SVG thay ảnh chụp**: khác hẳn Site nguồn, nhẹ, không vướng bản quyền; đánh đổi là ít "đời thực" hơn.
-- **Ảnh OG sinh bằng sharp (devDependency, phiên bản chốt cứng khi cài)**: chỉ chạy khi đổi nhận diện, ảnh PNG được commit.
+- **Logo xử lý bằng sharp thay vì vẽ lại SVG** (theo chủ site chọn): giữ đúng pixel bản thiết kế; đánh đổi là ảnh raster (dùng bản 2x + WebP). Sharp (devDependency, chốt cứng phiên bản) cũng sinh favicon và OG; chỉ chạy khi đổi logo, ảnh kết quả được commit.
+- **Chỉ đổi màu wordmark, không đổi biểu tượng**: requirement 2.5 yêu cầu giữ hình; mảng navy của biểu tượng trên nền navy được tách bằng drop-shadow/quầng sáng CSS. Đánh đổi: phụ thuộc CSS filter (mọi trình duyệt hiện đại đều hỗ trợ).
+- **Nền tối dù Site nguồn cũng tối**: theo lựa chọn của chủ site để hợp logo; độ khác biệt dựa vào màu nhấn, font, hero, hình khối và minh hoạ (xem bảng token).
+- **Sora thay Fraunces**: serif ấm hợp nền sáng; trên nền tối kỹ thuật, Sora (geometric sans) hợp với khối isometric của logo hơn.
 - **Test stack vitest 5.0.5 + fast-check 4.10.2 + jsdom 30.1.3**: cùng phiên bản dự án `cortexia` đang dùng ổn định.
 
 ## Truy vết requirements
@@ -312,11 +345,12 @@ _Kiểm chứng: Requirements 6.1, 6.2, 6.4_
 | 1.7 | `src/pages/contact.html`, `contact-items.html` |
 | 1.8 | `src/pages/404.html` |
 | 2.1 | Token màu `css/site.css`; check màu cấm |
-| 2.2 | Fraunces + Manrope trong `fonts/`; check font cấm |
-| 2.3 | Hero chia đôi + SVG mesh |
+| 2.2 | Sora + Manrope trong `fonts/`; check font cấm |
+| 2.3 | Hero chia đôi + biểu tượng logo trên lưới isometric |
 | 2.4 | Ngôn ngữ hình khối trong `css/site.css`, partial dùng chung |
-| 2.5 | `images/logo.svg`, `images/logo-light.svg`, `favicon.svg` |
+| 2.5 | `scripts/assets.mjs` → `logo-full`, `logo-mark`, favicon từ `Logo/Logo.png` |
 | 2.6 | Minh hoạ SVG tự vẽ trong `images/` |
+| 2.7 | `recolorDark` + đo lại tương phản trong `assets.mjs` |
 | 3.1 | Copy mới trong `src/pages/*`; `sharedNgrams` + `--source` |
 | 3.2 | `site.config.json` + partial dùng chung |
 | 3.3 | `{{#if}}` trong `contact-items`/`footer`; README mục "Missing brand info" |
@@ -335,10 +369,10 @@ _Kiểm chứng: Requirements 6.1, 6.2, 6.4_
 | 5.6 | Class `.js` gate mọi trạng thái ẩn |
 | 5.7 | Nhánh `dataset.email === ""` |
 | 6.1 | `layout.html` head; `checkPageMeta` |
-| 6.2 | `images/og.png` từ `scripts/og.mjs` |
+| 6.2 | `images/og.png` từ `scripts/assets.mjs` |
 | 6.3 | `sitemapXml`, `robotsTxt`, CNAME từ build |
 | 6.4 | `checkPageMeta` trong `check.mjs` |
-| NFR 1 | Chỉ SVG + 1 PNG; check kích thước |
+| NFR 1 | SVG + ảnh logo/OG đã nén; check kích thước (`Logo/` là file gốc, không thuộc thư mục ảnh của site) |
 | NFR 2 | 1 CSS, 2 JS; check file không được tham chiếu |
 | NFR 3 | Không thư viện, font preload, SVG; đo Lighthouse thủ công |
 | NFR 4 | Token màu đạt tương phản, `contrastRatio`, alt, focus-visible |
@@ -361,7 +395,7 @@ _Kiểm chứng: Requirements 6.1, 6.2, 6.4_
 - `js/**`
 - `fonts/**`
 - `images/**`
-- `favicon.svg`
+- `Logo/**`
 - `index.html`
 - `about.html`
 - `services.html`
@@ -379,4 +413,5 @@ _Kiểm chứng: Requirements 6.1, 6.2, 6.4_
 - [Open Graph protocol](https://ogp.me/)
 - [fast-check](https://fast-check.dev/)
 - [WCAG 2.2: Contrast (Minimum) 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
-- [Fraunces](https://fonts.google.com/specimen/Fraunces), [Manrope](https://fonts.google.com/specimen/Manrope): SIL Open Font License
+- [Sora](https://fonts.google.com/specimen/Sora), [Manrope](https://fonts.google.com/specimen/Manrope): SIL Open Font License
+- [sharp](https://sharp.pixelplumbing.com/): `trim`, `extract`, `raw`, `composite`, `webp`
