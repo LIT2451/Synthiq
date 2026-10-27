@@ -145,6 +145,55 @@ export function checkPageMeta(html, { url, file }) {
   return errors;
 }
 
+// Lowercased words with punctuation removed (letters and digits of any script are kept).
+export function normalizeWords(text) {
+  return String(text)
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]+/gu, ' ')
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+const ngrams = (words, n) => {
+  const out = new Set();
+  for (let i = 0; i + n <= words.length; i += 1) out.add(words.slice(i, i + n).join(' '));
+  return out;
+};
+
+// Every run of n consecutive normalised words that occurs in both texts, in order of first use in `a`.
+export function sharedNgrams(a, b, n = 8) {
+  const inB = ngrams(normalizeWords(b), n);
+  return [...ngrams(normalizeWords(a), n)].filter((g) => inB.has(g));
+}
+
+// Token pairs [text, background] in css/site.css that must reach 4.5:1.
+export const CONTRAST_PAIRS = [
+  ['--ink', '--bg'],
+  ['--ink', '--surface'],
+  ['--muted', '--bg'],
+  ['--muted', '--surface'],
+  ['--accent', '--bg'],
+  ['--on-accent', '--accent'],
+];
+export const MIN_CONTRAST = 4.5;
+
+function luminance(hex) {
+  const m = /^#?([\da-f]{3}|[\da-f]{6})$/i.exec(String(hex).trim());
+  if (!m) throw new TypeError(`invalid hex colour "${hex}"`);
+  const full = m[1].length === 3 ? [...m[1]].map((c) => c + c).join('') : m[1];
+  const [r, g, b] = [0, 2, 4].map((i) => {
+    const c = parseInt(full.slice(i, i + 2), 16) / 255;
+    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+// WCAG 2.x contrast ratio between two #rgb/#rrggbb colours (1–21).
+export function contrastRatio(hexA, hexB) {
+  const [hi, lo] = [luminance(hexA), luminance(hexB)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+}
+
 // mailto:/tel: links must match the configured email/phone, and must not exist when unset.
 export function checkContactLinks(html, config) {
   const errors = [];

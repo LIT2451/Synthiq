@@ -111,3 +111,11 @@
 - Requirements: 6.1, 6.2, 6.4
 - Property: P9 pass (300 lần)
 - Commit: `spec(synthiq-site): 3.6 Property P9: Kiểm tra metadata khớp mô hình`
+
+## 3.7 Viết `sharedNgrams` (chuẩn hoá chữ thường, bỏ dấu câu) và `contrastRatio` trong `checks.mjs`; unit test `contrastRatio` (đen/trắng = 21, cặp token design ≥ 4.5) — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:09
+- File đã đổi: `scripts/lib/checks.mjs`, `tests/checks.test.mjs`
+- Kiểm chứng: `npm test -- checks` → exit 0 (Duration  71ms (import 40%, tests 35%, transform 16%, worker 9%)) [spec-done tự chạy lại]
+- Requirements: 3.1
+- Commit: `spec(synthiq-site): 3.7 Viết sharedNgrams (chuẩn hoá chữ thường, bỏ…`

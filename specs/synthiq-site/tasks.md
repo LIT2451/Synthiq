@@ -65,7 +65,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - fast-check trong `tests/meta.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- meta` pass
     - _Kiểm chứng: Requirements 6.1, 6.2, 6.4_
-  - [ ] 3.7 Viết `sharedNgrams` (chuẩn hoá chữ thường, bỏ dấu câu) và `contrastRatio` trong `checks.mjs`; unit test `contrastRatio` (đen/trắng = 21, cặp token design ≥ 4.5)
+  - [x] 3.7 Viết `sharedNgrams` (chuẩn hoá chữ thường, bỏ dấu câu) và `contrastRatio` trong `checks.mjs`; unit test `contrastRatio` (đen/trắng = 21, cặp token design ≥ 4.5)
     - Kiểm chứng: `npm test -- checks` pass
     - _Requirements: 3.1_
   - [ ] 3.8 Property P7: Phát hiện câu trùng 8 từ

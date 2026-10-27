@@ -1,5 +1,6 @@
 import { describe, test, expect } from 'vitest';
-import { findTraces, findBadFileNames, findMissingRefs, checkContactLinks, checkPageMeta } from '../scripts/lib/checks.mjs';
+import { findTraces, findBadFileNames, findMissingRefs, checkContactLinks, checkPageMeta,
+  sharedNgrams, contrastRatio, CONTRAST_PAIRS, MIN_CONTRAST } from '../scripts/lib/checks.mjs';
 
 // Test inputs are assembled from fragments so this file holds no literal trace.
 const j = (...p) => p.join('');
@@ -81,6 +82,46 @@ describe('checkContactLinks', () => {
       'line 1: mailto link present but no email is configured',
       'line 2: tel link present but no phone is configured',
     ]);
+  });
+});
+
+describe('sharedNgrams', () => {
+  const a = 'We design, build and run software that keeps your network moving every day.';
+
+  test('finds 8-word runs regardless of case and punctuation', () => {
+    const b = 'Intro. we DESIGN build -- and run software that keeps; your network!';
+    expect(sharedNgrams(a, b)).toEqual([
+      'we design build and run software that keeps',
+      'design build and run software that keeps your',
+      'build and run software that keeps your network',
+    ]);
+  });
+
+  test('ignores runs shorter than n words', () => {
+    expect(sharedNgrams(a, 'We design build and run software that')).toEqual([]);
+    expect(sharedNgrams(a, 'design build and run', 4)).toEqual(['design build and run']);
+  });
+});
+
+describe('contrastRatio', () => {
+  test('black on white is 21:1 and symmetric', () => {
+    expect(contrastRatio('#000000', '#ffffff')).toBeCloseTo(21, 5);
+    expect(contrastRatio('#fff', '#000')).toBeCloseTo(21, 5);
+    expect(contrastRatio('#19D3B5', '#19d3b5')).toBe(1);
+  });
+
+  test('rejects invalid colours', () => {
+    expect(() => contrastRatio('teal', '#000')).toThrow(/invalid hex/);
+  });
+
+  test('every required design token pair reaches 4.5:1', () => {
+    const tokens = {
+      '--bg': '#06111C', '--surface': '#0C1C2C', '--ink': '#E8F3F6',
+      '--muted': '#9AB2C1', '--accent': '#19D3B5', '--on-accent': '#04121C',
+    };
+    for (const [fg, bg] of CONTRAST_PAIRS) {
+      expect(contrastRatio(tokens[fg], tokens[bg]), `${fg} on ${bg}`).toBeGreaterThanOrEqual(MIN_CONTRAST);
+    }
   });
 });
 
