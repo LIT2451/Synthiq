@@ -281,3 +281,12 @@
 - Requirements: 6.2
 - Commit: `spec(synthiq-site): 7.1 Cập nhật package.json: bỏ script og (đã thay…`
 - Ghi chú: Bỏ script og; scripts còn build, check, assets, test
+
+## 7.2 Viết `README.md`: giới thiệu, lệnh (`npm install`, `build`, `check`, `test`, `assets`), cấu trúc, "HTML ở gốc là file build, sửa `src/`", logo gốc ở `Logo/Logo.png` và chạy `npm run assets` khi đổi logo, mục "Missing brand info" liệt kê email/phone/address/taxId/hours/social và chỗ điền (`site.config.json`), mục "Sample content" liệt kê số liệu và 8 case study cần xác nhận — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:29
+- File đã đổi: `README.md`
+- Kiểm chứng: `npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 3.3, 3.4
+- Commit: `spec(synthiq-site): 7.2 Viết README.md: giới thiệu, lệnh (npm install…`
+- Ghi chú: README: lệnh, cấu trúc, file build, logo, Missing brand info 8 khoá, Sample content số liệu và 8 case study
