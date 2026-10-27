@@ -208,3 +208,13 @@
 - Requirements: 5.4, 5.5
 - Property: P4 pass (500 lần)
 - Commit: `spec(synthiq-site): 5.4 Property P4: Validate form khớp mô hình`
+
+## 5.5 Property P6: Mailto round-trip — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:23
+- File đã đổi: `tests/mailto.property.test.mjs`
+- Kiểm chứng: `npm test -- mailto` → exit 0 (Duration  112ms (tests 52%, import 40%, transform 5%, worker 3%)) [spec-done tự chạy lại]
+- Requirements: 5.4
+- Property: P6 pass (400 lần)
+- Commit: `spec(synthiq-site): 5.5 Property P6: Mailto round-trip`
+- Ghi chú: Field một dòng không chứa xuống dòng (input), message nhiều dòng gồm CRLF

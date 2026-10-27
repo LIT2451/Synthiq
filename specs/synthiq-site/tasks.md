@@ -95,7 +95,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `npm run build && npm test && npm run check` không báo link logo/favicon/og hỏng
     - _Requirements: 2.4, 2.5, 3.5, 5.2, 5.3, 6.2_
 
-- [-] 5. Hành vi phía trình duyệt
+- [x] 5. Hành vi phía trình duyệt
   - [x] 5.1 Viết `js/main.js`: `initMenu` (toggle, `aria-expanded`, Esc, bấm link, trả focus), `filterCases` (thuần, export), `initFilter` (`aria-pressed`, `hidden`, vùng `aria-live`), `initReveal` (bỏ qua khi reduced motion hoặc không có IntersectionObserver); nạp ở `layout.html` với `type="module"`
     - Kiểm chứng: `npm test` pass
     - _Requirements: 1.6, 5.3, 5.6_
@@ -112,7 +112,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - fast-check trong `tests/validate.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- validate` pass
     - _Kiểm chứng: Requirements 5.4, 5.5_
-  - [ ] 5.5 Property P6: Mailto round-trip
+  - [x] 5.5 Property P6: Mailto round-trip
     - *Với mọi* địa chỉ nhận và dữ liệu form hợp lệ (unicode, xuống dòng, `&?=#%`): giải mã `subject` và `body` của `buildMailto` khôi phục chính xác name, email, company, service, message đã nhập.
     - fast-check trong `tests/mailto.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- mailto` pass
