@@ -85,3 +85,12 @@
 - Requirements: 5.1, 3.3
 - Property: P8 pass (200 lần)
 - Commit: `spec(synthiq-site): 3.3 Viết findMissingRefs và checkContactLinks…`
+
+## 3.4 Property P3: Kiểm tra link khớp mô hình — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:07
+- File đã đổi: `tests/refs.property.test.mjs`
+- Kiểm chứng: `npm test -- refs` → exit 0 (Duration  965ms (import 95%, tests 3%, transform 2%)) [spec-done tự chạy lại]
+- Requirements: 5.1
+- Property: P3 pass (200 lần)
+- Commit: `spec(synthiq-site): 3.4 Property P3: Kiểm tra link khớp mô hình`

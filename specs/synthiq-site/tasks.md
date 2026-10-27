@@ -51,7 +51,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 3.3 Viết `findMissingRefs` và `checkContactLinks` trong `checks.mjs`; bổ sung vào `tests/contact-items.property.test.mjs` assert `checkContactLinks` trả rỗng của P8
     - Kiểm chứng: `npm test -- contact-items` pass
     - _Requirements: 5.1, 3.3_
-  - [ ] 3.4 Property P3: Kiểm tra link khớp mô hình
+  - [x] 3.4 Property P3: Kiểm tra link khớp mô hình
     - *Với mọi* tập file tồn tại S và danh sách ref nội bộ R chèn vào HTML (kèm query `?`, hash `#`, `./`), `findMissingRefs` trả đúng các ref có đường dẫn chuẩn hoá không thuộc S; ref `mailto:`, `tel:`, `http(s)://`, `#…` không bao giờ bị báo thiếu.
     - fast-check trong `tests/refs.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- refs` pass
