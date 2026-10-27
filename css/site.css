@@ -670,6 +670,63 @@ button.chip[aria-pressed="true"] {
   }
 }
 
+/* ---------- Services ---------- */
+.service-card {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+.ticks {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+.ticks li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.ticks li::before {
+  content: "";
+  position: absolute;
+  top: 0.45em;
+  left: 0.2rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+.solution {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+.solution + .solution {
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+.solution-copy > * + * {
+  margin-top: 1rem;
+}
+.solution-copy p {
+  color: var(--muted);
+}
+.solution-art {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) * 1.5);
+}
+@media (min-width: 992px) {
+  .solution {
+    grid-template-columns: 1fr 1fr;
+  }
+  .solution-flip .solution-copy {
+    order: 2;
+  }
+}
+
 /* ---------- CTA band ---------- */
 .cta-panel {
   display: grid;

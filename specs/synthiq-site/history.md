@@ -236,3 +236,12 @@
 - Requirements: 1.3, 3.1
 - Commit: `spec(synthiq-site): 6.2 Trang About src/pages/about.html; CSS story 2…`
 - Ghi chú: About: story 2 cột, 4 chỉ số, mission + 4 giá trị, timeline 4 bước dọc trên mobile ngang từ 992px, CTA; page-header dùng chung
+
+## 6.3 Trang Services `src/pages/services.html` (6 dịch vụ × 3 ý, Synthiq Relay, Synthiq Pilot, 3 mô hình hợp tác) kèm minh hoạ SVG cho 2 giải pháp — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:26
+- File đã đổi: `css/site.css`, `images/solutions/pilot.svg`, `images/solutions/relay.svg`, `services.html`, `src/pages/services.html`
+- Kiểm chứng: `npm run build && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 1.4, 2.6, 3.1
+- Commit: `spec(synthiq-site): 6.3 Trang Services src/pages/services.html (6 dịch…`
+- Ghi chú: Services: 6 dịch vụ x 3 ý có id cho anchor footer, Synthiq Relay và Synthiq Pilot với SVG images/solutions, 3 mô hình hợp tác, CTA

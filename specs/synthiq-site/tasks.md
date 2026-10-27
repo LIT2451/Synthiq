@@ -125,7 +125,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 6.2 Trang About `src/pages/about.html`; CSS story 2 cột, giá trị, timeline 4 bước
     - Kiểm chứng: `npm run build && npm run check` không lỗi cho `about.html`
     - _Requirements: 1.3, 3.1_
-  - [ ] 6.3 Trang Services `src/pages/services.html` (6 dịch vụ × 3 ý, Synthiq Relay, Synthiq Pilot, 3 mô hình hợp tác) kèm minh hoạ SVG cho 2 giải pháp
+  - [x] 6.3 Trang Services `src/pages/services.html` (6 dịch vụ × 3 ý, Synthiq Relay, Synthiq Pilot, 3 mô hình hợp tác) kèm minh hoạ SVG cho 2 giải pháp
     - Kiểm chứng: `npm run build && npm run check` không lỗi cho `services.html`
     - _Requirements: 1.4, 2.6, 3.1_
   - [ ] 6.4 Trang Portfolio `src/pages/portfolio.html` (dải số liệu, 1 nổi bật, 5 nút lọc, 8 case `data-category` mỗi lĩnh vực 2) + thumbnail pattern SVG theo lĩnh vực trong `images/cases/`

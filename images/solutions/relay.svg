@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320" fill="none">
+  <!-- Synthiq Relay: traffic from apps flows through a routing core out to several carriers. -->
+  <rect width="480" height="320" rx="24" fill="#0C1C2C"/>
+  <path d="M0 40 L480 317 M0 317 L480 40" stroke="#19D3B5" stroke-opacity="0.07"/>
+  <g stroke="#1D3A52" stroke-width="2">
+    <path d="M110 90 C170 90 180 160 220 160"/>
+    <path d="M110 160 H220"/>
+    <path d="M110 230 C170 230 180 160 220 160"/>
+    <path d="M260 160 C300 160 310 70 370 70"/>
+    <path d="M260 160 C300 160 310 130 370 130"/>
+    <path d="M260 160 C300 160 310 190 370 190"/>
+    <path d="M260 160 C300 160 310 250 370 250"/>
+  </g>
+  <g stroke="#19D3B5" stroke-width="2" stroke-dasharray="6 10" stroke-linecap="round">
+    <path d="M110 90 C170 90 180 160 220 160"/>
+    <path d="M260 160 C300 160 310 130 370 130"/>
+    <path d="M260 160 C300 160 310 250 370 250"/>
+  </g>
+  <g fill="#11283C" stroke="#1D3A52" stroke-width="2">
+    <rect x="50" y="70" width="60" height="40" rx="10"/>
+    <rect x="50" y="140" width="60" height="40" rx="10"/>
+    <rect x="50" y="210" width="60" height="40" rx="10"/>
+    <circle cx="390" cy="70" r="20"/>
+    <circle cx="390" cy="130" r="20"/>
+    <circle cx="390" cy="190" r="20"/>
+    <circle cx="390" cy="250" r="20"/>
+  </g>
+  <circle cx="240" cy="160" r="44" fill="#19D3B5" fill-opacity="0.12"/>
+  <rect x="210" y="130" width="60" height="60" rx="16" fill="#0B3A66" stroke="#19D3B5" stroke-width="2"/>
+  <path d="M228 160 h24 M244 150 l10 10 -10 10" stroke="#19D3B5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#19D3B5">
+    <circle cx="390" cy="130" r="6"/>
+    <circle cx="390" cy="250" r="6"/>
+  </g>
+  <g fill="#9AB2C1">
+    <rect x="62" y="86" width="36" height="4" rx="2"/>
+    <rect x="62" y="156" width="36" height="4" rx="2"/>
+    <rect x="62" y="226" width="36" height="4" rx="2"/>
+  </g>
+</svg>
