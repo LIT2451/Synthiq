@@ -52,7 +52,7 @@ Site hiện chỉ có SVG minh hoạ và ẩn toàn bộ thông tin liên hệ v
 - [x] 2 Tạo `scripts/photos.json` (nguồn Unsplash đã kiểm tra), `scripts/photos.mjs` và lệnh `npm run photos`; chạy để sinh ảnh vào `images/photos/`
   - Kiểm chứng: `npm run photos` chạy xong, mỗi file ≤400 KB, tổng `images/` <6 MB
   - _Requirements: 1.4, 1.5_
-- [ ] 3 Chèn ảnh vào Home, About, Services, Portfolio, Contact và thêm CSS; bỏ SVG không còn dùng
+- [x] 3 Chèn ảnh vào Home, About, Services, Portfolio, Contact và thêm CSS; bỏ SVG không còn dùng
   - Kiểm chứng: `npm run build` và `npm run check` đạt
   - _Requirements: 1.4, 1.7_
 - [ ] 4 Thêm test ảnh (mỗi trang có ảnh, alt, kích thước, file tồn tại, giới hạn dung lượng)

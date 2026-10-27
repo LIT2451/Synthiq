@@ -15,3 +15,12 @@
 - Kiểm chứng: `npm run photos && test -z "$(find images -type f -size +400k)" && test "$(du -sk images | cut -f1)" -lt 6144` → exit 0 (images/photos/contact-office.jpg  48 KB) [spec-done tự chạy lại]
 - Requirements: 1.4, 1.5
 - Commit: `spec(synthiq-demo-content): 2 Tạo scripts/photos.json (nguồn Unsplash…`
+
+## 3 Chèn ảnh vào Home, About, Services, Portfolio, Contact và thêm CSS; bỏ SVG không còn dùng — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:51
+- File đã đổi: `about.html`, `contact.html`, `css/site.css`, `images/cases/ai.svg`, `images/cases/enterprise.svg`, `images/cases/fintech.svg`, `images/cases/telecom.svg`, `images/solutions/pilot.svg`, `images/solutions/relay.svg`, `index.html`, `portfolio.html`, `services.html`, `src/pages/about.html`, `src/pages/contact.html`, `src/pages/index.html`, `src/pages/portfolio.html`, `src/pages/services.html`
+- Kiểm chứng: `npm run build && npm run check` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 1.4, 1.7
+- Commit: `spec(synthiq-demo-content): 3 Chèn ảnh vào Home, About, Services…`
+- Ghi chú: Bo SVG cases/solutions khong con dung; chua xem duoc anh chup man hinh

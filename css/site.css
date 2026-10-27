@@ -446,8 +446,31 @@ button.chip[aria-pressed="true"] {
     url("../images/iso-grid.svg") center / 112px 64px,
     linear-gradient(160deg, var(--surface-2), var(--bg));
 }
+.hero-visual {
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(200deg, rgb(6 17 28 / 0.15) 30%, rgb(6 17 28 / 0.85));
+}
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+}
 .hero-mark {
-  width: min(60%, 300px);
+  position: absolute;
+  right: 6%;
+  bottom: 8%;
+  width: clamp(64px, 14%, 96px);
 }
 .hero-mark img {
   width: 100%;
@@ -492,6 +515,20 @@ button.chip[aria-pressed="true"] {
   .hero-visual {
     min-height: 480px;
   }
+}
+
+/* ---------- Photos ---------- */
+picture {
+  display: block;
+}
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) * 1.5);
+  background: var(--surface-2);
 }
 
 /* ---------- Metrics strip ---------- */
@@ -606,6 +643,10 @@ button.chip[aria-pressed="true"] {
 .story-body {
   color: var(--muted);
 }
+.story-photo {
+  margin-top: 1.75rem;
+  aspect-ratio: 3 / 2;
+}
 @media (min-width: 992px) {
   .story {
     grid-template-columns: 0.9fr 1.1fr;
@@ -713,10 +754,7 @@ button.chip[aria-pressed="true"] {
   color: var(--muted);
 }
 .solution-art {
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--line);
-  border-radius: calc(var(--radius) * 1.5);
+  aspect-ratio: 10 / 7;
 }
 @media (min-width: 992px) {
   .solution {
@@ -733,10 +771,11 @@ button.chip[aria-pressed="true"] {
   gap: clamp(1.5rem, 4vw, 2.5rem);
   align-items: center;
 }
-.featured-art,
+.featured-art {
+  aspect-ratio: 3 / 2;
+}
 .case-art {
-  width: 100%;
-  height: auto;
+  aspect-ratio: 8 / 5;
   border-radius: var(--radius-sm);
 }
 .featured-copy > * + * {
@@ -799,6 +838,9 @@ button.chip[aria-pressed="true"] {
 }
 .contact-side > * + * {
   margin-top: 2rem;
+}
+.contact-photo {
+  aspect-ratio: 4 / 3;
 }
 .contact-fallback {
   padding: 1rem 1.25rem;
