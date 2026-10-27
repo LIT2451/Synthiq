@@ -7,8 +7,7 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "assets": "node scripts/assets.mjs",
-    "test": "vitest run",
-    "og": "node scripts/og.mjs"
+    "test": "vitest run"
   },
   "devDependencies": {
     "fast-check": "4.10.2",

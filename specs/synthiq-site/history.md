@@ -272,3 +272,12 @@
 - Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 2.5, 3.5, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7
 - Commit: `spec(synthiq-site): 6.6 DOM test tests/pages.dom.test.mjs (jsdom, nạp…`
 - Ghi chú: 23 test jsdom trên HTML render năm 2026: cấu trúc 5 trang và 404, header/footer, menu, bộ lọc, form 3 nhánh, không JS và reduced motion
+
+## 7.1 Cập nhật `package.json`: bỏ script `og` (đã thay bằng `assets` ở task 4.3) và đảm bảo `npm run` chỉ liệt kê `build`, `check`, `test`, `assets` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:29
+- File đã đổi: `package.json`
+- Kiểm chứng: `npm test` → exit 0 (Duration  898ms (import 61%, tests 35%, transform 2%, worker 2%)) [spec-done tự chạy lại]
+- Requirements: 6.2
+- Commit: `spec(synthiq-site): 7.1 Cập nhật package.json: bỏ script og (đã thay…`
+- Ghi chú: Bỏ script og; scripts còn build, check, assets, test
