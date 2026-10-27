@@ -76,3 +76,12 @@
 - Requirements: 4.1, 4.2, 4.3, 4.4
 - Property: P2 pass (300 lần)
 - Commit: `spec(synthiq-site): 3.2 Property P2: Phát hiện mọi dấu vết`
+
+## 3.3 Viết `findMissingRefs` và `checkContactLinks` trong `checks.mjs`; bổ sung vào `tests/contact-items.property.test.mjs` assert `checkContactLinks` trả rỗng của P8 — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:06
+- File đã đổi: `scripts/lib/checks.mjs`, `tests/checks.test.mjs`, `tests/contact-items.property.test.mjs`
+- Kiểm chứng: `npm test -- contact-items` → exit 0 (Duration  374ms (import 82%, tests 16%, transform 1%)) [spec-done tự chạy lại]
+- Requirements: 5.1, 3.3
+- Property: P8 pass (200 lần)
+- Commit: `spec(synthiq-site): 3.3 Viết findMissingRefs và checkContactLinks…`

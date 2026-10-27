@@ -48,7 +48,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - fast-check trong `tests/traces.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- traces` pass
     - _Kiểm chứng: Requirements 4.1, 4.2, 4.3, 4.4_
-  - [ ] 3.3 Viết `findMissingRefs` và `checkContactLinks` trong `checks.mjs`; bổ sung vào `tests/contact-items.property.test.mjs` assert `checkContactLinks` trả rỗng của P8
+  - [x] 3.3 Viết `findMissingRefs` và `checkContactLinks` trong `checks.mjs`; bổ sung vào `tests/contact-items.property.test.mjs` assert `checkContactLinks` trả rỗng của P8
     - Kiểm chứng: `npm test -- contact-items` pass
     - _Requirements: 5.1, 3.3_
   - [ ] 3.4 Property P3: Kiểm tra link khớp mô hình

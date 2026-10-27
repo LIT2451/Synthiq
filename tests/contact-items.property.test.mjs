@@ -3,11 +3,12 @@ import fc from 'fast-check';
 import { readFileSync } from 'node:fs';
 import { render, escapeHtml } from '../scripts/lib/render.mjs';
 import { validateConfig, buildContext } from '../scripts/lib/site.mjs';
+import { checkContactLinks } from '../scripts/lib/checks.mjs';
 
 // P8: Thông tin liên hệ chỉ hiện khi có.
 // Với mọi config (mỗi trường liên hệ rỗng hoặc có giá trị): HTML build ra từ partial
-// contact-items/footer chứa nhãn và link mailto:/tel: của trường khi và chỉ khi trường có giá trị.
-// (Phần "checkContactLinks trả rỗng" được bổ sung ở task 3.3.)
+// contact-items/footer chứa nhãn và link mailto:/tel: của trường khi và chỉ khi trường có giá trị,
+// và checkContactLinks trả rỗng.
 
 const read = (name) => readFileSync(new URL(`../src/partials/${name}.html`, import.meta.url), 'utf8');
 const partials = { 'contact-items': read('contact-items'), footer: read('footer') };
@@ -53,6 +54,8 @@ test('P8: contact items appear if and only if configured', () => {
         expect(mailtos).toEqual(showContact && config.email ? [escapeHtml(config.email)] : []);
         expect(tels).toEqual(showContact && config.phone ? [config.phone.replace(/[^\d+]/g, '')] : []);
         for (const t of tels) expect(t).toMatch(/^\+?\d+$/);
+
+        expect(checkContactLinks(html, config)).toEqual([]);
 
         // No empty labels or empty links ever.
         expect(html).not.toMatch(/href=""/);

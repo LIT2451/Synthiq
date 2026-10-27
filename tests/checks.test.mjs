@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { findTraces, findBadFileNames } from '../scripts/lib/checks.mjs';
+import { findTraces, findBadFileNames, findMissingRefs, checkContactLinks } from '../scripts/lib/checks.mjs';
 
 // Test inputs are assembled from fragments so this file holds no literal trace.
 const j = (...p) => p.join('');
@@ -47,5 +47,39 @@ describe('findBadFileNames', () => {
       'css/site.css',
     ];
     expect(findBadFileNames(paths)).toEqual(paths.slice(1, 5));
+  });
+});
+
+describe('findMissingRefs', () => {
+  const files = new Set(['index.html', 'about.html', 'css/site.css', 'images/logo-mark.png', 'images/logo-mark.webp']);
+  const exists = (p) => files.has(p);
+
+  test('reports missing internal refs with line numbers', () => {
+    const html = [
+      '<link href="css/site.css?v=1">',
+      '<a href="about.html#team">About</a>',
+      '<a href="./missing.html">x</a>',
+      '<img src="images/nope.png" alt="">',
+      '<source srcset="images/logo-mark.webp 1x, images/logo-mark@2x.webp 2x">',
+      '<a href="https://example.com">e</a><a href="#main">s</a><a href="mailto:a@b.co">m</a><a href="tel:+1">t</a>',
+      '<a href="/">home</a>',
+    ].join('\n');
+    expect(findMissingRefs(html, 'index.html', exists)).toEqual([
+      { line: 3, ref: './missing.html' },
+      { line: 4, ref: 'images/nope.png' },
+      { line: 5, ref: 'images/logo-mark@2x.webp' },
+    ]);
+  });
+});
+
+describe('checkContactLinks', () => {
+  test('accepts matching links and flags mismatches or unset fields', () => {
+    const html = '<a href="mailto:hello@synthiqdigital.com?subject=Hi">e</a>\n<a href="tel:+84900111222">p</a>';
+    expect(checkContactLinks(html, { email: 'hello@synthiqdigital.com', phone: '+84 900 111 222' })).toEqual([]);
+    expect(checkContactLinks(html, { email: 'other@synthiqdigital.com', phone: '+84 900 111 222' })).toHaveLength(1);
+    expect(checkContactLinks(html, { email: '', phone: '' })).toEqual([
+      'line 1: mailto link present but no email is configured',
+      'line 2: tel link present but no phone is configured',
+    ]);
   });
 });
