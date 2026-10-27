@@ -24,3 +24,11 @@
 - Requirements: 1.4, 1.7
 - Commit: `spec(synthiq-demo-content): 3 Chèn ảnh vào Home, About, Services…`
 - Ghi chú: Bo SVG cases/solutions khong con dung; chua xem duoc anh chup man hinh
+
+## 4 Thêm test ảnh (mỗi trang có ảnh, alt, kích thước, file tồn tại, giới hạn dung lượng) — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:51
+- File đã đổi: `tests/photos.test.mjs`
+- Kiểm chứng: `npm test` → exit 0 (Duration  1.05s (import 62%, tests 35%, transform 2%, worker 1%)) [spec-done tự chạy lại]
+- Requirements: 1.4, 1.5
+- Commit: `spec(synthiq-demo-content): 4 Thêm test ảnh (mỗi trang có ảnh, alt…`

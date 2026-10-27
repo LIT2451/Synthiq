@@ -55,7 +55,7 @@ Site hiện chỉ có SVG minh hoạ và ẩn toàn bộ thông tin liên hệ v
 - [x] 3 Chèn ảnh vào Home, About, Services, Portfolio, Contact và thêm CSS; bỏ SVG không còn dùng
   - Kiểm chứng: `npm run build` và `npm run check` đạt
   - _Requirements: 1.4, 1.7_
-- [ ] 4 Thêm test ảnh (mỗi trang có ảnh, alt, kích thước, file tồn tại, giới hạn dung lượng)
+- [x] 4 Thêm test ảnh (mỗi trang có ảnh, alt, kích thước, file tồn tại, giới hạn dung lượng)
   - Kiểm chứng: `npm test` đạt
   - _Requirements: 1.4, 1.5_
 - [ ] 5 Cập nhật README (nguồn ảnh, giấy phép Unsplash, thông tin demo, lệnh `npm run photos`), chạy kiểm tra toàn bộ
