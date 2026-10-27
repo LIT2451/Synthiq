@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">{{name}}</a>
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html"{{#if nav.home}} aria-current="page" class="is-active"{{/if}}>Home</a></li>
+        <li><a href="about.html"{{#if nav.about}} aria-current="page" class="is-active"{{/if}}>About</a></li>
+        <li><a href="services.html"{{#if nav.services}} aria-current="page" class="is-active"{{/if}}>Services</a></li>
+        <li><a href="portfolio.html"{{#if nav.portfolio}} aria-current="page" class="is-active"{{/if}}>Portfolio</a></li>
+        <li><a href="contact.html"{{#if nav.contact}} aria-current="page" class="is-active"{{/if}}>Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="contact.html">Start a project</a>
+  </div>
+</header>
