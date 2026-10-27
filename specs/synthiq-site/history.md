@@ -290,3 +290,12 @@
 - Requirements: 3.3, 3.4
 - Commit: `spec(synthiq-site): 7.2 Viết README.md: giới thiệu, lệnh (npm install…`
 - Ghi chú: README: lệnh, cấu trúc, file build, logo, Missing brand info 8 khoá, Sample content số liệu và 8 case study
+
+## 7.3 Chạy toàn bộ `npm run build`, `npm test`, `npm run check`, `npm run check -- --source ../Landing-DVTechnic`; sửa mọi lỗi (câu trùng 8 từ, link, meta, dung lượng, file thừa) — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:30
+- File đã đổi: không có (ngoài specs/)
+- Kiểm chứng: `npm run build && npm test && npm run check && npm run check -- --source ../Landing-DVTechnic` → exit 0 (check passed) [spec-done tự chạy lại]
+- Requirements: 1.1, 3.1, 4.1, 4.2, 5.1, 6.4
+- Commit: `spec(synthiq-site): 7.3 Chạy toàn bộ npm run build, npm test, npm run…` (chỉ cập nhật specs/)
+- Ghi chú: Cả 4 lệnh exit 0 ngay lần đầu; 19 file test, 145 test pass; không có câu trùng 8 từ với site nguồn

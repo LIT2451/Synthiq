@@ -142,13 +142,13 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `npm test -- pages` pass
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 2.5, 3.5, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7_
 
-- [-] 7. SEO, README và hoàn thiện
+- [x] 7. SEO, README và hoàn thiện
   - [x] 7.1 Cập nhật `package.json`: bỏ script `og` (đã thay bằng `assets` ở task 4.3) và đảm bảo `npm run` chỉ liệt kê `build`, `check`, `test`, `assets`
     - Kiểm chứng: `npm test` pass
     - _Requirements: 6.2_
   - [x] 7.2 Viết `README.md`: giới thiệu, lệnh (`npm install`, `build`, `check`, `test`, `assets`), cấu trúc, "HTML ở gốc là file build, sửa `src/`", logo gốc ở `Logo/Logo.png` và chạy `npm run assets` khi đổi logo, mục "Missing brand info" liệt kê email/phone/address/taxId/hours/social và chỗ điền (`site.config.json`), mục "Sample content" liệt kê số liệu và 8 case study cần xác nhận
     - Kiểm chứng: `npm run check` exit 0 (README không chứa dấu vết)
     - _Requirements: 3.3, 3.4_
-  - [ ] 7.3 Chạy toàn bộ `npm run build`, `npm test`, `npm run check`, `npm run check -- --source ../Landing-DVTechnic`; sửa mọi lỗi (câu trùng 8 từ, link, meta, dung lượng, file thừa)
+  - [x] 7.3 Chạy toàn bộ `npm run build`, `npm test`, `npm run check`, `npm run check -- --source ../Landing-DVTechnic`; sửa mọi lỗi (câu trùng 8 từ, link, meta, dung lượng, file thừa)
     - Kiểm chứng: cả 4 lệnh exit 0
     - _Requirements: 1.1, 3.1, 4.1, 4.2, 5.1, 6.4_
