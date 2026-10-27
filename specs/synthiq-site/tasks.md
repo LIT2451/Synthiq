@@ -15,7 +15,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 2.1 Viết `scripts/lib/render.mjs`: `escapeHtml`, `parsePage` (front matter), `render` (`{{key}}`, đường dẫn chấm, `{{> partial}}` lồng tối đa 5 cấp, phát hiện vòng lặp, `{{#if}}…{{else}}…{{/if}}` lồng), ném `RenderError` khi thiếu key/partial
     - Kiểm chứng: `npm test -- render` pass
     - _Requirements: 3.2, 3.3_
-  - [ ] 2.2 Property P1: Render template đúng điều kiện và đầy đủ
+  - [x] 2.2 Property P1: Render template đúng điều kiện và đầy đủ
     - *Với mọi* context sinh ngẫu nhiên (mỗi khoá là chuỗi rỗng hoặc chuỗi bất kỳ, kể cả ký tự `<>&"'`) và template ghép từ các khối `{{key}}`, `{{#if key}}A{{else}}B{{/if}}` lồng tới 3 cấp: kết quả không còn chuỗi `{{`; khối `A` có mặt khi và chỉ khi giá trị khác rỗng; mọi giá trị chèn vào đều đã escape (giải escape ra đúng chuỗi gốc).
     - fast-check trong `tests/render.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- render` pass

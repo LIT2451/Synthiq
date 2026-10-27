@@ -16,3 +16,12 @@
 - Requirements: 3.2, 3.3
 - Commit: `spec(synthiq-site): 2.1 Viết scripts/lib/render.mjs: escapeHtml…` (chỉ cập nhật specs/)
 - Ghi chú: escapeHtml escape thêm { } để giá trị chèn vào không tạo chuỗi {{ (cần cho P1)
+
+## 2.2 Property P1: Render template đúng điều kiện và đầy đủ — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:01
+- File đã đổi: `tests/render.property.test.mjs`
+- Kiểm chứng: `npm test -- render` → exit 0 (Duration  100ms (tests 49%, import 31%, transform 13%, worker 6%)) [spec-done tự chạy lại]
+- Requirements: 3.2, 3.3
+- Property: P1 pass (200 lần)
+- Commit: `spec(synthiq-site): 2.2 Property P1: Render template đúng điều kiện và…`
