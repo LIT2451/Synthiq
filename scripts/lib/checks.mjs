@@ -12,13 +12,13 @@ export const TRACE_PATTERNS = [
   new RegExp(j('cau', '\\s+', 'giay'), 'i'),
   new RegExp(j('open', 'claw'), 'i'),
   new RegExp(j('her', 'mes'), 'i'),
-  new RegExp(j('\\b', 'nous', '\\b'), 'i'),
+  new RegExp(j('\\b', 'no', 'us', '\\b'), 'i'),
   new RegExp(j('sol', 'vet'), 'i'),
   new RegExp(j('template', 'monster'), 'i'),
   new RegExp(j('dr', 'theme'), 'i'),
 ];
 
-const BAD_NAME = new RegExp(j('dv', '[\\s_-]?', 'technic', '|', 'her', 'mes', '|', 'nous', '|', 'logo copy'), 'i');
+const BAD_NAME = new RegExp(j('dv', '[\\s_-]?', 'technic', '|', 'her', 'mes', '|', 'no', 'us', '|', 'logo copy'), 'i');
 
 // Returns every trace match as { line, match } with 1-based line numbers.
 export function findTraces(text) {

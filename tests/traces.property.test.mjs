@@ -11,10 +11,10 @@ const j = (...p) => p.join('');
 const SAMPLES = [
   j('dv', 'technic'), j('dv ', 'technic'), j('dv-', 'technic'), j('dv', 'technic.com'),
   j('dongle', '@'), j('0111', '058171'), j('915 ', '708 055'), j('0915', '708055'),
-  j('yen ', 'hoa'), j('cau ', 'giay'), j('open', 'claw'), j('her', 'mes'), j('nous'),
+  j('yen ', 'hoa'), j('cau ', 'giay'), j('open', 'claw'), j('her', 'mes'), j('no', 'us'),
   j('sol', 'vet'), j('template', 'monster'), j('dr', 'theme'),
 ];
-const NAME_SAMPLES = [j('dv', 'technic'), j('her', 'mes'), j('nous'), 'logo copy'];
+const NAME_SAMPLES = [j('dv', 'technic'), j('her', 'mes'), j('no', 'us'), 'logo copy'];
 
 // Alphabet without the letters/digits needed to spell any trace, so clean text is clean by construction.
 const SAFE = 'bfijkpqwxyz2346 .,;:!?()-_/#<>"='.split('');

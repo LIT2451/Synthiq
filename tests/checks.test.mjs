@@ -18,7 +18,7 @@ describe('findTraces', () => {
     j('Cau ', 'Giay District'),
     j('Open', 'Claw'),
     j('Her', 'mes agent'),
-    j('by ', 'Nous Research'),
+    j('by No', 'us Research'),
     j('Sol', 'vet - IT Solutions'),
     j('template', 'monster.com'),
     j('authors/dr', 'theme/'),
@@ -43,7 +43,7 @@ describe('findBadFileNames', () => {
       'images/logo-full.png',
       j('images/logo-dv', 'technic-white.svg'),
       j('images/services/her', 'mes-dashboard.png'),
-      j('images/', 'nous', '-logo.png'),
+      j('images/no', 'us-logo.png'),
       'images/logo copy 2.png',
       'css/site.css',
     ];

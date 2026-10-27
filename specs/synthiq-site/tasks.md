@@ -39,7 +39,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `npm test -- contact-items` pass
     - _Kiểm chứng: Requirements 3.2, 3.3, 5.1_
 
-- [-] 3. Bộ kiểm tra
+- [x] 3. Bộ kiểm tra
   - [x] 3.1 Viết `TRACE_PATTERNS`, `findTraces`, `findBadFileNames` trong `scripts/lib/checks.mjs`
     - Kiểm chứng: `npm test -- checks` pass
     - _Requirements: 4.1, 4.3, 4.4_
@@ -73,7 +73,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - fast-check trong `tests/ngrams.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- ngrams` pass
     - _Kiểm chứng: Requirements 3.1_
-  - [ ] 3.9 Viết CLI `scripts/check.mjs`
+  - [x] 3.9 Viết CLI `scripts/check.mjs`
     - Quét traces (trừ `specs/`, `node_modules/`, `.git/`), tên file xấu, ref/meta/mailto/tel của 6 trang, `img` thiếu `alt`, sitemap đúng 5 URL, robots, CNAME, ảnh tổng < 6 MB và từng file ≤ 400 KB, file `css/`/`js/`/`fonts/` không được tham chiếu, `<script src>` ngoài domain, màu cấm (`#0284c7`, `#09001D`, `#38bdf8`, `#0369a1`) và font cấm (Nunito, Space Grotesk) trong `css/`, tương phản cặp token; cờ `--source <dir>` so 8-gram chữ hiển thị (exit 2 nếu dir không tồn tại)
     - In `file:dòng: mô tả`, exit 1 khi có lỗi
     - Unit test `tests/check-cli.test.mjs` chạy CLI trên thư mục fixture tạm trong `tests/fixtures/` (một bản sạch exit 0, một bản có dấu vết + link hỏng exit 1 và in đúng file:dòng)

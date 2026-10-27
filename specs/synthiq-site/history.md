@@ -128,3 +128,12 @@
 - Requirements: 3.1
 - Property: P7 pass (300 lần)
 - Commit: `spec(synthiq-site): 3.8 Property P7: Phát hiện câu trùng 8 từ`
+
+## 3.9 Viết CLI `scripts/check.mjs` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:12
+- File đã đổi: `scripts/check.mjs`, `scripts/lib/checks.mjs`, `tests/check-cli.test.mjs`, `tests/checks.test.mjs`, `tests/traces.property.test.mjs`
+- Kiểm chứng: `npm test -- check-cli` → exit 0 (Duration  206ms (tests 94%, import 3%, worker 2%, transform 1%)) [spec-done tự chạy lại]
+- Requirements: 2.1, 2.2, 4.1, 4.2, 5.1, 6.3, 6.4
+- Commit: `spec(synthiq-site): 3.9 Viết CLI scripts/check.mjs`
+- Ghi chú: npm run build va npm run check chay duoc; con 7 loi du kien: thieu og:image o 6 trang (task 4.4) va thieu css/site.css (task 4.1). Tach chuoi nous trong checks/tests de repo khong tu bao loi.
