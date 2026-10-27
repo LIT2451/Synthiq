@@ -84,7 +84,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 4.1 Tải font Sora (600/700) và Manrope (400/600/700) dạng woff2 subset latin vào `fonts/` kèm `fonts/OFL.txt`; viết `css/site.css` phần nền: `@font-face`, token màu theo design, reset, typography, container, nút pill, focus-visible, card, chip, section, reveal dưới `.js`, `prefers-reduced-motion`
     - Kiểm chứng: `npm run check` không báo màu/font cấm, tương phản token đạt
     - _Requirements: 2.1, 2.2, 2.4, 5.6_
-  - [ ] 4.2 Viết `scripts/lib/logo.mjs`: `findGap(rowAlphaCounts)` và `recolorDark(pixels, light)` (thuần, theo design "Xử lý logo và ảnh nhận diện") kèm unit test `tests/logo.test.mjs` trên ảnh raw nhỏ dựng tay (có/không có khoảng trống, pixel teal giữ nguyên, alpha giữ nguyên)
+  - [x] 4.2 Viết `scripts/lib/logo.mjs`: `findGap(rowAlphaCounts)` và `recolorDark(pixels, light)` (thuần, theo design "Xử lý logo và ảnh nhận diện") kèm unit test `tests/logo.test.mjs` trên ảnh raw nhỏ dựng tay (có/không có khoảng trống, pixel teal giữ nguyên, alpha giữ nguyên)
     - Kiểm chứng: `npm test -- logo` pass
     - _Requirements: 2.5, 2.7_
   - [ ] 4.3 Thêm devDependency `sharp` chốt cứng phiên bản, script `assets` trong `package.json`; viết `scripts/assets.mjs` đọc `Logo/Logo.png` (không sửa file gốc), trim, tách mark/wordmark, đổi màu wordmark khi < 3:1, sinh `images/logo-full.{webp,png}`, `logo-mark.{webp,png}`, `logo-mark-hero.webp`, `favicon-32.png`, `apple-touch-icon.png`, `og.png` 1200×630 (nền `--bg`, lưới isometric, logo đầy đủ, tagline); lỗi theo bảng "Xử lý lỗi"

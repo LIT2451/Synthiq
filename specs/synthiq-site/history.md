@@ -146,3 +146,11 @@
 - Requirements: 2.1, 2.2, 2.4, 5.6
 - Commit: `spec(synthiq-site): 4.1 Tải font Sora (600/700) và Manrope…`
 - Ghi chú: Font tu @fontsource/sora@5.3.0 va @fontsource/manrope@5.3.0 (latin woff2). npm run check khong bao mau/font cam, tuong phan dat; con loi du kien: og:image va css/site.css chua duoc link (task 4.4).
+
+## 4.2 Viết `scripts/lib/logo.mjs`: `findGap(rowAlphaCounts)` và `recolorDark(pixels, light)` (thuần, theo design "Xử lý logo và ảnh nhận diện") kèm unit test `tests/logo.test.mjs` trên ảnh raw nhỏ dựng tay (có/không có khoảng trống, pixel teal giữ nguyên, alpha giữ nguyên) — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:14
+- File đã đổi: `scripts/lib/logo.mjs`, `tests/logo.test.mjs`
+- Kiểm chứng: `npm test -- logo` → exit 0 (Duration  67ms (import 39%, transform 24%, tests 22%, worker 15%, environment 1%)) [spec-done tự chạy lại]
+- Requirements: 2.5, 2.7
+- Commit: `spec(synthiq-site): 4.2 Viết scripts/lib/logo.mjs…`
