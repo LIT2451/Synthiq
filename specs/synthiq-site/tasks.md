@@ -60,7 +60,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm title (1–60 ký tự), description (70–160), canonical trên domain, `og:title/description/url/image`, `lang="en"`
     - Kiểm chứng: `npm test -- checks` pass
     - _Requirements: 6.1, 6.2, 6.4_
-  - [ ] 3.6 Property P9: Kiểm tra metadata khớp mô hình
+  - [x] 3.6 Property P9: Kiểm tra metadata khớp mô hình
     - *Với mọi* title độ dài 0–80 và description độ dài 0–200 sinh ngẫu nhiên chèn vào head mẫu: `checkPageMeta` báo lỗi title khi và chỉ khi độ dài = 0 hoặc > 60, báo lỗi description khi và chỉ khi ngoài [70, 160]; thiếu canonical/og:* hoặc canonical khác domain luôn bị báo.
     - fast-check trong `tests/meta.property.test.mjs`, `numRuns >= 100`
     - Kiểm chứng: `npm test -- meta` pass

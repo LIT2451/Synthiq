@@ -102,3 +102,12 @@
 - Kiểm chứng: `npm test -- checks` → exit 0 (Duration  66ms (import 42%, tests 30%, transform 17%, worker 10%)) [spec-done tự chạy lại]
 - Requirements: 6.1, 6.2, 6.4
 - Commit: `spec(synthiq-site): 3.5 Viết checkPageMeta trong checks.mjs`
+
+## 3.6 Property P9: Kiểm tra metadata khớp mô hình — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:08
+- File đã đổi: `tests/meta.property.test.mjs`
+- Kiểm chứng: `npm test -- meta` → exit 0 (Duration  96ms (tests 64%, import 23%, transform 9%, worker 4%)) [spec-done tự chạy lại]
+- Requirements: 6.1, 6.2, 6.4
+- Property: P9 pass (300 lần)
+- Commit: `spec(synthiq-site): 3.6 Property P9: Kiểm tra metadata khớp mô hình`
