@@ -3,6 +3,10 @@ import { JSDOM } from 'jsdom';
 import { renderSite } from '../scripts/build.mjs';
 import { initMenu, initFilter, initReveal } from '../js/main.js';
 import { initContactForm } from '../js/contact.js';
+import { loadConfig } from '../scripts/lib/site.mjs';
+import { findTraces } from '../scripts/lib/checks.mjs';
+
+const config = loadConfig(new URL('../site.config.json', import.meta.url).pathname);
 
 // Built pages (rendered in memory with a fixed year) + the real browser scripts in jsdom.
 // Requirements 1.1–1.8, 2.5, 3.5, 5.2–5.7.
@@ -77,10 +81,15 @@ describe('page structure', () => {
     for (const cat of filters.slice(1)) expect(cases.filter((c) => c.dataset.category === cat)).toHaveLength(2);
   });
 
-  test('Contact: fallback line when no contact info, 3 next steps, form', () => {
+  test('Contact: contact card with configured details, 3 next steps, form', () => {
     const d = load('contact.html').document;
-    expect(d.querySelector('.contact-card')).toBeNull();
-    expect(d.querySelector('.contact-fallback')).toBeTruthy();
+    const card = d.querySelector('.contact-card');
+    expect(card).toBeTruthy();
+    expect(d.querySelector('.contact-fallback')).toBeNull();
+    for (const v of [config.email, config.phone, config.address, config.taxId, config.hours]) {
+      expect(card.textContent).toContain(v);
+    }
+    expect(d.querySelector('form[data-contact-form]').dataset.email).toBe(config.email);
     expect(all(d, '.steps li')).toHaveLength(3);
     const form = d.querySelector('form[data-contact-form]');
     expect(form).toBeTruthy();
@@ -109,6 +118,37 @@ describe('shared header and footer', () => {
     expect(d.querySelector('link[rel="icon"][href="images/favicon-32.png"]')).toBeTruthy();
     expect(d.querySelector('link[rel="apple-touch-icon"]')).toBeTruthy();
     expect(d.querySelector('.footer-copy').textContent).toContain('© 2026 Synthiq');
+  });
+
+  test.each([...PAGES, '404.html'])('%s: contact details in mobile panel and footer, links match config', (file) => {
+    const d = load(file).document;
+    for (const sel of ['.mobile-contact', '.footer-contact']) {
+      const box = d.querySelector(sel);
+      expect(box, sel).toBeTruthy();
+      for (const v of [config.email, config.phone, config.address, config.taxId, config.hours]) {
+        expect(box.textContent, `${sel} ${v}`).toContain(v);
+      }
+    }
+    const mailto = all(d, 'a[href^="mailto:"]').map((a) => a.getAttribute('href'));
+    const tel = all(d, 'a[href^="tel:"]').map((a) => a.getAttribute('href'));
+    expect(mailto.length).toBeGreaterThan(0);
+    expect(tel.length).toBeGreaterThan(0);
+    expect(mailto.every((h) => h === `mailto:${config.email}`)).toBe(true);
+    expect(tel.every((h) => h === `tel:${config.phone.replace(/[^\d+]/g, '')}`)).toBe(true);
+    const social = all(d, '.footer-social a').map((a) => a.getAttribute('href'));
+    expect(social).toEqual([config.social.linkedin, config.social.github, config.social.facebook]);
+  });
+});
+
+describe('demo company details', () => {
+  test('use Hanoi details and contain no trace of the old company', () => {
+    expect(config.email).toBe('hello@synthiqdigital.com');
+    expect(config.phone).toMatch(/^\+84 24 \d{4} \d{4}$/);
+    expect(config.address).toMatch(/Hanoi/);
+    for (const v of [config.email, config.phone, config.address, config.taxId, config.hours, ...Object.values(config.social)]) {
+      expect(findTraces(v), v).toEqual([]);
+      expect(v.trim(), 'non-empty').not.toBe('');
+    }
   });
 });
 

@@ -1,14 +1,14 @@
 {
   "name": "Synthiq",
   "domain": "synthiqdigital.com",
-  "email": "",
-  "phone": "",
-  "address": "",
-  "taxId": "",
-  "hours": "",
+  "email": "hello@synthiqdigital.com",
+  "phone": "+84 24 3999 2468",
+  "address": "9th floor, Lotus Building, 2 Pham Hung, Nam Tu Liem, Hanoi, Vietnam",
+  "taxId": "0109876543",
+  "hours": "Mon–Fri, 8:30–17:30 (GMT+7)",
   "social": {
-    "linkedin": "",
-    "github": "",
-    "facebook": ""
+    "linkedin": "https://www.linkedin.com/company/synthiq-digital",
+    "github": "https://github.com/synthiq-digital",
+    "facebook": "https://www.facebook.com/synthiqdigital"
   }
 }
