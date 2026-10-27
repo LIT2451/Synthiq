@@ -49,7 +49,7 @@ Site hiện chỉ có SVG minh hoạ và ẩn toàn bộ thông tin liên hệ v
 - [x] 1 Điền thông tin công ty demo vào `site.config.json`, cập nhật test Contact và thêm test link mailto/tel khớp config, địa chỉ không dính dấu vết cũ
   - Kiểm chứng: `npm run build` rồi `npm test` đạt
   - _Requirements: 1.1, 1.2, 1.3_
-- [ ] 2 Tạo `scripts/photos.json` (nguồn Unsplash đã kiểm tra), `scripts/photos.mjs` và lệnh `npm run photos`; chạy để sinh ảnh vào `images/photos/`
+- [x] 2 Tạo `scripts/photos.json` (nguồn Unsplash đã kiểm tra), `scripts/photos.mjs` và lệnh `npm run photos`; chạy để sinh ảnh vào `images/photos/`
   - Kiểm chứng: `npm run photos` chạy xong, mỗi file ≤400 KB, tổng `images/` <6 MB
   - _Requirements: 1.4, 1.5_
 - [ ] 3 Chèn ảnh vào Home, About, Services, Portfolio, Contact và thêm CSS; bỏ SVG không còn dùng

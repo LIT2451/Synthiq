@@ -7,3 +7,11 @@
 - Kiểm chứng: `npm run build && npm test` → exit 0 (Duration  868ms (import 62%, tests 34%, transform 3%, worker 1%)) [spec-done tự chạy lại]
 - Requirements: 1.1, 1.2, 1.3
 - Commit: `spec(synthiq-demo-content): 1 Điền thông tin công ty demo vào…`
+
+## 2 Tạo `scripts/photos.json` (nguồn Unsplash đã kiểm tra), `scripts/photos.mjs` và lệnh `npm run photos`; chạy để sinh ảnh vào `images/photos/` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:49
+- File đã đổi: `images/photos/about-meeting.jpg`, `images/photos/about-meeting.webp`, `images/photos/case-ai.jpg`, `images/photos/case-ai.webp`, `images/photos/case-enterprise.jpg`, `images/photos/case-enterprise.webp`, `images/photos/case-fintech.jpg`, `images/photos/case-fintech.webp`, `images/photos/case-telecom.jpg`, `images/photos/case-telecom.webp`, `images/photos/contact-office.jpg`, `images/photos/contact-office.webp`, `images/photos/featured-datacenter.jpg`, `images/photos/featured-datacenter.webp`, `images/photos/hero-team.jpg`, `images/photos/hero-team.webp`, `images/photos/solution-pilot.jpg`, `images/photos/solution-pilot.webp`, `images/photos/solution-relay.jpg`, `images/photos/solution-relay.webp`, `package.json`, `scripts/photos.json`, `scripts/photos.mjs`
+- Kiểm chứng: `npm run photos && test -z "$(find images -type f -size +400k)" && test "$(du -sk images | cut -f1)" -lt 6144` → exit 0 (images/photos/contact-office.jpg  48 KB) [spec-done tự chạy lại]
+- Requirements: 1.4, 1.5
+- Commit: `spec(synthiq-demo-content): 2 Tạo scripts/photos.json (nguồn Unsplash…`

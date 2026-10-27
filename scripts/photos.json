@@ -1,0 +1,12 @@
+[
+  { "file": "hero-team", "id": "1522071820081-009f0129c71c", "width": 1200, "height": 900, "alt": "A product team working together around laptops at a shared table" },
+  { "file": "about-meeting", "id": "1600880292203-757bb62b4baf", "width": 1200, "height": 800, "alt": "Colleagues discussing a project in a bright meeting room" },
+  { "file": "solution-relay", "id": "1544197150-b99a580bb7a8", "width": 1000, "height": 700, "alt": "Network switch with neatly patched cables" },
+  { "file": "solution-pilot", "id": "1551288049-bebda4e38f71", "width": 1000, "height": 700, "alt": "Analytics dashboard with charts on a laptop screen" },
+  { "file": "featured-datacenter", "id": "1558494949-ef010cbdcc31", "width": 1200, "height": 800, "alt": "Rows of server racks with status lights in a data centre" },
+  { "file": "case-ai", "id": "1517694712202-14dd9538aa97", "width": 800, "height": 500, "alt": "Source code open in an editor on a laptop" },
+  { "file": "case-telecom", "id": "1573164713988-8665fc963095", "width": 800, "height": 500, "alt": "Engineer working with hardware in a technical room" },
+  { "file": "case-enterprise", "id": "1586528116311-ad8dd3c8310d", "width": 800, "height": 500, "alt": "Warehouse aisles stacked with stock ready for dispatch" },
+  { "file": "case-fintech", "id": "1556742049-0cfed4f6a45d", "width": 800, "height": 500, "alt": "Card payment being made at a point-of-sale terminal" },
+  { "file": "contact-office", "id": "1497366216548-37526070297c", "width": 1000, "height": 750, "alt": "Modern open-plan office with desks and natural light" }
+]
