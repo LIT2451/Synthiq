@@ -39,8 +39,8 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `npm test -- contact-items` pass
     - _Kiểm chứng: Requirements 3.2, 3.3, 5.1_
 
-- [ ] 3. Bộ kiểm tra
-  - [ ] 3.1 Viết `TRACE_PATTERNS`, `findTraces`, `findBadFileNames` trong `scripts/lib/checks.mjs`
+- [-] 3. Bộ kiểm tra
+  - [x] 3.1 Viết `TRACE_PATTERNS`, `findTraces`, `findBadFileNames` trong `scripts/lib/checks.mjs`
     - Kiểm chứng: `npm test -- checks` pass
     - _Requirements: 4.1, 4.3, 4.4_
   - [ ] 3.2 Property P2: Phát hiện mọi dấu vết

@@ -59,3 +59,11 @@
 - Property: P8 pass (200 lần)
 - Commit: `spec(synthiq-site): 2.6 Property P8: Thông tin liên hệ chỉ hiện khi có`
 - Ghi chú: Phần checkContactLinks của P8 bổ sung ở task 3.3
+
+## 3.1 Viết `TRACE_PATTERNS`, `findTraces`, `findBadFileNames` trong `scripts/lib/checks.mjs` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:03
+- File đã đổi: `scripts/lib/checks.mjs`, `tests/checks.test.mjs`
+- Kiểm chứng: `npm test -- checks` → exit 0 (Duration  68ms (import 44%, tests 22%, transform 21%, worker 12%)) [spec-done tự chạy lại]
+- Requirements: 4.1, 4.3, 4.4
+- Commit: `spec(synthiq-site): 3.1 Viết TRACE_PATTERNS, findTraces…`
